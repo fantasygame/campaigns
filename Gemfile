@@ -20,6 +20,7 @@ gem 'haml-rails'
 gem 'pundit'
 gem 'simple_form'
 gem 'therubyracer'
+gem 'pg'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
@@ -40,10 +41,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
-  gem 'sqlite3'
 end
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
   gem 'unicorn'
 end

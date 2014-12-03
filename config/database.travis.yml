@@ -1,7 +1,4 @@
-default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
 test:
-  <<: *default
-  database: db/test.sqlite3
+  adapter:  postgresql
+  database: campaigns_test
+  username: postgres
