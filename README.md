@@ -1,50 +1,60 @@
-Campaigns
-================
+# Campaigns
+[![](http://img.shields.io/travis/fantasygame/campaigns.svg?style=flat-square)](https://travis-ci.org/netguru-training/give_me_something/)
+[![](http://img.shields.io/codeclimate/github/fantasygame/campaigns.svg?style=flat-square)](https://codeclimate.com/github/netguru-training/give_me_something)
+[![](http://img.shields.io/codeclimate/coverage/github/fantasygame/campaigns.svg?style=flat-square)](https://codeclimate.com/github/netguru-training/give_me_something)
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+## General info
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+The purpose of this app is to manage RPG campaigns.
 
-Rails Composer is open source and supported by subscribers. Please join RailsApps to support development of Rails Composer.
+User can create campaign and sessions in it. Every user assigned to session will be and asked to contribute. This way we can create nice little campaign weblog.
 
-Problems? Issues?
------------
+### Heroku
 
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
+App is available on [heroku](http://rpgcampaigns.herokuapp.com/)
 
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
+## Technologies
 
-If the application doesn’t work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
+* Ruby on Rails 4.1.8
+* Ruby 2.1.5
+* Postgresql
+* HAML
+* Bootstrap 3
 
-Ruby on Rails
--------------
+## Setup
 
-This application requires:
+> cp config/database.example.yml config/database.yml
 
-- Ruby 2.1.5
-- Rails 4.1.8
+> cp config/application.example.yml config/application.yml
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
+> rake db:setup
 
-Getting Started
----------------
+## Tests
 
-Documentation and Support
--------------------------
+We use RSpec 3 for backend testing.
 
-Issues
--------------
+## Notes
 
-Similar Projects
-----------------
+Please follow Ruby style guide available [here](https://github.com/bbatsov/ruby-style-guide).
 
-Contributing
-------------
+## Contributing
 
-Credits
--------
+If you make improvements to this application, please share with others.
 
-License
--------
+* Fork the project on GitHub.
+* Make your feature addition or bug fix.
+* Commit with Git.
+* Send the author a pull request.
+
+If you add functionality to this application, create an alternative
+implementation, or build an application that is similar, please contact
+me and I’ll add a note to the README so that others can find your work.
+
+## License
+
+http://opensource.org/licenses/MIT
+
+## Authors
+
+* Jakub Kubacki
+* Małgorzata Grobelska
