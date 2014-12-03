@@ -19,6 +19,7 @@ gem 'figaro', '>= 1.0.0.rc1'
 gem 'haml-rails'
 gem 'pundit'
 gem 'simple_form'
+gem 'therubyracer'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
@@ -35,7 +36,7 @@ group :development do
 end
 group :development, :test do
   gem 'factory_girl_rails'
-  gem 'faker'
+  gem 'ffaker'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'

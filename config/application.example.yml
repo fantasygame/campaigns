@@ -20,3 +20,16 @@
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: changeme
+
+DOMAIN_NAME: example.com
+
+EMAIL_PROVIDER_USERNAME: user@example.com
+EMAIL_PROVIDER_PASSWORD: changeme
+EMAIL_PROVIDER_ADDRESS: smtp.gmail.com
+
+EMAIL_PROVIDER_USERNAME: user@example.com
+EMAIL_PROVIDER_PASSWORD: changeme
+EMAIL_PROVIDER_ADDRESS: smtp.gmail.com
+
+# Generate by executing rake secret
+SECRET_KEY_BASE: 27f4a99c40d3416dfed99a96bff9ad448c6ff4602d418f81410eeefeb2bd8e8a747e8f2c3bdd4d110b23e1411333fd44339ea1f47ef213306608bb360b021115
