@@ -1,0 +1,7 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: NAa43T12yLwZneO30Lf+R4cH3IIYJVSjpYyMM1dO1Iibtk5CYmlXs56E+DhNhDwr9V7xwsMTwRtU//SmiaFGt4My4Ttb58o7T2rL3reoqazbsCBPto+qAqPW8SUm8n58DFPQ3uzpUPPwZkDMx8JyurKNoCokAvlaigyRZnV/puM=
+  app: rpgcampaigns
+  on:
+    repo: fantasygame/campaigns
