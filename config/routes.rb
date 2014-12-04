@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 
   # get 'campaigns/:id/join', 'campaigns#join'
 
-  root to: 'campaigns#index'
+  root to: 'visitors#index'
   devise_for :users
 end
