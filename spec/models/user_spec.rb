@@ -6,6 +6,7 @@ describe User do
 
   it { is_expected.to respond_to(:email) }
   it { is_expected.to have_many(:games) }
+  it { is_expected.to have_many(:campaigns) }
 
   it "#email returns a string" do
     expect(@user.email).to match 'user@example.com'
