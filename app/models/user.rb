@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :games, through: :gameplays, class_name: 'Game'
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
