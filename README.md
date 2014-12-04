@@ -12,7 +12,7 @@ User can create campaign and sessions in it. Every user assigned to session will
 ## Features
 
 ### First release
-* <span style="color: green;">Register to Campaigns</span>
+* [DONE] Register to Campaigns
 * Create campaign with name and description
 * Join campaign
 * Create sessions inside campaign (name, users)
