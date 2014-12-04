@@ -1,4 +1,6 @@
-describe User do
+require 'rails_helper'
+
+RSpec.describe User do
 
   before(:each) { @user = User.new(email: 'user@example.com') }
 
