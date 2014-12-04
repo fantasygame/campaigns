@@ -10,9 +10,12 @@
 
   - @campaigns.each do |campaign|
     %tr
-      %td
-        - unless campaign.users.include? current_user
-          = link_to 'Join', join_campaign_path(campaign), class: 'btn btn-primary'
+      %td{ style: 'text-align: center' }
+        - if campaign.users.include? current_user
+          .btn.btn-default{ disabled: :disabled }
+            .glyphicon.glyphicon-ok
+        - else
+          = link_to 'Join', join_campaign_path(campaign), class: 'btn btn-success'
       %td= campaign.name
       %td= campaign.description
       %td= campaign.game_master
