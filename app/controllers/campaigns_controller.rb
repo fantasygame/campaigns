@@ -6,7 +6,7 @@ class CampaignsController < ApplicationController
 
   def join
     AddUserToCampaignService.new(current_user, @campaign).call
-    redirect_to @campaign
+    redirect_to @campaign, notice: 'User added to campaign'
   end
 
   def index
