@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   end
 
   def to_s
-  	self.name
+  	name
   end
 
   # Include default devise modules. Others available are:
