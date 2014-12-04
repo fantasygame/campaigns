@@ -1,8 +1,13 @@
 class CampaignsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_campaign, only: [:show, :edit, :update, :destroy]
+  before_action :set_campaign, only: [:show, :edit, :update, :destroy, :join]
 
   respond_to :html
+
+  def join
+    AddUserToCampaignService.new(current_user, @campaign).call
+    redirect_to @campaign
+  end
 
   def index
     @campaigns = Campaign.all
