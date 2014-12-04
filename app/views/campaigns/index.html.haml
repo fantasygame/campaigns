@@ -7,8 +7,6 @@
     %th Description
     %th Game master
     %th
-    %th
-    %th
 
   - @campaigns.each do |campaign|
     %tr
@@ -18,13 +16,13 @@
       %td= campaign.name
       %td= campaign.description
       %td= campaign.game_master
-      %td= link_to 'Show', campaign
-      - if current_user == campaign.game_master
-        %td= link_to 'Edit', edit_campaign_path(campaign)
-        %td= link_to 'Destroy', campaign, :method => :delete, :data => { :confirm => 'Are you sure?' }
-      - else
-        %td
-        %td
+
+      %td
+        .btn-group
+          = link_to 'Show', campaign, class: 'btn btn-default'
+          - if current_user == campaign.game_master
+            = link_to 'Edit', edit_campaign_path(campaign), class: 'btn btn-primary'
+            = link_to 'Destroy', campaign, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
 
 %br
 
