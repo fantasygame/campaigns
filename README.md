@@ -1,7 +1,13 @@
 # Campaigns
+![alt tag](http://oi62.tinypic.com/2jebxb5.jpg)
+
 [![](http://img.shields.io/travis/fantasygame/campaigns.svg?style=flat-square)](https://travis-ci.org/fantasygame/campaigns)
 [![](http://img.shields.io/codeclimate/github/fantasygame/campaigns.svg?style=flat-square)](https://codeclimate.com/github/fantasygame/campaigns)
 [![](http://img.shields.io/codeclimate/coverage/github/fantasygame/campaigns.svg?style=flat-square)](https://codeclimate.com/github/fantasygame/campaigns)
+
+### Heroku
+
+Check out our app [here](http://rpgcampaigns.herokuapp.com/)
 
 ## General info
 
@@ -13,16 +19,16 @@ User can create campaign and sessions in it. Every user assigned to session will
 
 ### First release
 * [DONE] Register to Campaigns
-* Create campaign with name and description
-* Join campaign
+* [DONE] Create campaign with name and description
+* [DONE] Join campaign
 * Create sessions inside campaign (name, users)
 * Notify users about new session created (email)
 * Create posts in sessions (text)
-* List all campaigns
+* [DONE] List all campaigns
 * Show campaign with listed sessions
 * Show campaign with listed posts
 * Show session with listed posts
-* Edit campaign
+* [DONE] Edit campaign
 * Edit session
 * Edit post
 * Delete post (paranoid)
@@ -47,10 +53,6 @@ User can create campaign and sessions in it. Every user assigned to session will
 * Point for creating session
 * Spending points on rewards
 * Managing inventory, selling
-
-### Heroku
-
-App is available on [heroku](http://rpgcampaigns.herokuapp.com/)
 
 ## Technologies
 
