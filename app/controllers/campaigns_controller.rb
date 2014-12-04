@@ -28,8 +28,7 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = Campaign.new(campaign_params)
-    @campaign.game_master = current_user
-    @campaign.save
+    CreateCampaignService.new(current_user, @campaign).call
     respond_with(@campaign)
   end
 

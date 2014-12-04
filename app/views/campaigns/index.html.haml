@@ -1,7 +1,8 @@
 %h1 Listing campaigns
 
-%table
+%table.table
   %tr
+    %th
     %th Name
     %th Description
     %th Game master
@@ -11,12 +12,19 @@
 
   - @campaigns.each do |campaign|
     %tr
+      %td
+        - unless campaign.users.include? current_user
+          = link_to 'Join', join_campaign_path(campaign), class: 'btn btn-primary'
       %td= campaign.name
       %td= campaign.description
       %td= campaign.game_master
       %td= link_to 'Show', campaign
-      %td= link_to 'Edit', edit_campaign_path(campaign)
-      %td= link_to 'Destroy', campaign, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - if current_user == campaign.game_master
+        %td= link_to 'Edit', edit_campaign_path(campaign)
+        %td= link_to 'Destroy', campaign, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - else
+        %td
+        %td
 
 %br
 
