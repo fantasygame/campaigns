@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204175232) do
+ActiveRecord::Schema.define(version: 20141206205713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,10 @@ ActiveRecord::Schema.define(version: 20141204175232) do
     t.integer  "game_master_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
+  add_index "campaigns", ["deleted_at"], name: "index_campaigns_on_deleted_at", using: :btree
   add_index "campaigns", ["game_master_id"], name: "index_campaigns_on_game_master_id", using: :btree
 
   create_table "gameplays", force: true do |t|
