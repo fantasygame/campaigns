@@ -1,15 +1,16 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @campaign.name
-%p
-  %b Description:
-  = @campaign.description
-%p
-  %b Game master:
-  = @campaign.game_master
-
-= link_to 'Edit', edit_campaign_path(@campaign)
-\|
-= link_to 'Back', campaigns_path
+%h1= @campaign.name
+%blockquote
+  =@campaign.description
+  %footer
+    = @campaign.game_master
+#game-tiles
+  - @campaign.games.to_a.each_slice(3).to_a.each do |games|
+    .row
+      - games.each do |game|
+        .item
+          .well
+            %h4
+              = game.name
+            .well-bottom
+              Data sesji: 
+              = game.date.strftime('%m.%d.%Y')

@@ -1,3 +1,31 @@
 // Place all the styles related to the campaigns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+#game-tiles {
+  width: 100%;
+  text-align: center;
+}
+.row {
+  -moz-column-width: 18em;
+  -webkit-column-width: 18em;
+  -moz-column-gap: 1em;
+  -webkit-column-gap:1em;
+}
+
+.item {
+  display: inline-block;
+  padding:  .25rem;
+  width:  100%;
+}
+
+.well {
+  position: relative;
+  display: block;
+  height: 13em;
+
+  .well-bottom {
+    position: absolute; bottom: 5%; right: 5%;
+  }
+}
