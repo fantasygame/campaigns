@@ -24,6 +24,7 @@ class CampaignsController < ApplicationController
   end
 
   def edit
+    authorize @campaign
   end
 
   def create
@@ -33,16 +34,19 @@ class CampaignsController < ApplicationController
   end
 
   def update
+    authorize @campaign
     @campaign.update(campaign_params)
     respond_with(@campaign)
   end
 
   def destroy
+    authorize @campaign
     @campaign.destroy
     respond_with(@campaign)
   end
 
   private
+
     def set_campaign
       @campaign = Campaign.find(params[:id])
     end
