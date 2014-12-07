@@ -2,6 +2,7 @@ class CampaignsController < ApplicationController
   expose(:campaigns)
   expose(:campaign, attributes: :campaign_params)
   respond_to :html, :json, :xml
+  before_filter :authenticate_user!
 
   def join
     result = AddUserToCampaign.new(current_user, campaign).call
