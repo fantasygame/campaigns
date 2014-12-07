@@ -13,27 +13,28 @@ Check out our app [here](http://rpgcampaigns.herokuapp.com/)
 
 The purpose of this app is to manage RPG campaigns.
 
-User can create campaign and sessions in it. Every user assigned to session will be and asked to contribute. This way we can create nice little campaign weblog.
+User can create campaign and games in it. Every user assigned to game will be and asked to contribute. This way we can create nice little campaign weblog.
 
 ## Features
 
 ### First release
-* [DONE] Register to Campaigns
+* [DONE] Register to Campaigns with confirmation email
 * [DONE] Create campaign with name and description
 * [DONE] Join campaign
-* Create sessions inside campaign (name, users)
-* Notify users about new session created (email)
-* Create posts in sessions (text)
 * [DONE] List all campaigns
-* Show campaign with listed sessions
-* Show campaign with listed posts
-* Show session with listed posts
 * [DONE] Edit campaign
-* Edit session
+* [DONE] Delete campaign (delete corresponding games, paranoid)
+* Resign from campaign
+* Create games inside campaign (name, users)
+* Notify users about new game created (email)
+* Create posts in games (text)
+* Show campaign with listed games
+* Show campaign with listed posts
+* Show game with listed posts
+* Edit game
 * Edit post
 * Delete post (paranoid)
-* Delete session (delete corresponding posts, paranoid)
-* Delete campaign (delete corresponding sessions, paranoid)
+* Delete game (delete corresponding posts, paranoid)
 
 ### Future releases
 * Add notifications in fantasygame.pl shoutbox
@@ -50,7 +51,7 @@ User can create campaign and sessions in it. Every user assigned to session will
 * Super thumbs up to posts
 * User points
 * User points in campaign
-* Point for creating session
+* Point for creating game
 * Spending points on rewards
 * Managing inventory, selling
 
@@ -61,8 +62,13 @@ User can create campaign and sessions in it. Every user assigned to session will
 * Postgresql
 * HAML
 * Bootstrap 3
+* Devise authentication
+* Pundit authorisation
+* Continous deployment with Travis and Heroku
 
 ## Setup
+
+> Create postgresql superuser campaigns
 
 > cp config/database.example.yml config/database.yml
 
@@ -93,7 +99,7 @@ me and I’ll add a note to the README so that others can find your work.
 
 ## License
 
-http://opensource.org/licenses/MIT
+MIT (in LICENCE file)
 
 ## Authors
 
