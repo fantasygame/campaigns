@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe RemoveUserFromCampaignService, type: :class do
+RSpec.describe RemoveUserFromCampaign, type: :class do
   
   let(:user) { build(:user) }
 
   context "campaign without user" do
     let(:campaign) { build(:campaign, users: []) }
-    let(:service) { RemoveUserFromCampaignService.new(user, campaign) }
+    let(:service) { RemoveUserFromCampaign.new(user, campaign) }
     
     it "doesn't remove user from campaign" do
       service.call
@@ -16,7 +16,7 @@ RSpec.describe RemoveUserFromCampaignService, type: :class do
 
   context "campaign with user" do
     let(:campaign) { create(:campaign, users: [user]) }
-    let(:service) { RemoveUserFromCampaignService.new(user, campaign) }
+    let(:service) { RemoveUserFromCampaign.new(user, campaign) }
 
     it "removes user from campaign" do
       expect {

@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe CreateCampaignService, type: :class do
+RSpec.describe CreateCampaign, type: :class do
   
   let(:user) { build(:user) }
   let(:campaign) { build(:campaign, users: [], game_master: nil) }
-  subject(:service) { CreateCampaignService.new(user, campaign) }
+  subject(:service) { CreateCampaign.new(user, campaign) }
 
   before { service.call }
 

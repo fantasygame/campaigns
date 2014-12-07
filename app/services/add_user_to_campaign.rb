@@ -1,4 +1,4 @@
-class CreateCampaignService
+class AddUserToCampaign
   attr_accessor :user, :campaign
 
   def initialize(user, campaign)
@@ -7,9 +7,10 @@ class CreateCampaignService
   end
 
   def call
-    @campaign.game_master = user
-    @campaign.users = [user]
-    @campaign.save!
+    unless campaign.users.include? user
+      campaign.users << user
+      campaign.save!
+    end
   end
 
 end

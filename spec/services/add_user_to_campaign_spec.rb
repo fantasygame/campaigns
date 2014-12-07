@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe AddUserToCampaignService, type: :class do
+RSpec.describe AddUserToCampaign, type: :class do
   
   let(:user) { build(:user) }
 
   context "campaign without user" do
     let(:campaign) { build(:campaign, users: []) }
-    let(:service) { AddUserToCampaignService.new(user, campaign) }
+    let(:service) { AddUserToCampaign.new(user, campaign) }
     
     it "adds user to campaign" do
       service.call
@@ -16,7 +16,7 @@ RSpec.describe AddUserToCampaignService, type: :class do
 
   context "campaign with user" do
     let(:campaign) { build(:campaign, users: [user]) }
-    let(:service) { AddUserToCampaignService.new(user, campaign) }
+    let(:service) { AddUserToCampaign.new(user, campaign) }
 
     it "doesn't add user" do
       expect {

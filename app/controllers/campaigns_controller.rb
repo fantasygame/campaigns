@@ -5,12 +5,12 @@ class CampaignsController < ApplicationController
   respond_to :html
 
   def join
-    AddUserToCampaignService.new(current_user, @campaign).call
+    AddUserToCampaign.new(current_user, @campaign).call
     redirect_to @campaign, notice: 'User added to campaign'
   end
 
   def resign
-    RemoveUserFromCampaignService.new(current_user, @campaign).call
+    RemoveUserFromCampaign.new(current_user, @campaign).call
     redirect_to @campaign, notice: 'You have successfuly resigned from this campaign'
   end
 
@@ -34,7 +34,7 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = Campaign.new(campaign_params)
-    CreateCampaignService.new(current_user, @campaign).call
+    CreateCampaign.new(current_user, @campaign).call
     respond_with(@campaign)
   end
 

@@ -1,4 +1,4 @@
-class RemoveUserFromCampaignService
+class RemoveUserFromCampaign
   attr_accessor :user, :campaign
 
   def initialize(user, campaign)
