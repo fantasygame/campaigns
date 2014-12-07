@@ -1,8 +1,6 @@
 class CampaignsController < ApplicationController
   expose(:campaigns)
   expose(:campaign, attributes: :campaign_params)
-
-  before_filter :authenticate_user!
   respond_to :html, :json, :xml
 
   def join
