@@ -3,8 +3,6 @@ class CampaignsController < ApplicationController
   expose(:campaign, attributes: :campaign_params)
 
   before_filter :authenticate_user!
-  before_action :set_campaign, only: [:show, :edit, :update, :destroy, :join, :resign]
-
   respond_to :html
 
   def join
@@ -61,11 +59,6 @@ class CampaignsController < ApplicationController
   end
 
   private
-
-    def set_campaign
-      @campaign = Campaign.find(params[:id])
-    end
-
     def campaign_params
       params.require(:campaign).permit(:name, :description)
     end
