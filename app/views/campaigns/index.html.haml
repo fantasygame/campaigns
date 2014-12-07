@@ -12,8 +12,7 @@
     %tr
       %td{ style: 'text-align: center' }
         - if campaign.users.include? current_user
-          .btn.btn-default{ disabled: :disabled }
-            .glyphicon.glyphicon-ok
+          = link_to 'Resign', resign_campaign_path(campaign), class: 'btn btn-danger'
         - else
           = link_to 'Join', join_campaign_path(campaign), class: 'btn btn-success'
       %td= campaign.name
