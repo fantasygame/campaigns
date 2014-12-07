@@ -12,7 +12,7 @@ class CreateCampaign
     if campaign.save
       Response::Success.new(data: campaign)
     else
-      Response::Error.new(error: "Can't save campaign", data: campaign.errors)
+      Response::ActiveModelError.new(campaign)
     end
   end
 
