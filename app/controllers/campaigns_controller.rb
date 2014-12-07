@@ -3,7 +3,7 @@ class CampaignsController < ApplicationController
   expose(:campaign, attributes: :campaign_params)
 
   before_filter :authenticate_user!
-  respond_to :html
+  respond_to :html, :json, :xml
 
   def join
     result = AddUserToCampaign.new(current_user, campaign).call
@@ -12,7 +12,6 @@ class CampaignsController < ApplicationController
     else
       redirect_to @campaign, alert: "Couldn't join to campaign: #{result.error}"
     end
-    
   end
 
   def resign
@@ -22,7 +21,6 @@ class CampaignsController < ApplicationController
     else
       redirect_to @campaign, alert: "Couldn't resign from this campaign #{result.error}"
     end
-    
   end
 
   def index
