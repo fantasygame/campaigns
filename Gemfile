@@ -23,6 +23,7 @@ gem 'therubyracer'
 gem 'pg'
 gem "paranoia"
 gem 'awesome_print'
+gem 'attr_extras'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

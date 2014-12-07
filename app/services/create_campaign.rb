@@ -7,9 +7,13 @@ class CreateCampaign
   end
 
   def call
-    @campaign.game_master = user
-    @campaign.users = [user]
-    @campaign.save!
+    campaign.game_master = user
+    campaign.users = [user]
+    if campaign.save
+      Response::Success.new(data: campaign)
+    else
+      Response::Error.new(error: "Can't save campaign", data: campaign.errors)
+    end
   end
 
 end

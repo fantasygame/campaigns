@@ -5,13 +5,23 @@ class CampaignsController < ApplicationController
   respond_to :html
 
   def join
-    AddUserToCampaign.new(current_user, @campaign).call
-    redirect_to @campaign, notice: 'User added to campaign'
+    result = AddUserToCampaign.new(current_user, @campaign).call
+    if result.success?
+      redirect_to @campaign, notice: 'User added to campaign'
+    else
+      redirect_to @campaign, alert: "Couldn't join to campaign: #{result.error}"
+    end
+    
   end
 
   def resign
-    RemoveUserFromCampaign.new(current_user, @campaign).call
-    redirect_to @campaign, notice: 'You have successfuly resigned from this campaign'
+    result = RemoveUserFromCampaign.new(current_user, @campaign).call
+    if result.success?
+      redirect_to @campaign, notice: 'You have successfuly resigned from this campaign'
+    else
+      redirect_to @campaign, alert: "Couldn't resign from this campaign #{result.error}"
+    end
+    
   end
 
   def index

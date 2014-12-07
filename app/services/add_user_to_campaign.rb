@@ -7,9 +7,15 @@ class AddUserToCampaign
   end
 
   def call
-    unless campaign.users.include? user
+    if campaign.users.include? user
+      Response::Error.new(error: 'User already in campaign.')
+    else
       campaign.users << user
-      campaign.save!
+      if campaign.save
+        Response::Success.new(data: campaign)
+      else
+        Response::Error.new(error: "Can't save campaign", data: campaign.errors)
+      end
     end
   end
 
