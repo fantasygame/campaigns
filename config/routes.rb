@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   resources :campaigns do
   	member do
-  		get :join
+      get :join
+  		get :resign
   	end
   end
 

@@ -1,12 +1,17 @@
 class CampaignsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_campaign, only: [:show, :edit, :update, :destroy, :join]
+  before_action :set_campaign, only: [:show, :edit, :update, :destroy, :join, :resign]
 
   respond_to :html
 
   def join
     AddUserToCampaignService.new(current_user, @campaign).call
     redirect_to @campaign, notice: 'User added to campaign'
+  end
+
+  def resign
+    RemoveUserFromCampaignService.new(current_user, @campaign).call
+    redirect_to @campaign, notice: 'You have successfuly resigned from this campaign'
   end
 
   def index
