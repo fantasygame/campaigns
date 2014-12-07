@@ -1,10 +1,10 @@
-%h1= @campaign.name
+%h1= campaign.name
 %blockquote
-  =@campaign.description
+  =campaign.description
   %footer
-    = @campaign.game_master
+    = campaign.game_master
 #game-tiles
-  - @campaign.games.to_a.each_slice(3).to_a.each do |games|
+  - campaign.games.to_a.each_slice(3).to_a.each do |games|
     .row
       - games.each do |game|
         .item

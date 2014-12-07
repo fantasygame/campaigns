@@ -1,11 +1,14 @@
 class CampaignsController < ApplicationController
+  expose(:campaigns)
+  expose(:campaign, attributes: :campaign_params)
+
   before_filter :authenticate_user!
   before_action :set_campaign, only: [:show, :edit, :update, :destroy, :join, :resign]
 
   respond_to :html
 
   def join
-    result = AddUserToCampaign.new(current_user, @campaign).call
+    result = AddUserToCampaign.new(current_user, campaign).call
     if result.success?
       redirect_to @campaign, notice: 'User added to campaign'
     else
@@ -15,7 +18,7 @@ class CampaignsController < ApplicationController
   end
 
   def resign
-    result = RemoveUserFromCampaign.new(current_user, @campaign).call
+    result = RemoveUserFromCampaign.new(current_user, campaign).call
     if result.success?
       redirect_to @campaign, notice: 'You have successfuly resigned from this campaign'
     else
@@ -25,39 +28,36 @@ class CampaignsController < ApplicationController
   end
 
   def index
-    @campaigns = Campaign.all
-    respond_with(@campaigns)
+    respond_with(campaigns)
   end
 
   def show
-    respond_with(@campaign)
+    respond_with(campaign)
   end
 
   def new
-    @campaign = Campaign.new
-    respond_with(@campaign)
+    respond_with(campaign)
   end
 
   def edit
-    authorize @campaign
+    authorize campaign
   end
 
   def create
-    @campaign = Campaign.new(campaign_params)
-    CreateCampaign.new(current_user, @campaign).call
-    respond_with(@campaign)
+    CreateCampaign.new(current_user, campaign).call
+    respond_with(campaign)
   end
 
   def update
-    authorize @campaign
-    @campaign.update(campaign_params)
-    respond_with(@campaign)
+    authorize campaign
+    campaign.update(campaign_params)
+    respond_with(campaign)
   end
 
   def destroy
-    authorize @campaign
-    @campaign.destroy
-    respond_with(@campaign)
+    authorize campaign
+    campaign.destroy
+    respond_with(campaign)
   end
 
   private

@@ -8,7 +8,7 @@
     %th Game master
     %th
 
-  - @campaigns.each do |campaign|
+  - campaigns.each do |campaign|
     %tr
       %td{ style: 'text-align: center' }
         - if campaign.users.include? current_user
