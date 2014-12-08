@@ -7,19 +7,21 @@ class CampaignsController < ApplicationController
   def join
     result = AddUserToCampaign.new(current_user, campaign).call
     if result.success?
-      redirect_to @campaign, notice: 'User added to campaign'
+      flash[:notice] = 'User added to campaign'
     else
-      redirect_to @campaign, alert: "Couldn't join to campaign: #{result.error}"
+      flash[:alert] = "Couldn't join to campaign: #{result.error}"
     end
+    redirect_to campaign
   end
 
   def resign
     result = RemoveUserFromCampaign.new(current_user, campaign).call
     if result.success?
-      redirect_to @campaign, notice: 'You have successfuly resigned from this campaign'
+      flash[:notice] = 'You have successfuly resigned from this campaign'
     else
-      redirect_to @campaign, alert: "Couldn't resign from this campaign #{result.error}"
+      flash[:alert] = "Couldn't resign from this campaign #{result.error}"
     end
+    redirect_to campaign
   end
 
   def index
