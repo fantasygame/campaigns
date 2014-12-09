@@ -1,8 +1,9 @@
-= simple_form_for([@campaign, @game]) do |f|
+= simple_form_for([campaign, game]) do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :name
+    = f.input :date
 
   .form-actions
     = f.button :submit

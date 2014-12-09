@@ -3,6 +3,8 @@
   =campaign.description
   %footer
     = campaign.game_master
+.add-game
+  = link_to 'Add game', new_campaign_game_path(campaign), class: 'btn btn-primary'
 #game-tiles
   - campaign.games.to_a.each_slice(3).to_a.each do |games|
     .row
