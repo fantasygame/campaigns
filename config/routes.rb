@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :games
+  
 
   resources :campaigns do
+    resources :games
   	member do
       get :join
   		get :resign

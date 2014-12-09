@@ -13,6 +13,7 @@ class GamesController < ApplicationController
   end
 
   def new
+    @campaign = Campaign.find(params[:campaign_id])
     @game = Game.new
     respond_with(@game)
   end
