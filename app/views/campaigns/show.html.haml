@@ -12,7 +12,7 @@
         .item
           .well
             %h4.campaign-game-name 
-              = game.name
+              = link_to game.name, campaign_game_path(campaign, game)
             .well-bottom
               Data sesji: 
-              = game.date.strftime('%m.%d.%Y')
+              = game.date.strftime('%d.%m.%Y')

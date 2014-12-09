@@ -2,11 +2,11 @@
 
 %p
   %b Name:
-  = @game.name
+  = game.name
 %p
   %b Campaign:
-  = @game.campaign
+  = game.campaign
 
-= link_to 'Edit', edit_game_path(@game)
+= link_to 'Edit', edit_campaign_game_path(campaign, game)
 \|
-= link_to 'Back', games_path
+= link_to 'Back', campaign_path(campaign)
