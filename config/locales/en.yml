@@ -26,3 +26,6 @@ en:
       destroy?: 'You cannot destroy this campaign. You must be the owner of it.'
       edit?: 'You cannot edit this campaign. You must be the owner of it.'
       update?: 'You cannot update this campaign. You must be the owner of it.'
+    game_policy:
+      show?: 'You cannot see this game. You have to be a member of campaign.'
+      new?: 'You cannot add new game. You have to be a member of campaign.'

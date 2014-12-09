@@ -12,5 +12,13 @@ class Campaign < ActiveRecord::Base
   def to_s
   	name
   end
+
+  def member?(user)
+    users.include? user
+  end
+
+  def game_master?(user)
+    game_master == user
+  end
   
 end
