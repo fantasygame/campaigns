@@ -1,5 +1,5 @@
 # Campaigns
-![alt tag](http://oi62.tinypic.com/2jebxb5.jpg)
+![alt tag](http://oi58.tinypic.com/2nv8n61.jpg)
 
 [![](http://img.shields.io/travis/fantasygame/campaigns.svg?style=flat-square)](https://travis-ci.org/fantasygame/campaigns)
 [![](http://img.shields.io/codeclimate/github/fantasygame/campaigns.svg?style=flat-square)](https://codeclimate.com/github/fantasygame/campaigns)
@@ -24,11 +24,11 @@ User can create campaign and games in it. Every user assigned to game will be an
 * [DONE] List all campaigns
 * [DONE] Edit campaign
 * [DONE] Delete campaign (delete corresponding games, paranoid)
-* Resign from campaign
-* Create games inside campaign (name, users)
+* [DONE] Unsubscribe from campaign
+* [DONE] Create games inside campaign (name)
+* [DONE] Show campaign with listed games
 * Notify users about new game created (email)
 * Create posts in games (text)
-* Show campaign with listed games
 * Show campaign with listed posts
 * Show game with listed posts
 * Edit game
@@ -44,7 +44,6 @@ User can create campaign and games in it. Every user assigned to game will be an
 * Show invitation
 * Accept invitation
 * Cancel invitation
-* Unsubscribe from campaign
 * Add images to post
 * Add images to campaign
 * Thumbs up to posts
@@ -63,8 +62,9 @@ User can create campaign and games in it. Every user assigned to game will be an
 * HAML
 * Bootstrap 3
 * Devise authentication
-* Pundit authorisation
+* Pundit authorization
 * Continous deployment with Travis and Heroku
+* Code Climate quality check
 
 ## Setup
 
