@@ -10,7 +10,7 @@ class CreateCampaign
     campaign.game_master = user
     campaign.users = [user]
     if campaign.save
-      Response::Success.new(data: campaign)
+      Response::Success.new(message: 'Campaign crated', data: campaign)
     else
       Response::ActiveModelError.new(campaign)
     end

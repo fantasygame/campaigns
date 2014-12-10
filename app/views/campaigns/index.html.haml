@@ -12,9 +12,9 @@
     %tr
       %td{ style: 'text-align: center' }
         - if campaign.users.include? current_user
-          = link_to 'Resign', resign_campaign_path(campaign), class: 'btn btn-danger'
+          = link_to 'Resign', toggle_membership_campaign_path(campaign), class: 'btn btn-danger'
         - else
-          = link_to 'Join', join_campaign_path(campaign), class: 'btn btn-success'
+          = link_to 'Join', toggle_membership_campaign_path(campaign), class: 'btn btn-success'
       %td= campaign.name
       %td= campaign.description
       %td= campaign.game_master

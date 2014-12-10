@@ -4,24 +4,9 @@ class CampaignsController < ApplicationController
   respond_to :html, :json, :xml
   before_filter :authenticate_user!
 
-  def join
-    result = AddUserToCampaign.new(current_user, campaign).call
-    if result.success?
-      flash[:notice] = 'User added to campaign'
-    else
-      flash[:alert] = "Couldn't join to campaign: #{result.error}"
-    end
-    redirect_to campaign
-  end
-
-  def resign
-    result = RemoveUserFromCampaign.new(current_user, campaign).call
-    if result.success?
-      flash[:notice] = 'You have successfuly resigned from this campaign'
-    else
-      flash[:alert] = "Couldn't resign from this campaign #{result.error}"
-    end
-    redirect_to campaign
+  def toggle_membership
+    result = ToggleMembership.new(current_user, campaign).call
+    redirect_to campaign, result.flash
   end
 
   def index
