@@ -16,4 +16,12 @@ RSpec.describe CreateCampaign, type: :class do
     expect(campaign.users).to eq [user]
   end
 
+  context "invalid campaign" do
+    let(:campaign) { build(:campaign, name: nil) }
+    let(:service) { CreateCampaign.new(user, campaign) }
+    it "returns Response::ActiveModelError" do
+      expect(service.call).to be_a_kind_of(Response::ActiveModelError)
+    end
+  end
+
 end

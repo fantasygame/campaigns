@@ -25,4 +25,12 @@ RSpec.describe RemoveUserFromCampaign, type: :class do
     end
   end
 
+  context "invalid campaign" do
+    let(:campaign) { build(:campaign, users: [user], name: nil) }
+    let(:service) { RemoveUserFromCampaign.new(user, campaign) }
+    it "returns Response::ActiveModelError" do
+      expect(service.call).to be_a_kind_of(Response::ActiveModelError)
+    end
+  end
+
 end
