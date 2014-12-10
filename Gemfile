@@ -50,6 +50,7 @@ group :production do
   gem 'unicorn'
 end
 group :test do
+  gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', require: nil
   gem 'capybara'
   gem 'database_cleaner'
