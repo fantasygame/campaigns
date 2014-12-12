@@ -27,10 +27,10 @@ User can create campaign and games in it. Every user assigned to game will be an
 * [DONE] Unsubscribe from campaign
 * [DONE] Create games inside campaign (name)
 * [DONE] Show campaign with listed games
-* Notify users about new game created (email)
-* Create posts in games (text)
+* [DONE] Notify users about new game created (email)
+* [DONE] Create posts in games (text)
+* [DONE] Show game with listed posts
 * Show campaign with listed posts
-* Show game with listed posts
 * Edit game
 * Edit post
 * Delete post (paranoid)
