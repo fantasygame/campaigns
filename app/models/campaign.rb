@@ -9,6 +9,8 @@ class Campaign < ActiveRecord::Base
   validates :name, presence: :true
   validates :game_master, presence: :true
 
+  alias_method :members, :users
+
   def to_s
   	name
   end

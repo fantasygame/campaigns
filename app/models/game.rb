@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
   acts_as_paranoid
 
-  delegate :member?, :game_master?, to: :campaign
+  delegate :member?, :game_master?, :members, to: :campaign
 
   belongs_to :campaign
   has_many :users, through: :gameplays
