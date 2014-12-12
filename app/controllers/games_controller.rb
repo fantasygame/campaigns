@@ -21,6 +21,7 @@ class GamesController < ApplicationController
 
   def create
     game.save
+    NotifyMembers.new(game).call
     respond_with(campaign)
   end
 
