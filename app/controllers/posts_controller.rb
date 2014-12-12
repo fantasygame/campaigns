@@ -7,16 +7,7 @@ class PostsController < ApplicationController
 
   respond_to :html
 
-  def index
-    respond_with(posts)
-  end
-
-  def show
-    respond_with(post)
-  end
-
   def new
-    ap game
     respond_with(post)
   end
 
@@ -26,7 +17,7 @@ class PostsController < ApplicationController
   def create
     post.user = current_user
     post.save
-    respond_with(campaign)
+    respond_with(game)
   end
 
   def update
