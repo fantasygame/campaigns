@@ -5,6 +5,7 @@ class CreateAdmin
         user.password_confirmation = Rails.application.secrets.admin_password
         user.confirm!
         user.admin!
+        user.name = "Helina"
       end
   end
 end
