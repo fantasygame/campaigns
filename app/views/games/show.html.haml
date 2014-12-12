@@ -1,12 +1,16 @@
+%h1= game.name
 %p#notice= notice
 
-%p
-  %b Name:
-  = game.name
 %p
   %b Campaign:
   = game.campaign
 
-= link_to 'Edit', edit_campaign_game_path(campaign, game)
-\|
-= link_to 'Back', campaign_path(campaign)
+= link_to campaign_path(campaign), class: 'btn btn-default' do
+  %span.glyphicon.glyphicon-chevron-left
+  &nbsp;
+  Back
+
+= link_to edit_campaign_game_path(campaign, game), class: 'btn btn-primary' do
+  %span.glyphicon.glyphicon-pencil
+  &nbsp;
+  Edit
