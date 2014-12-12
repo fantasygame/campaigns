@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  
 
   resources :campaigns do
-    resources :games
+    resources :games do
+      resources :posts
+    end
   	member do
       get :toggle_membership
   	end

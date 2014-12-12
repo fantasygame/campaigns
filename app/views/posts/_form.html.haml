@@ -1,0 +1,8 @@
+= simple_form_for([campaign, game, post]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :content
+
+  .form-actions
+    = f.button :submit
