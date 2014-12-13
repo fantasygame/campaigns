@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   expose(:campaign)
   expose(:games) { campaign.games }
   expose(:game, attributes: :game_params)
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: :show
 
   respond_to :html, :json, :xml
 

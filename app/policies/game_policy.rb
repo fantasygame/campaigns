@@ -1,7 +1,7 @@
 class GamePolicy < ApplicationPolicy
 
   def show?
-    super && record.member?(user)
+    super
   end
 
   def new?
