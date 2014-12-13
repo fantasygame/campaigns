@@ -6,26 +6,20 @@
     %th Name
     %th Description
     %th Game master
-    %th
 
   - campaigns.each do |campaign|
     %tr
       %td{ style: 'text-align: center' }
-        - if campaign.users.include? current_user
-          = link_to 'Resign', toggle_membership_campaign_path(campaign), class: 'btn btn-danger'
-        - else
-          = link_to 'Join', toggle_membership_campaign_path(campaign), class: 'btn btn-success'
-      %td= campaign.name
+        - if policy(campaign).toggle_membership?
+          - if campaign.member?(current_user)
+            .btn.btn-success
+              %span.glyphicon.glyphicon-user &nbsp;Member
+          - else
+            = link_to 'Join campaign', toggle_membership_campaign_path(campaign), class: 'btn btn-primary'
+            
+      %td= link_to campaign.name, campaign
       %td= campaign.description
       %td= campaign.game_master
-
-      %td
-        .btn-group
-          = link_to 'Show', campaign, class: 'btn btn-default'
-          - if policy(campaign).edit?
-            = link_to 'Edit', edit_campaign_path(campaign), class: 'btn btn-primary'
-          - if policy(campaign).destroy?
-            = link_to 'Destroy', campaign, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
 
 %br
 

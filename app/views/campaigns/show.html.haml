@@ -1,10 +1,18 @@
-%h1= campaign.name
+%h1
+  = campaign.name
 %blockquote
   =campaign.description
   %footer
     = campaign.game_master
-.add-game
-  = link_to 'Add game', new_campaign_game_path(campaign), class: 'btn btn-primary'
+- if policy(campaign).toggle_membership? && !campaign.member?(current_user)
+  %p
+    = link_to toggle_membership_campaign_path(campaign), class: 'btn btn-primary' do
+      Join campaign
+      &nbsp;
+      %span.glyphicon.glyphicon-add
+- if policy(campaign).new?
+  .add-game
+    = link_to 'Add game', new_campaign_game_path(campaign), class: 'btn btn-success'
 #game-tiles
   - campaign.games.to_a.each_slice(3).to_a.each do |games|
     .row
@@ -14,5 +22,26 @@
             %h4.campaign-game-name 
               = link_to game.name, campaign_game_path(campaign, game)
             .well-bottom
-              Game date: 
               = game.date.strftime('%d.%m.%Y')
+%p
+  = link_to campaigns_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-chevron-left
+    &nbsp;
+    Back
+
+  - if policy(campaign).edit?
+    = link_to edit_campaign_path(campaign), class: 'btn btn-primary' do
+      %span.glyphicon.glyphicon-pencil
+      &nbsp;
+      Edit
+  - if policy(campaign).destroy?
+    = link_to campaign_path(campaign), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+      Destroy
+      &nbsp;
+      %span.glyphicon.glyphicon-trash
+- if policy(campaign).toggle_membership? && campaign.member?(current_user)
+  %p
+    = link_to toggle_membership_campaign_path(campaign), data: { confirm: 'Are you sure? We will miss you...' }, class: 'btn btn-danger' do
+      Unsubscribe
+      &nbsp;
+      %span.glyphicon.glyphicon-remove

@@ -20,19 +20,22 @@ class GamesController < ApplicationController
   end
 
   def create
+    authorize game
     game.save
     NotifyMembers.new(game).call
     respond_with(campaign)
   end
 
   def update
+    authorize game
     game.update(game_params)
-    respond_with(game)
+    respond_with(campaign, game)
   end
 
   def destroy
+    authorize game
     game.destroy
-    respond_with(game)
+    respond_with(campaign)
   end
 
   private

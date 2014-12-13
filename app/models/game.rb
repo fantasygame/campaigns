@@ -6,7 +6,7 @@ class Game < ActiveRecord::Base
   belongs_to :campaign
   has_many :users, through: :gameplays
   has_many :gameplays
-  has_many :posts
+  has_many :posts, -> { order(created_at: :desc) }, dependent: :destroy
 
   validates :campaign, presence: true
   validates :name, presence: true

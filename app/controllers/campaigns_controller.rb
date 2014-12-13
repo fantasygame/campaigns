@@ -39,7 +39,7 @@ class CampaignsController < ApplicationController
   def destroy
     authorize campaign
     campaign.destroy
-    respond_with(campaign)
+    redirect_to campaigns_path, notice: "Campaign #{campaign.name} destroyed"
   end
 
   private

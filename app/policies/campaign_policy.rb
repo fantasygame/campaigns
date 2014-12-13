@@ -6,4 +6,18 @@ class CampaignPolicy < ApplicationPolicy
   def update?
     destroy?
   end
+
+  def create?
+    record.member?(user)
+  end
+
+  def toggle_membership?
+    user.present?
+  end
+
+  private
+
+  def signed_id?
+    user.present?
+  end
 end

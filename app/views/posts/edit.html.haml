@@ -2,6 +2,10 @@
 
 = render 'form'
 
-= link_to 'Show', @post
-\|
-= link_to 'Back', posts_path
+%br
+%br
+
+= link_to campaign_game_path(campaign, game), class: 'btn btn-default' do
+  %span.glyphicon.glyphicon-chevron-left
+  &nbsp;
+  Back

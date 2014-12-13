@@ -21,8 +21,10 @@ RSpec.describe CampaignsController, type: :controller do
   end
 
   describe "GET new" do
+    let(:user) { create(:user) }
     subject { get :new }
-    xit "renders the :new template" do
+    it "renders the :new template" do
+      sign_in user
       expect(subject).to render_template :new
     end
 
@@ -36,7 +38,8 @@ RSpec.describe CampaignsController, type: :controller do
     let(:user) { create(:user) }
     let(:campaign) { create(:campaign, game_master: user) }
     subject { get :edit, id: campaign.id }
-    xit "renders the :edit template" do
+    it "renders the :edit template" do
+      sign_in user
       expect(subject).to render_template :edit
     end
 

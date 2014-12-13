@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   respond_to :html
 
   def new
+    authorize post
     respond_with(post)
   end
 
@@ -15,19 +16,22 @@ class PostsController < ApplicationController
   end
 
   def create
+    authorize post
     post.user = current_user
     post.save
-    respond_with(game)
+    respond_with(campaign, game)
   end
 
   def update
+    authorize post
     post.update(post_params)
-    respond_with(post)
+    respond_with(campaign, game)
   end
 
   def destroy
+    authorize post
     post.destroy
-    respond_with(post)
+    respond_with(campaign, game)
   end
 
   private

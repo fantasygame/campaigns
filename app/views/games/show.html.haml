@@ -5,12 +5,24 @@
   %b Campaign:
   = game.campaign
 
+- if policy(game).new?
+  %p{ style: 'margin-top: 2em; margin-bottom: 2em;' }
+    = link_to new_campaign_game_post_path(campaign, game), class: 'btn btn-success' do
+      Add post
+      &nbsp;
+      %span.glyphicon.glyphicon-comment
+
 #post-list
   - game.posts.each do |post|
     .panel.panel-default
       .panel-heading
         = post.created_at.strftime('%d.%m.%Y')
         = post.user.name
+        .btn-group.pull-right
+          - if policy(post).edit?
+            = link_to 'Edit', edit_campaign_game_post_path(campaign, game, post), class: 'btn-sm btn-primary'
+          - if policy(post).destroy?
+            = link_to 'Destroy', campaign_game_post_path(campaign, game, post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-sm btn-danger'
       .panel-body
         = post.content
 
@@ -19,12 +31,13 @@
   &nbsp;
   Back
 
-= link_to edit_campaign_game_path(campaign, game), class: 'btn btn-primary' do
-  %span.glyphicon.glyphicon-pencil
-  &nbsp;
-  Edit
-
-= link_to new_campaign_game_post_path(campaign, game), class: 'btn btn-success' do
-  Add
-  &nbsp;
-  %span.glyphicon.glyphicon-comment
+- if policy(game).edit?
+  = link_to edit_campaign_game_path(campaign, game), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    &nbsp;
+    Edit
+- if policy(game).destroy?
+  = link_to campaign_game_path(campaign, game), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+    Destroy
+    &nbsp;
+    %span.glyphicon.glyphicon-trash
