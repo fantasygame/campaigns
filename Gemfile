@@ -45,6 +45,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
 end
 group :production do
   gem 'rails_12factor'
