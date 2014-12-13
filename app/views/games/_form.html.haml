@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :name
-    = f.input :date
+    = f.input :date, as: :uuid, input_html: { class: 'datepicker' }
 
   .form-actions
     = f.button :submit
