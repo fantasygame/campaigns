@@ -2,7 +2,7 @@ class CampaignsController < ApplicationController
   expose(:campaigns)
   expose(:campaign, attributes: :campaign_params)
   respond_to :html, :json, :xml
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:index, :show]
 
   def toggle_membership
     result = ToggleMembership.new(current_user, campaign).call
