@@ -2,7 +2,7 @@ class CampaignsController < ApplicationController
   expose(:campaigns)
   expose(:campaign, attributes: :campaign_params)
   respond_to :html, :json, :xml
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def toggle_membership
     result = ToggleMembership.new(current_user, campaign).call
@@ -43,7 +43,8 @@ class CampaignsController < ApplicationController
   end
 
   private
-    def campaign_params
-      params.require(:campaign).permit(:name, :description)
-    end
+
+  def campaign_params
+    params.require(:campaign).permit(:name, :description)
+  end
 end

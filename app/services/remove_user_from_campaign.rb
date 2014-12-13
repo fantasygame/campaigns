@@ -7,16 +7,20 @@ class RemoveUserFromCampaign
   end
 
   def call
-    if campaign.member?(user)
-      campaign.users = campaign.users.reject { |campaign_user| campaign_user == user }
-      if campaign.save
-        Response::Success.new(message: 'Succesfuly signed off from campaign', data: campaign)
-      else
-        Response::ActiveModelError.new(campaign)
-      end
-    else
-      Response::Error.new(message: "User is not a member of campaign")
+    unless campaign.member?(user)
+      return Response::Error.new(message: "User is not a member of campaign")
     end
+    remove_user_from_campaign
   end
 
+  private
+
+  def remove_user_from_campaign
+    campaign.members = campaign.members.reject { |member| member == user }
+    if campaign.save
+      Response::Success.new(message: 'Succesfuly signed off from campaign', data: campaign)
+    else
+      Response::ActiveModelError.new(campaign)
+    end
+  end
 end

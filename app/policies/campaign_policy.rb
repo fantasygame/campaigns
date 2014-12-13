@@ -1,5 +1,4 @@
 class CampaignPolicy < ApplicationPolicy
-
   def destroy?
     user == record.game_master
   end
@@ -7,5 +6,4 @@ class CampaignPolicy < ApplicationPolicy
   def update?
     destroy?
   end
-
 end

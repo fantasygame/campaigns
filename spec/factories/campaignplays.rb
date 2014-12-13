@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :campaignplay do
     campaign nil
-user nil
+    user nil
   end
-
 end

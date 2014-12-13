@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe CreateCampaign, type: :class do
-  
   let(:user) { build(:user) }
   let(:campaign) { build(:campaign, users: [], game_master: nil) }
-  subject(:service) { CreateCampaign.new(user, campaign) }
+  subject(:service) { described_class.new(user, campaign) }
 
   before { service.call }
 
@@ -18,10 +17,9 @@ RSpec.describe CreateCampaign, type: :class do
 
   context "invalid campaign" do
     let(:campaign) { build(:campaign, name: nil) }
-    let(:service) { CreateCampaign.new(user, campaign) }
+    let(:service) { described_class.new(user, campaign) }
     it "returns Response::ActiveModelError" do
       expect(service.call).to be_a_kind_of(Response::ActiveModelError)
     end
   end
-
 end

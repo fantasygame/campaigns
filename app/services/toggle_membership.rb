@@ -13,5 +13,4 @@ class ToggleMembership
       AddUserToCampaign.new(user, campaign).call
     end
   end
-
 end

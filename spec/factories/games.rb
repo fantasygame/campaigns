@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :game do
     name "MyString"
-campaign nil
+    campaign nil
   end
-
 end

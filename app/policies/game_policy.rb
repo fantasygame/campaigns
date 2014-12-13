@@ -1,5 +1,4 @@
 class GamePolicy < ApplicationPolicy
-
   def show?
     super
   end
@@ -19,5 +18,4 @@ class GamePolicy < ApplicationPolicy
   def destroy?
     record.game_master?(user)
   end
-
 end

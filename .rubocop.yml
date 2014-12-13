@@ -5,13 +5,15 @@ AllCops:
     - db/schema.rb
     - db/migrate/*
     - vendor/*
+    - bin/*
+    - Guardfile
   RunRailsCops: true
 
-CoffeeScript:
-  Enabled: true
+# CoffeeScript:
+#   Enabled: true
 
-Ruby:
-  Enabled: true
+# Ruby:
+#   Enabled: true
 
 # Rails
 
@@ -23,13 +25,6 @@ Rails/Delegate:
 
 Rails/HasAndBelongsToMany:
   Enabled: false
-
-# RSpec
-
-RSpec/DescribeClass:
-  Exclude:
-    - spec/features/*
-    - spec/lib/tasks/*
 
 # Style
 
@@ -58,7 +53,7 @@ Style/AsciiIdentifiers:
 Style/Attr:
   Enabled: true
 
-Style/BlockNesting:
+Metrics/BlockNesting:
   Enabled: true
 
 Style/CaseEquality:
@@ -70,7 +65,7 @@ Style/CharacterLiteral:
 Style/ClassAndModuleChildren:
   Enabled: true
 
-Style/ClassLength:
+Metrics/ClassLength:
   Enabled: true
 
 Style/ClassVars:
@@ -85,7 +80,7 @@ Style/ColonMethodCall:
 Style/CommentAnnotation:
   Enabled: true
 
-Style/CyclomaticComplexity:
+Metrics/CyclomaticComplexity:
   Enabled: true
 
 Style/DeprecatedHashMethods:
@@ -104,9 +99,6 @@ Style/EachWithObject:
   Enabled: true
 
 Style/EmptyLiteral:
-  Enabled: true
-
-Style/Encoding:
   Enabled: true
 
 Style/EvenOdd:
@@ -143,12 +135,12 @@ Style/LambdaCall:
 Style/LineEndConcatenation:
   Enabled: true
 
-Style/LineLength:
+Metrics/LineLength:
   Max: 100
   Exclude:
   - db/seeds.rb
 
-Style/MethodLength:
+Metrics/MethodLength:
   Enabled: true
 
 Style/MethodDefParentheses:
@@ -184,7 +176,7 @@ Style/OneLineConditional:
 Style/OpMethod:
   Enabled: true
 
-Style/ParameterLists:
+Metrics/ParameterLists:
   Enabled: true
 
 Style/PercentLiteralDelimiters:

@@ -15,5 +15,4 @@ class CreateCampaign
       Response::ActiveModelError.new(campaign)
     end
   end
-
 end

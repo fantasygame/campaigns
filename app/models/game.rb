@@ -11,5 +11,4 @@ class Game < ActiveRecord::Base
   validates :campaign, presence: true
   validates :name, presence: true
   validates :date, presence: :true
-
 end

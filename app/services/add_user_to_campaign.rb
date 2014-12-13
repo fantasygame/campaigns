@@ -18,5 +18,4 @@ class AddUserToCampaign
       end
     end
   end
-
 end

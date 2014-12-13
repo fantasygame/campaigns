@@ -3,9 +3,11 @@ module Response
     def success?
       false
     end
+
     def error?
       true
     end
+
     def flash
       { alert: message }
     end

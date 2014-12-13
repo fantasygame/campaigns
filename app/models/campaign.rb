@@ -1,6 +1,5 @@
 class Campaign < ActiveRecord::Base
   acts_as_paranoid
-  
   belongs_to :game_master, class_name: 'User'
   has_many :users, through: :campaignplays
   has_many :campaignplays
@@ -10,9 +9,10 @@ class Campaign < ActiveRecord::Base
   validates :game_master, presence: :true
 
   alias_method :members, :users
+  alias_method :members=, :users=
 
   def to_s
-  	name
+    name
   end
 
   def member?(user)
@@ -22,5 +22,4 @@ class Campaign < ActiveRecord::Base
   def game_master?(user)
     game_master == user
   end
-  
 end

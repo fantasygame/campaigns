@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   expose(:game)
   expose(:posts) { game.posts }
   expose(:post, attributes: :post_params)
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   respond_to :html
 
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   private
 
-    def post_params
-      params.require(:post).permit(:content)
-    end
+  def post_params
+    params.require(:post).permit(:content)
+  end
 end

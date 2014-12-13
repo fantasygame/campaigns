@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   expose(:campaign)
   expose(:games) { campaign.games }
   expose(:game, attributes: :game_params)
-  before_filter :authenticate_user!, except: :show
+  before_action :authenticate_user!, except: :show
 
   respond_to :html, :json, :xml
 
@@ -37,7 +37,7 @@ class GamesController < ApplicationController
 
   private
 
-    def game_params
-      params.require(:game).permit(:name, :date)
-    end
+  def game_params
+    params.require(:game).permit(:name, :date)
+  end
 end

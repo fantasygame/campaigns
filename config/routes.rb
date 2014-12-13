@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-
   resources :campaigns do
     resources :games, except: [:index] do
       resources :posts, only: [:new, :edit, :create, :update, :destroy]
     end
-  	member do
+    member do
       get :toggle_membership
-  	end
+    end
   end
 
   root to: 'campaigns#index'
