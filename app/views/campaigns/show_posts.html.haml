@@ -13,18 +13,26 @@
 - if policy(campaign).new?
   .top-buttons
     = link_to 'Add game', new_campaign_game_path(campaign), class: 'btn btn-success'
-    = link_to 'Show all posts', show_posts_campaign_path, class: 'btn btn-default'
-#game-tiles
-  - campaign.games.to_a.each_slice(3).to_a.each do |games|
-    .row
-      - games.each do |game|
-        .item
-          .well
-            %h4.campaign-game-name 
-              = link_to game.name, campaign_game_path(campaign, game)
-            .well-bottom
-              = game.date.strftime('%d.%m.%Y')
-%p
+    = link_to 'Show all games', campaign_path, class: 'btn btn-default'
+
+#post-list
+  - campaign.games.each do |game|
+    - unless game.posts.blank?
+      %h4
+        = game.name
+    - game.posts.each do |post|
+      .panel.panel-default
+        .panel-heading
+          = post.created_at.strftime('%d.%m.%Y')
+          = post.user.name
+          .btn-group.pull-right
+            - if policy(post).edit?
+              = link_to 'Edit', edit_campaign_game_post_path(campaign, game, post), class: 'btn-sm btn-primary'
+            - if policy(post).destroy?
+              = link_to 'Destroy', campaign_game_post_path(campaign, game, post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-sm btn-danger'
+        .panel-body
+          = post.content
+%p   
   = link_to campaigns_path, class: 'btn btn-default' do
     %span.glyphicon.glyphicon-chevron-left
     &nbsp;

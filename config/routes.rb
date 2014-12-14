@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     end
     member do
       get :toggle_membership
+      get :show_posts
     end
   end
 

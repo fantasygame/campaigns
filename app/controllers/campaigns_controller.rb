@@ -17,6 +17,10 @@ class CampaignsController < ApplicationController
     respond_with(campaign)
   end
 
+  def show_posts
+    respond_with(campaign)
+  end
+
   def new
     respond_with(campaign)
   end
