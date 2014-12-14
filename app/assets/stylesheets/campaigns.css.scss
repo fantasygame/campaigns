@@ -30,7 +30,10 @@
   position: relative;
   display: block;
 
-  .well-bottom {
+  .well-bottom-right {
     position: absolute; bottom: 5%; right: 5%;
+  }
+  .well-bottom-left {
+    position: absolute; bottom: 5%; left: 5%;
   }
 }
