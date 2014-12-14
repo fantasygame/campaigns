@@ -22,7 +22,11 @@
           .well
             %h4.campaign-game-name 
               = link_to game.name, campaign_game_path(campaign, game)
-            .well-bottom
+            .well-bottom-left
+              %span.badge
+                .glyphicon.glyphicon-comment
+                = game.posts.length
+            .well-bottom-right
               = game.date.strftime('%d.%m.%Y')
 %p
   = link_to campaigns_path, class: 'btn btn-default' do
