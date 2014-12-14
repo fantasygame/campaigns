@@ -41,7 +41,7 @@
       &nbsp;
       %span.glyphicon.glyphicon-trash
 - if policy(campaign).toggle_membership? && campaign.member?(current_user)
-  %p
+  %p{ style: "margin-top: 4em" }
     = link_to toggle_membership_campaign_path(campaign), data: { confirm: 'Are you sure? We will miss you...' }, class: 'btn btn-danger' do
       Unsubscribe
       &nbsp;
