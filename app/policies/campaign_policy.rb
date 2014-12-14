@@ -14,10 +14,4 @@ class CampaignPolicy < ApplicationPolicy
   def toggle_membership?
     user.present?
   end
-
-  private
-
-  def signed_id?
-    user.present?
-  end
 end
