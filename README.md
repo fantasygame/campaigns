@@ -30,11 +30,11 @@ User can create campaign and games in it. Every user assigned to game will be an
 * [DONE] Notify users about new game created (email)
 * [DONE] Create posts in games (text)
 * [DONE] Show game with listed posts
-* Show campaign with listed posts
-* Edit game
-* Edit post
-* Delete post (paranoid)
-* Delete game (delete corresponding posts, paranoid)
+* [DONE] Edit game
+* [DONE] Edit post
+* [DONE] Delete post (paranoid)
+* [DONE] Delete game (delete corresponding posts, paranoid)
+* [DONE] Show campaign with listed posts
 
 ### Future releases
 * Add notifications in fantasygame.pl shoutbox
@@ -53,6 +53,8 @@ User can create campaign and games in it. Every user assigned to game will be an
 * Point for creating game
 * Spending points on rewards
 * Managing inventory, selling
+* User profile
+* User avatar
 
 ## Technologies
 
