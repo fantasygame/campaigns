@@ -37,6 +37,13 @@ User can create campaign and games in it. Every user assigned to game will be an
 * [DONE] Show campaign with listed posts
 
 ### Future releases
+* [DONE] Thumbs up to posts
+* [DONE] User points
+* [DONE] User points in campaign
+* [DONE] Point for creating post
+* [DONE] Creating and managing rewards
+* [DONE] Spending points on rewards
+* [DONE] User profile
 * Add notifications in fantasygame.pl shoutbox
 * Invite people to register
 * Invite users to campaign (send email)
@@ -46,14 +53,7 @@ User can create campaign and games in it. Every user assigned to game will be an
 * Cancel invitation
 * Add images to post
 * Add images to campaign
-* Thumbs up to posts
-* Super thumbs up to posts
-* User points
-* User points in campaign
-* Point for creating game
-* Spending points on rewards
 * Managing inventory, selling
-* User profile
 * User avatar
 
 ## Technologies
