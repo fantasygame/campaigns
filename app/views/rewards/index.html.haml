@@ -1,3 +1,9 @@
+%h3
+  Rewards
+  = campaign.name
+.points
+  = @points
+  points to spend
 %table.table
   %th Name
   %th Cost
@@ -7,8 +13,36 @@
       %td= reward.name
       %td= reward.cost
       %td
-        - if campaign.game_master?(current_user)
+        - if policy(reward).purchase?
+          - if reward.cost <= @points
+            = link_to 'Purchase', purchase_campaign_reward_path(campaign, reward), class: 'btn btn-success'
+          - else
+            = link_to 'Purchase', purchase_campaign_reward_path(campaign, reward), class: 'btn btn-success', disabled: true
+        - if policy(reward).edit?
           = link_to 'Edit', edit_campaign_reward_path(campaign, reward), class: 'btn btn-primary'
+        - if policy(reward).destroy?
           = link_to 'Destroy', campaign_reward_path(campaign, reward), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
 - if campaign.game_master?(current_user)
   = link_to 'Add reward', new_campaign_reward_path(campaign), class: 'btn btn-success'
+
+%h4 Your purchases
+%table.table
+  %th Bought
+  %th Name
+  %th Cost
+  %th
+  - @purchases.each do |purchase|
+    %tr
+      %td= purchase.created_at.strftime('%d.%m.%Y')
+      %td= purchase.name
+      %td= purchase.cost
+      %td
+        - if policy(purchase).toggle_used?
+          - if purchase.used?
+            = link_to 'Reclaim', toggle_used_purchase_path(purchase), class: 'btn btn-default'
+          - else
+            = link_to 'Mark as used', toggle_used_purchase_path(purchase), class: 'btn btn-primary'
+        - else
+          = purchase.user.name
+          - if purchase.used?
+            used

@@ -15,12 +15,16 @@ class PointsCalculator
   def posts_points
     if campaign.blank?
       user.posts.count
+    else
+      campaign.posts.where(user: user).count
     end
   end
 
   def vote_points
     if campaign.blank?
       user.votes.count
+    else
+      campaign.votes.where(user: user).count
     end
   end
 end

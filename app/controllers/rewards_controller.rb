@@ -6,8 +6,19 @@ class RewardsController < ApplicationController
 
   respond_to :html, :json, :xml
 
-  def index
+  def purchase
     authorize reward
+    response = PurchaseReward.new(reward, current_user).call
+    redirect_to campaign_rewards_path(campaign), response.flash
+  end
+
+  def index
+    @points = campaign.available_points(current_user)
+    if campaign.game_master?(current_user)
+      @purchases = Purchase.in_campaign(campaign)
+    else
+      @purchases = Purchase.in_campaign(campaign).where(user: current_user)
+    end
     respond_with(rewards)
   end
 

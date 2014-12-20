@@ -9,10 +9,20 @@ Rails.application.routes.draw do
         end
       end
     end
-    resources :rewards
+    resources :rewards do
+      member do
+        get :purchase
+      end
+    end
     member do
       get :toggle_membership
       get :show_posts
+    end
+  end
+
+  resources :purchases, only: [] do
+    member do
+      get :toggle_used
     end
   end
 

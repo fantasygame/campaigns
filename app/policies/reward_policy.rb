@@ -23,7 +23,7 @@ class RewardPolicy < ApplicationPolicy
     record.campaign.member?(user)
   end
 
-  def buy?
+  def purchase?
     index?
   end
 end

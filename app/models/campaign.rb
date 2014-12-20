@@ -4,6 +4,9 @@ class Campaign < ActiveRecord::Base
   has_many :users, through: :campaignplays
   has_many :campaignplays
   has_many :games, -> { order(date: :desc) }, dependent: :destroy
+  has_many :posts, through: :games
+  has_many :votes, through: :posts
+  has_many :purchases
   has_many :rewards
 
   validates :name, presence: :true
@@ -14,6 +17,18 @@ class Campaign < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def available_points(user)
+    points(user) - spent_points(user)
+  end
+
+  def points(user)
+    PointsCalculator.new(user, self).call
+  end
+
+  def spent_points(user)
+    CalculateSpentPoints.new(user, self).call
   end
 
   def member?(user)

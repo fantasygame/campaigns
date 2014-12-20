@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141220192618) do
+ActiveRecord::Schema.define(version: 20141220220846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,21 @@ ActiveRecord::Schema.define(version: 20141220192618) do
   add_index "posts", ["deleted_at"], name: "index_posts_on_deleted_at", using: :btree
   add_index "posts", ["game_id"], name: "index_posts_on_game_id", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "purchases", force: true do |t|
+    t.integer  "reward_id"
+    t.integer  "campaign_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "cost"
+    t.boolean  "used"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "purchases", ["campaign_id"], name: "index_purchases_on_campaign_id", using: :btree
+  add_index "purchases", ["reward_id"], name: "index_purchases_on_reward_id", using: :btree
+  add_index "purchases", ["user_id"], name: "index_purchases_on_user_id", using: :btree
 
   create_table "rewards", force: true do |t|
     t.string   "name"
