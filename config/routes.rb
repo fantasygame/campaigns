@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :campaigns do
     resources :games, except: [:index] do
-      resources :posts, only: [:new, :edit, :create, :update, :destroy]
+      resources :posts, only: [:new, :edit, :create, :update, :destroy] do
+        member do
+          get :vote
+        end
+      end
     end
     member do
       get :toggle_membership

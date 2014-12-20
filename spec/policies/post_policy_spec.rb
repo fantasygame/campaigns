@@ -11,6 +11,26 @@ RSpec.describe PostPolicy do
   let(:other_game) { build(:game, campaign: Campaign.new) }
   let(:other_post) { build(:post, game: other_game) }
 
+  permissions :vote? do
+    context "vote already exists" do
+      before { create(:vote, post: post, user: user_not_author) }
+      it "denies access" do
+        expect(subject).not_to permit(user, post)
+      end
+    end
+    context "vote created by author" do
+      before { create(:vote, post: post, user: user) }
+      it "denies access" do
+        expect(subject).not_to permit(user, post)
+      end
+    end
+    context "user isn't a member of posts campaign" do
+      it "grants access" do
+        expect(subject).to permit(user, other_post)
+      end
+    end
+  end
+
   permissions :create? do
     context "user is a member of posts campaign" do
       it "grants access" do

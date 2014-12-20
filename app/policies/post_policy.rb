@@ -19,6 +19,10 @@ class PostPolicy < ApplicationPolicy
     author?
   end
 
+  def vote?
+    !(Vote.exists?(user: user, post: record) || record.author == user)
+  end
+
   private
 
   def author?

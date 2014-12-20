@@ -1,11 +1,22 @@
-.panel.panel-default
+.panel.panel-default{ id: "post-#{post.id}" }
   .panel-heading
-    = post.created_at.strftime('%d.%m.%Y')
+    %span
+      = post.created_at.strftime('%d.%m.%Y')
     = post.user.name
-    .btn-group.pull-right
+    .pull-right
       - if policy(post).edit?
         = link_to 'Edit', edit_campaign_game_post_path(campaign, game, post), class: 'btn-sm btn-primary'
       - if policy(post).destroy?
         = link_to 'Destroy', campaign_game_post_path(campaign, game, post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-sm btn-danger'
   .panel-body
     = simple_format post.content
+  .panel-footer
+    - if policy(post).vote?
+      = link_to vote_campaign_game_post_path(campaign, game, post), class: 'btn-sm btn-success' do
+        %i.glyphicon.glyphicon-heart-empty
+    - unless post.votes.empty?
+      &nbsp; 
+      %i.glyphicon.glyphicon-heart-empty
+      by
+      - post.votes.each do |vote|
+        = vote.author.name
