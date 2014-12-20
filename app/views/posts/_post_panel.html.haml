@@ -3,6 +3,11 @@
     %span
       = post.created_at.strftime('%d.%m.%Y')
     = post.user.name
+    - if post.user.points > 0
+      .badge{ style: 'font-size: x-small; background-color: #777777;' }
+        = post.user.points
+        %span.glyphicon.glyphicon-heart-empty
+
     .pull-right
       - if policy(post).edit?
         = link_to 'Edit', edit_campaign_game_post_path(campaign, game, post), class: 'btn-sm btn-primary'
@@ -19,4 +24,5 @@
       %i.glyphicon.glyphicon-heart-empty
       by
       - post.votes.each do |vote|
-        = vote.author.name
+        %span.badge{ style: 'font-size: x-small' }
+          = vote.author.name
