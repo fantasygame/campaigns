@@ -1,0 +1,31 @@
+%h2
+  = user.name
+  .badge
+    = user.points
+    points
+  .badge
+    = user.posts.count
+    posts
+  .badge
+    = user.votes.count
+    votes
+  .badge
+    = user.campaigns.count
+    campaings
+
+.campaigns
+  %h4 Campaigns:
+  %ul
+    - user.campaigns.each do |campaign|
+      %li= link_to campaign.name, campaign_path(campaign)
+.posts
+  %h4 Posts:
+  - user.campaigns.each do |campaign|
+    - campaign.games.each do |game|
+      - if game.posts.where(user: user).count > 0
+        %h5
+        = campaign.name
+        \:
+        = game.name
+        - game.posts.where(user: user).each do |post|
+          = render partial: "posts/post_panel", locals: { campaign: post.game.campaign, game: post.game, post: post }
