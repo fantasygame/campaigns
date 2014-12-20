@@ -4,6 +4,7 @@ class Campaign < ActiveRecord::Base
   has_many :users, through: :campaignplays
   has_many :campaignplays
   has_many :games, -> { order(date: :desc) }, dependent: :destroy
+  has_many :rewards
 
   validates :name, presence: :true
   validates :game_master, presence: :true

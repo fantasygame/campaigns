@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         end
       end
     end
+    resources :rewards
     member do
       get :toggle_membership
       get :show_posts

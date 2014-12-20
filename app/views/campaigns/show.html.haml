@@ -10,10 +10,11 @@
       Join campaign
       &nbsp;
       %span.glyphicon.glyphicon-add
-- if policy(campaign).new?
-  .top-buttons
+.top-buttons
+  - if policy(campaign).new?
     = link_to 'Add game', new_campaign_game_path(campaign), class: 'btn btn-success'
-    = link_to 'Show all posts', show_posts_campaign_path, class: 'btn btn-default'
+  = link_to 'Show all posts', show_posts_campaign_path, class: 'btn btn-default'
+  = link_to 'Rewards', campaign_rewards_path(campaign), class: 'btn btn-default'
 #game-tiles
   - campaign.games.to_a.each_slice(3).to_a.each do |games|
     .row

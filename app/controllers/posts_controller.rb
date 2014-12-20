@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   respond_to :html
 
   def vote
-    # authorize post
+    authorize post
     response = LikePost.new(post, current_user).call
     redirect_to campaign_game_path(campaign, game) + "#post-#{post.id}", response.flash
   end

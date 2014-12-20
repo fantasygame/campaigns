@@ -1,0 +1,14 @@
+%table.table
+  %th Name
+  %th Cost
+  %th
+  - rewards.each do |reward|
+    %tr
+      %td= reward.name
+      %td= reward.cost
+      %td
+        - if campaign.game_master?(current_user)
+          = link_to 'Edit', edit_campaign_reward_path(campaign, reward), class: 'btn btn-primary'
+          = link_to 'Destroy', campaign_reward_path(campaign, reward), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+- if campaign.game_master?(current_user)
+  = link_to 'Add reward', new_campaign_reward_path(campaign), class: 'btn btn-success'
