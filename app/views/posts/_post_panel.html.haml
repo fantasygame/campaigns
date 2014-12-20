@@ -2,11 +2,7 @@
   .panel-heading
     %span
       = post.created_at.strftime('%d.%m.%Y')
-    = post.user.name
-    - if post.user.points > 0
-      .badge{ style: 'font-size: x-small; background-color: #777777;' }
-        = post.user.points
-        %span.glyphicon.glyphicon-heart-empty
+    = link_to post.user.name, user_path(post.user)
 
     .pull-right
       - if policy(post).edit?

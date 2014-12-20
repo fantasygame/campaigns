@@ -3,7 +3,7 @@
 %blockquote
   =campaign.description
   %footer
-    = campaign.game_master
+    = link_to campaign.game_master, user_path(campaign.game_master)
 - if policy(campaign).toggle_membership? && !campaign.member?(current_user)
   %p
     = link_to toggle_membership_campaign_path(campaign), class: 'btn btn-primary' do
