@@ -1,0 +1,14 @@
+%h3 Users
+%table.table
+  %tr
+    %th Name
+    %th Points
+    %th Joined
+  - @users.each do |user|
+    %tr
+      %td= link_to user.name, user_path(user)
+      %td
+        = user.points
+        points
+      %td
+        = user.created_at.strftime('%d.%m.%Y')

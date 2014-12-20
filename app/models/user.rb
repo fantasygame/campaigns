@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, if: :new_record?
 
+  def self.by_points
+    all.sort_by(&:points).reverse
+  end
+
   def set_default_role
     self.role ||= :user
   end
