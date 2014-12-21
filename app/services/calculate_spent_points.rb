@@ -8,7 +8,7 @@ class CalculateSpentPoints
 
   def call
     cost = 0
-    campaign.purchases.each do |purchase|
+    campaign.purchases.where(user: user).each do |purchase|
       cost += purchase.cost
     end
     cost
