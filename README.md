@@ -58,8 +58,8 @@ User can create campaign and games in it. Every user assigned to game will be an
 
 ## Technologies
 
-* Ruby on Rails 4.1.8
-* Ruby 2.1.5
+* Ruby on Rails 4.2.0
+* Ruby 2.2.0
 * Postgresql
 * HAML
 * Bootstrap 3
