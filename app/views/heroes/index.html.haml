@@ -1,0 +1,13 @@
+%h3 Heroes
+%table.table
+  %tr
+    %th Name
+    %th Archetype
+    %th User
+  - heroes.each do |hero|
+    %tr
+      %td= hero.name
+      %td
+        = hero.archetype
+      %td
+        = hero.user

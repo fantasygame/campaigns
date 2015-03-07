@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'campaigns#index'
 
   resources :campaigns do
+    resources :heroes
     resources :games, except: [:index] do
       resources :posts, only: [:new, :edit, :create, :update, :destroy] do
         member do
