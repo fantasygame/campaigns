@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104194336) do
+ActiveRecord::Schema.define(version: 20150307160620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,25 @@ ActiveRecord::Schema.define(version: 20150104194336) do
   add_index "games", ["campaign_id"], name: "index_games_on_campaign_id", using: :btree
   add_index "games", ["deleted_at"], name: "index_games_on_deleted_at", using: :btree
 
+  create_table "heros", force: :cascade do |t|
+    t.string   "name"
+    t.string   "archetype"
+    t.string   "race"
+    t.string   "alignment"
+    t.string   "deity"
+    t.text     "titles"
+    t.text     "appearance"
+    t.text     "background"
+    t.text     "mechanics"
+    t.integer  "user_id"
+    t.integer  "campaign_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "heros", ["campaign_id"], name: "index_heros_on_campaign_id", using: :btree
+  add_index "heros", ["user_id"], name: "index_heros_on_user_id", using: :btree
+
   create_table "posts", force: :cascade do |t|
     t.text     "content"
     t.integer  "game_id"
@@ -88,7 +107,7 @@ ActiveRecord::Schema.define(version: 20150104194336) do
     t.integer  "reward_id"
     t.integer  "campaign_id"
     t.integer  "user_id"
-    t.string   "name",        limit: 255
+    t.string   "name"
     t.integer  "cost"
     t.boolean  "used"
     t.datetime "created_at"
@@ -100,7 +119,7 @@ ActiveRecord::Schema.define(version: 20150104194336) do
   add_index "purchases", ["user_id"], name: "index_purchases_on_user_id", using: :btree
 
   create_table "rewards", force: :cascade do |t|
-    t.string   "name",        limit: 255
+    t.string   "name"
     t.integer  "cost"
     t.integer  "campaign_id"
     t.datetime "created_at"
@@ -145,4 +164,6 @@ ActiveRecord::Schema.define(version: 20150104194336) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "heros", "campaigns"
+  add_foreign_key "heros", "users"
 end
