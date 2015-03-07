@@ -5,7 +5,6 @@ class HeroesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-    authorize hero
   end
 
   def new
@@ -18,7 +17,6 @@ class HeroesController < ApplicationController
   end
 
   def show
-    authorize hero
   end
 
   def create
