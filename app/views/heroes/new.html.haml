@@ -2,4 +2,8 @@
 
 = render partial: 'form', locals: { method: :post, url: campaign_heroes_path(campaign) }
 
-= link_to 'Back', campaign_path(campaign)
+%p
+= link_to campaign_heroes_path(campaign), class: 'btn btn-default' do
+  %span.glyphicon.glyphicon-chevron-left
+  &nbsp;
+  Back

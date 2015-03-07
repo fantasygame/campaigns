@@ -15,7 +15,7 @@
     %th
   - heroes.each do |hero|
     %tr
-      %td= hero.name
+      %td= link_to hero.name, campaign_hero_path(campaign, hero)
       %td
         = hero.archetype
       %td
@@ -31,3 +31,9 @@
             Destroy
             &nbsp;
             %span.glyphicon.glyphicon-trash
+
+%p
+= link_to campaign_path(campaign), class: 'btn btn-default' do
+  %span.glyphicon.glyphicon-chevron-left
+  &nbsp;
+  Back
