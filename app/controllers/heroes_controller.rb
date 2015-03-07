@@ -9,6 +9,7 @@ class HeroesController < ApplicationController
   end
 
   def new
+    hero.campaign = campaign
     authorize hero
   end
 
@@ -21,9 +22,9 @@ class HeroesController < ApplicationController
   end
 
   def create
-    authorize hero
     hero.campaign = campaign
     hero.user = current_user
+    authorize hero
     hero.save
     redirect_to campaign_heroes_path(campaign)
   end
