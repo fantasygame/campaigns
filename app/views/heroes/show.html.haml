@@ -5,6 +5,40 @@
   %b Campaign:
   = hero.campaign
 
+.container.hero
+  .row
+    .col-md-8
+      Name:
+      =hero.name
+    .col-md-4
+      Archetype:
+      =hero.archetype
+  .row
+    .col-md-4
+      Race:
+      =hero.race
+    .col-md-4
+      Alignment:
+      =hero.alignment
+    .col-md-4
+      Deity:
+      =hero.deity
+  .row
+    .col-md-12
+      Titles:
+      =hero.titles
+  .row
+    .col-md-6
+      Appearance:
+      =hero.appearance
+    .col-md-6
+      Mechanics:
+      =hero.mechanics
+  .row
+    .col-md-12
+      Background:
+      =hero.background
+
 = link_to campaign_heroes_path(campaign), class: 'btn btn-default' do
   %span.glyphicon.glyphicon-chevron-left
   &nbsp;
