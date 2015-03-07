@@ -1,9 +1,18 @@
 %h3 Heroes
+
+- if policy(Hero.new(campaign: campaign)).new?
+  %p{ style: 'margin-top: 2em; margin-bottom: 2em;' }
+    = link_to new_campaign_hero_path(campaign, hero), class: 'btn btn-success' do
+      Add hero
+      &nbsp;
+      %span.glyphicon.glyphicon-user
+
 %table.table
   %tr
     %th Name
     %th Archetype
     %th User
+    %th
   - heroes.each do |hero|
     %tr
       %td= hero.name
@@ -11,3 +20,14 @@
         = hero.archetype
       %td
         = hero.user
+      %td
+        - if policy(hero).edit?
+          = link_to edit_campaign_hero_path(campaign, hero), class: 'btn btn-primary' do
+            %span.glyphicon.glyphicon-pencil
+            &nbsp;
+            Edit
+        - if policy(hero).destroy?
+          = link_to campaign_hero_path(campaign, hero), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+            Destroy
+            &nbsp;
+            %span.glyphicon.glyphicon-trash
