@@ -1,5 +1,5 @@
 %h1 Editing Hero
 
-= render partial: 'form', locals: { method: :patch }
+= render partial: 'form', locals: { method: :patch, url: campaign_hero_path(campaign, hero) }
 
 = link_to 'Back', campaign_path(campaign)

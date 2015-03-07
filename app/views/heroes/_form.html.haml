@@ -1,5 +1,4 @@
-- method ||= :post
-= simple_form_for([campaign, hero], url: campaign_hero_path(campaign, hero), method: method) do |f|
+= simple_form_for([campaign, hero], url: url, method: method) do |f|
   = f.error_notification
 
   .form-inputs
