@@ -1,5 +1,4 @@
 class HeroPolicy < ApplicationPolicy
-
   def new?
     record.campaign.member?(user)
   end

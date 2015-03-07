@@ -31,3 +31,9 @@ en:
       new?: 'You cannot add new game. You have to be a member of campaign.'
     reward_policy:
       index?: 'You cannot see rewards in campaign you are not a member of'
+    hero_policy:
+      new?: 'You have to be member of campaign to create new hero.'
+      create?: 'You have to be member of campaign to create new hero.'
+      destroy?: 'This hero is not yours to destroy.'
+      edit?: 'This hero is not yours to edit.'
+      update?: 'This hero is not yours to update.'
