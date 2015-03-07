@@ -22,6 +22,11 @@ class HeroesController < ApplicationController
     redirect_to campaign_heroes_path(campaign)
   end
 
+  def update
+    hero.update(hero_params)
+    redirect_to campaign_hero_path(campaign, hero)
+  end
+
   def hero_params
     params.require(:hero).permit(
       :name, :archetype, :race, :alignment, :deity, :titles, :appearance, :background, :mechanics
