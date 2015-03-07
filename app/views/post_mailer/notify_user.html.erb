@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>Hello, <%= @user.name %></h2>
+    <p>
+      There is new post created in <%= @campaign.name %> : <%= @game.name %>.
+    </p>
+    <p>
+      Check it out:
+      <h3>
+        <%= link_to @game.name, campaign_game_url(@campaign, @game, only_path: false) %>
+      </h3>
+    </p>
+    <p>Thanks for playing with us and have a great day!</p>
+  </body>
+</html>
