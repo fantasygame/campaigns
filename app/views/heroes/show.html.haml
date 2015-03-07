@@ -1,0 +1,22 @@
+%h1= hero.name
+%p#notice= notice
+
+%p
+  %b Campaign:
+  = hero.campaign
+
+= link_to campaign_path(campaign), class: 'btn btn-default' do
+  %span.glyphicon.glyphicon-chevron-left
+  &nbsp;
+  Back
+
+- if policy(hero).edit?
+  = link_to edit_campaign_hero_path(campaign, hero), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    &nbsp;
+    Edit
+- if policy(hero).destroy?
+  = link_to campaign_hero_path(campaign, hero), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+    Destroy
+    &nbsp;
+    %span.glyphicon.glyphicon-trash
