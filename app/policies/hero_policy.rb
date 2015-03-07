@@ -1,4 +1,4 @@
-class GamePolicy < ApplicationPolicy
+class HeroPolicy < ApplicationPolicy
   def index
     true
   end
