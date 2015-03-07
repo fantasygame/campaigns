@@ -25,6 +25,7 @@ class PostsController < ApplicationController
     authorize post
     post.user = current_user
     post.save
+    NotifyMembers.new(post).call
     respond_with(campaign, game)
   end
 
