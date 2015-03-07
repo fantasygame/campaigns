@@ -28,6 +28,11 @@ class HeroesController < ApplicationController
     redirect_to campaign_hero_path(campaign, hero)
   end
 
+  def destroy
+    hero.destroy
+    redirect_to campaign_heroes_path(campaign)
+  end
+
   def hero_params
     params.require(:hero).permit(
       :name, :archetype, :race, :alignment, :deity, :titles, :appearance, :background, :mechanics
