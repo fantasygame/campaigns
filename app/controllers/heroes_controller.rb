@@ -1,9 +1,12 @@
 class HeroesController < ApplicationController
   expose(:campaign)
   expose(:heroes) { campaign.heroes }
-  expose(:heroes, attributes: :hero_params)
+  expose(:hero, attributes: :hero_params)
 
   def index
+  end
+
+  def new
   end
 
   def hero_params

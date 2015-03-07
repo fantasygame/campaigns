@@ -1,0 +1,16 @@
+= simple_form_for([campaign, hero], url: campaign_heroes_path(campaign, hero)) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, label: false, placeholder: 'Name'
+    = f.input :archetype, label: false, placeholder: 'Archetype'
+    = f.input :race, label: false, placeholder: 'Race'
+    = f.input :alignment, label: false, placeholder: 'Alignment'
+    = f.input :deity, label: false, placeholder: 'Deity'
+    = f.input :titles, label: false, placeholder: 'Titles'
+    = f.input :appearance, label: false, placeholder: 'Appearance'
+    = f.input :background, label: false, placeholder: 'Background'
+    = f.input :mechanics, label: false, placeholder: 'Mechanics'
+
+  .form-actions
+    = f.button :submit
