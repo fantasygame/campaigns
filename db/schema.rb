@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20150307160620) do
     t.integer  "reward_id"
     t.integer  "campaign_id"
     t.integer  "user_id"
-    t.string   "name"
+    t.string   "name",        limit: 255
     t.integer  "cost"
     t.boolean  "used"
     t.datetime "created_at"
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 20150307160620) do
   add_index "purchases", ["user_id"], name: "index_purchases_on_user_id", using: :btree
 
   create_table "rewards", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        limit: 255
     t.integer  "cost"
     t.integer  "campaign_id"
     t.datetime "created_at"
