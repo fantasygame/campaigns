@@ -2,6 +2,7 @@ class HeroesController < ApplicationController
   expose(:campaign)
   expose(:heroes) { campaign.heroes }
   expose(:hero, attributes: :hero_params)
+  before_action :authenticate_user!, except: [:show, :index]
 
   def index
   end
