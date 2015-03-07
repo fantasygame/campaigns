@@ -29,3 +29,43 @@ Game.find_or_create_by(
   campaign: campaign,
   date: "2014-12-11".to_date
 )
+
+Hero.find_or_create_by(
+  name: "Monkey",
+  campaign: campaign,
+  user: user,
+  archetype: "Innkeeper with dirty glass.",
+  race: "Monkey",
+  alignment: "CG",
+  deity: "Banana",
+  titles: "Hairy Sir.",
+  appearance: "Just a regular monkey.",
+  background: "From zero to hero!",
+  mechanics: "Always wins."
+)
+Hero.find_or_create_by(
+  name: "Dumbster",
+  campaign: campaign,
+  user: user,
+  archetype: "Fan of dumbstep music.",
+  race: "Trash",
+  alignment: "N",
+  deity: "Dumbstep",
+  titles: "Homeless junk.",
+  appearance: "Just a regular looser.",
+  background: "Łob-łob-łob-łob!",
+  mechanics: "Always looses."
+)
+Hero.find_or_create_by(
+  name: "Kevin Malone",
+  campaign: campaign,
+  user: user,
+  archetype: "Accountance",
+  race: "Human",
+  alignment: "G",
+  deity: "Doughnouts",
+  titles: "Good old Kevin.",
+  appearance: "Looks just like Ashton Kutcher.",
+  background: "Once had a turtle...",
+  mechanics: "Slow but funny."
+)
