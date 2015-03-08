@@ -12,7 +12,7 @@
       %td{ style: 'text-align: center' }
         - if policy(campaign).toggle_membership?
           - if campaign.member?(current_user)
-            .btn.btn-success
+            .btn.btn-success.disabled
               %span.glyphicon.glyphicon-user
               &nbsp;Member
           - else
