@@ -13,10 +13,11 @@
         - if policy(campaign).toggle_membership?
           - if campaign.member?(current_user)
             .btn.btn-success
-              %span.glyphicon.glyphicon-user &nbsp;Member
+              %span.glyphicon.glyphicon-user
+              &nbsp;Member
           - else
             = link_to 'Join campaign', toggle_membership_campaign_path(campaign), class: 'btn btn-primary'
-            
+
       %td= link_to campaign.name, campaign
       %td= campaign.description
       %td= link_to campaign.game_master, user_path(campaign.game_master)
