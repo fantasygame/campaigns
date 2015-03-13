@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     authorize comment
     comment.user = current_user
     comment.save
-    NotifyAbouComment.new(comment).call
+    NotifyAboutComment.new(comment: comment).call
     respond_with(campaign, game)
   end
 
