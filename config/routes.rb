@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :heroes
     resources :games, except: [:index] do
       resources :posts, only: [:new, :edit, :create, :update, :destroy] do
+        resources :comments, only: [:new, :edit, :create, :update, :destroy]
         member do
           get :vote
         end
