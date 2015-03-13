@@ -12,11 +12,14 @@
   .panel-body
     = simple_format post.content
   .panel-footer
+    - if policy(post).comment?
+      = link_to new_campaign_game_post_comment_path(campaign, game, post), class: 'btn-sm btn-info' do
+        %i.glyphicon.glyphicon-comment
     - if policy(post).vote?
       = link_to vote_campaign_game_post_path(campaign, game, post), class: 'btn-sm btn-success' do
         %i.glyphicon.glyphicon-heart-empty
     - unless post.votes.empty?
-      &nbsp; 
+      &nbsp;
       %i.glyphicon.glyphicon-heart-empty
       by
       - post.votes.each do |vote|
