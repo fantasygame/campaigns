@@ -12,7 +12,7 @@
   .panel-body
     = simple_format post.content
   .panel-footer
-    - if policy(post).comment?
+    - if policy(post).comment? && feature?(:comments)
       = link_to new_campaign_game_post_comment_path(campaign, game, post), class: 'btn-sm btn-info' do
         %i.glyphicon.glyphicon-comment
     - if policy(post).vote?

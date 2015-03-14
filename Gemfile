@@ -25,6 +25,7 @@ gem "paranoia"
 gem 'awesome_print'
 gem 'attr_extras'
 gem "jquery-ui-rails"
+gem 'flip'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_21]
