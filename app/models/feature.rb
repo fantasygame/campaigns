@@ -9,4 +9,7 @@ class Feature < ActiveRecord::Base
   feature :comments,
     default: false,
     description: 'Posting and showing comments'
+
+  feature :heroes,
+    default: false
 end
