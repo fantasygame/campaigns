@@ -181,6 +181,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.4.3)
+    mini_magick (4.1.0)
     mini_portile (0.6.2)
     minitest (5.5.0)
     multi_json (1.10.1)
@@ -382,6 +383,7 @@ DEPENDENCIES
   jquery-ui-rails
   launchy
   letter_opener
+  mini_magick
   paranoia
   pg
   pry-rails
