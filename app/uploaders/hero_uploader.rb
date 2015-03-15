@@ -5,7 +5,7 @@ class HeroUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [600, 800]
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}/"
   end
 
   version :thumb do
@@ -17,6 +17,6 @@ class HeroUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    model.name.downcase if original_filename
+    "hero.#{model.image.file.extension}" if original_filename
   end
 end
