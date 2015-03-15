@@ -1,4 +1,4 @@
-= simple_form_for([campaign, hero], url: url, method: method) do |f|
+= simple_form_for([campaign, hero], url: url, method: method, multipart: true) do |f|
   = f.error_notification
 
   .form-inputs
@@ -11,6 +11,7 @@
     = f.input :appearance, placeholder: 'Appearance'
     = f.input :background, placeholder: 'Background'
     = f.input :mechanics, placeholder: 'Mechanics'
+    = f.input :image, as: :file
 
   .form-actions
     = f.button :submit
