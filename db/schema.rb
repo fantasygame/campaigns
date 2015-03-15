@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20150314173531) do
     t.integer  "campaign_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.json     "image"
+    t.string   "image"
   end
 
   add_index "heros", ["campaign_id"], name: "index_heros_on_campaign_id", using: :btree
