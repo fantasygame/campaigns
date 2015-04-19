@@ -10,7 +10,15 @@
       - if policy(post).destroy?
         = link_to 'Destroy', campaign_game_post_path(campaign, game, post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-sm btn-danger'
   .panel-body
-    = simple_format post.content
+    .content
+      = simple_format post.content
+    - if post.comments.any?
+      .comments
+        - post.comments.each do |comment|
+          .well.well-sm
+            = comment.content
+            .author.pull-right
+              = link_to comment.user.name, user_path(comment.user)
   .panel-footer
     - if policy(post).comment? && feature?(:comments)
       = link_to new_campaign_game_post_comment_path(campaign, game, post), class: 'btn-sm btn-info' do
