@@ -20,7 +20,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def vote?
-    !(Vote.exists?(user: user, post: record) || record.author == user)
+    !(!user || Vote.exists?(user: user, post: record) || record.author == user)
   end
 
   def comment?
