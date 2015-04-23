@@ -13,10 +13,16 @@
 .top-buttons
   - if policy(campaign).new?
     = link_to 'Add game', new_campaign_game_path(campaign), class: 'btn btn-success'
-  = link_to 'Show all posts', show_posts_campaign_path, class: 'btn btn-default'
-  = link_to 'Rewards', campaign_rewards_path(campaign), class: 'btn btn-default'
+  = link_to show_posts_campaign_path, class: 'btn btn-default' do
+    Show all posts
+    &nbsp;
+    %span.glyphicon.glyphicon-list   
+  = link_to campaign_rewards_path(campaign), class: 'btn btn-default' do
+    Rewards
+    &nbsp;
+    %span.glyphicon.glyphicon-gift
   - if feature? :heroes
-    = link_to campaign_heroes_path(campaign), class: 'btn btn-success' do
+    = link_to campaign_heroes_path(campaign), class: 'btn btn-default' do
       Heroes
       &nbsp;
       %span.glyphicon.glyphicon-user
