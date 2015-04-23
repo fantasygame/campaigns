@@ -16,16 +16,15 @@
   = link_to show_posts_campaign_path, class: 'btn btn-default' do
     Show all posts
     &nbsp;
-    %span.glyphicon.glyphicon-list   
+    %span.glyphicon.glyphicon-list
   = link_to campaign_rewards_path(campaign), class: 'btn btn-default' do
     Rewards
     &nbsp;
     %span.glyphicon.glyphicon-gift
-  - if feature? :heroes
-    = link_to campaign_heroes_path(campaign), class: 'btn btn-default' do
-      Heroes
-      &nbsp;
-      %span.glyphicon.glyphicon-user
+  = link_to campaign_heroes_path(campaign), class: 'btn btn-default' do
+    Heroes
+    &nbsp;
+    %span.glyphicon.glyphicon-user
 
 #game-tiles
   - campaign.games.to_a.each_slice(3).to_a.each do |games|

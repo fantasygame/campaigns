@@ -5,7 +5,4 @@ class Feature < ActiveRecord::Base
   strategy Flip::DatabaseStrategy
   strategy Flip::DeclarationStrategy
   default false
-
-  feature :heroes,
-    default: false
 end
