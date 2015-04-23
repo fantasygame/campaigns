@@ -20,7 +20,7 @@
             .author.pull-right
               = link_to comment.user.name, user_path(comment.user)
   .panel-footer
-    - if policy(post).comment? && feature?(:comments)
+    - if policy(post).comment?
       = link_to new_campaign_game_post_comment_path(campaign, game, post), class: 'btn-sm btn-info' do
         %i.glyphicon.glyphicon-comment
     - if policy(post).vote?
