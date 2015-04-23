@@ -13,50 +13,50 @@
           .col-lg-2
             Name:
           .col-lg-10
-            =hero.name
+            = hero.name
         .row
           .col-lg-2
             Titles:
           .col-lg-10
-            =hero.titles
+            = simple_format hero.titles
         .row
           .col-lg-2
             Archetype:
           .col-lg-10
-            =hero.archetype  
+            = simple_format hero.archetype  
       .hero-section 
         .row
           .col-lg-2
             Race:
           .col-lg-10
-            =hero.race
+            = hero.race
         .row
           .col-lg-2
             Alignment:
           .col-lg-10
-            =hero.alignment
+            = hero.alignment
         .row
           .col-lg-2
             Deity:
           .col-lg-10
-            =hero.deity
+            = hero.deity
       .hero-section
         .row
           .col-lg-2
             Appearance:
           .col-lg-10 
-            =hero.appearance
+            = simple_format hero.appearance
         .row    
           .col-lg-2
             Mechanics:
           .col-lg-10
-            =hero.mechanics
+            = simple_format hero.mechanics
       .hero-section
         .row
           .col-lg-2
             Background:
           .col-lg-10
-            =hero.background
+            = simple_format hero.background
     .image
       .col-lg-4
         = image_tag(hero.image)
