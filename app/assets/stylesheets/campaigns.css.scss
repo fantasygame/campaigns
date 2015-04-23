@@ -6,13 +6,12 @@
 #game-tiles {
   width: 100%;
   text-align: center;
-}
-
-.row {
-  -moz-column-width: 18em;
-  -webkit-column-width: 18em;
-  -moz-column-gap: 1em;
-  -webkit-column-gap:1em;
+  .row {
+    -moz-column-width: 18em;
+    -webkit-column-width: 18em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap:1em;
+  }
 }
 
 .item {
