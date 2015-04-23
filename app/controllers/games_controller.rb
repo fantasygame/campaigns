@@ -22,7 +22,7 @@ class GamesController < ApplicationController
   def create
     authorize game
     game.save
-    NotifyMembers.new(game).call
+    NotifyMembers.new(game, current_user).call
     respond_with(campaign)
   end
 

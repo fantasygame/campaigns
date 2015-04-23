@@ -1,12 +1,13 @@
 class NotifyMembers
-  attr_accessor :subject
+  attr_accessor :subject, :current_user
 
-  def initialize(subject)
+  def initialize(subject, current_user)
     @subject = subject
+    @current_user = current_user
   end
 
   def call
-    game.members.all.each do |member|
+    users_to_notify.each do |member|
       unless notify_member(member)
         return Response::Error.new(message: "Failed to send confirmation to #{member.email}")
       end
@@ -15,6 +16,10 @@ class NotifyMembers
   end
 
   private
+
+  def users_to_notify
+    game.members.reject { |member| member == current_user }
+  end
 
   def game
     subject.is_a?(Post) ? subject.game : subject
