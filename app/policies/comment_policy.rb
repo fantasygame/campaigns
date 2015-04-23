@@ -1,6 +1,6 @@
-class PostPolicy < ApplicationPolicy
+class CommentPolicy < ApplicationPolicy
   def new?
-    record.game.member?(user)
+    record.post.member?(user)
   end
 
   def create?
@@ -17,14 +17,6 @@ class PostPolicy < ApplicationPolicy
 
   def destroy?
     author?
-  end
-
-  def vote?
-    !(!user || Vote.exists?(user: user, post: record) || record.author == user)
-  end
-
-  def comment?
-    new?
   end
 
   private

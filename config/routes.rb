@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :heroes
     resources :games, except: [:index] do
       resources :posts, only: [:new, :edit, :create, :update, :destroy] do
+        resources :comments, only: [:new, :edit, :create, :update, :destroy]
         member do
           get :vote
         end
@@ -29,4 +30,5 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:index, :show]
+  mount Flip::Engine => "/features"
 end

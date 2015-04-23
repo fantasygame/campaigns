@@ -1,0 +1,17 @@
+Hello, <%= @user.name %>
+===============================================
+
+There is new comment to your post in <%= @campaign.name %> : <%= @game.name %>.
+
+Comment:
+<%= @comment.content %>
+--
+by <%= @comment.author.name %>
+
+
+Post:
+<%= @post.content %>
+
+Check it out: <%= campaign_game_url(@campaign, @game, only_path: false) %>
+
+Thanks for playing with us and have a great day!

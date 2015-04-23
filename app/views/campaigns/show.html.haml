@@ -15,10 +15,11 @@
     = link_to 'Add game', new_campaign_game_path(campaign), class: 'btn btn-success'
   = link_to 'Show all posts', show_posts_campaign_path, class: 'btn btn-default'
   = link_to 'Rewards', campaign_rewards_path(campaign), class: 'btn btn-default'
-  = link_to campaign_heroes_path(campaign), class: 'btn btn-success' do
-    Heroes
-    &nbsp;
-    %span.glyphicon.glyphicon-user
+  - if feature? :heroes
+    = link_to campaign_heroes_path(campaign), class: 'btn btn-success' do
+      Heroes
+      &nbsp;
+      %span.glyphicon.glyphicon-user
 
 #game-tiles
   - campaign.games.to_a.each_slice(3).to_a.each do |games|
@@ -26,7 +27,7 @@
       - games.each do |game|
         .item
           .well
-            %h4.campaign-game-name 
+            %h4.campaign-game-name
               = link_to game.name, campaign_game_path(campaign, game)
             .well-bottom-left
               =link_to campaign_game_path(campaign, game) do

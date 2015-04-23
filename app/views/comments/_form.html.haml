@@ -1,0 +1,8 @@
+= simple_form_for([campaign, game, post, comment]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :content, label: false, placeholder: "Content", input_html: { style: 'min-height: 20em;' }
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

@@ -55,6 +55,18 @@ RSpec.describe PostPolicy do
       end
     end
   end
+  permissions :comment? do
+    context "user is a member of posts campaign" do
+      it "grants access" do
+        expect(subject).to permit(user, post)
+      end
+    end
+    context "user isn't a member of posts campaign" do
+      it "denies access" do
+        expect(subject).not_to permit(user, other_post)
+      end
+    end
+  end
   permissions :update? do
     context "user is an author of posts campaign" do
       it "grants access" do
