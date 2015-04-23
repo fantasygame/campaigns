@@ -6,37 +6,54 @@
   = hero.campaign
 
 .container.hero.well
+  .hero-section
+    .row
+      .col-lg-1
+        Name:
+      .col-lg-11
+        =hero.name
+    .row
+      .col-lg-1
+        Titles:
+      .col-lg-11
+        =hero.titles
+    .row
+      .col-lg-1
+        Archetype:
+      .col-lg-11
+        =hero.archetype  
+  .hero-section 
+    .row
+      .col-lg-1
+        Race:
+      .col-lg-11
+        =hero.race
+    .row
+      .col-lg-1
+        Alignment:
+      .col-lg-11
+        =hero.alignment
+    .row
+      .col-lg-1
+        Deity:
+      .col-lg-11
+        =hero.deity
+  .hero-section
+    .row
+      .col-lg-1
+        Appearance:
+      .col-lg-11  
+        =hero.appearance
+    .row    
+      .col-lg-1
+        Mechanics:
+      .col-lg-11
+        =hero.mechanics
+  .hero-section
   .row
-    .col-lg-8
-      Name:
-      =hero.name
-    .col-lg-4
-      Archetype:
-      =hero.archetype
-  .row
-    .col-lg-4
-      Race:
-      =hero.race
-    .col-lg-4
-      Alignment:
-      =hero.alignment
-    .col-lg-4
-      Deity:
-      =hero.deity
-  .row
-    .col-lg-12
-      Titles:
-      =hero.titles
-  .row
-    .col-lg-6
-      Appearance:
-      =hero.appearance
-    .col-lg-6
-      Mechanics:
-      =hero.mechanics
-  .row
-    .col-lg-12
+    .col-lg-1
       Background:
+    .col-lg-11
       =hero.background
 
 = link_to campaign_heroes_path(campaign), class: 'btn btn-default' do
