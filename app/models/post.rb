@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   has_many :votes
   has_many :comments
 
-  delegate :member?, to: :game
+  delegate :member?, :campaign, to: :game
 
   alias_method :author, :user
 

@@ -24,7 +24,7 @@ class PointsCalculator
     if campaign.blank?
       user.votes.count
     else
-      campaign.votes.where(user: user).count
+      (user.votes.select { |vote| vote.campaign == campaign }).count
     end
   end
 end
