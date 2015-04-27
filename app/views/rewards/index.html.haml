@@ -22,6 +22,11 @@
           = link_to 'Edit', edit_campaign_reward_path(campaign, reward), class: 'btn btn-primary'
         - if policy(reward).destroy?
           = link_to 'Destroy', campaign_reward_path(campaign, reward), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+      - if policy(reward).purchase_for_user?
+        %td
+          = simple_form_for :purchase_for_user, url: purchase_for_user_campaign_reward_path(campaign, reward), method: :get do |f|
+            = f.input :user_id, label: false, collection: @users
+            = f.submit 'Purchase for user', class: 'btn btn-success'
 - if campaign.game_master?(current_user)
   = link_to 'Add reward', new_campaign_reward_path(campaign), class: 'btn btn-success'
 

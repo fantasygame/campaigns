@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :rewards do
       member do
         get :purchase
+        get :purchase_for_user
       end
     end
     member do
