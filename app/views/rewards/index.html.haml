@@ -44,7 +44,7 @@
       %td= purchase.created_at.strftime('%d.%m.%Y')
       %td
         = purchase.name
-        - unless reward.active?
+        - unless purchase.reward.active?
           %span.glyphicon.glyphicon-eye-close
       %td= purchase.cost
       %td
