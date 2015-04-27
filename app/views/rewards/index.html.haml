@@ -10,7 +10,10 @@
   %th
   - rewards.each do |reward|
     %tr
-      %td= reward.name
+      %td
+        = reward.name
+        - unless reward.active?
+          %span.glyphicon.glyphicon-eye-close
       %td= reward.cost
       %td
         - if policy(reward).purchase?
@@ -39,7 +42,10 @@
   - @purchases.each do |purchase|
     %tr
       %td= purchase.created_at.strftime('%d.%m.%Y')
-      %td= purchase.name
+      %td
+        = purchase.name
+        - unless reward.active?
+          %span.glyphicon.glyphicon-eye-close
       %td= purchase.cost
       %td
         - if policy(purchase).toggle_used?
