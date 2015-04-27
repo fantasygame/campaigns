@@ -1,6 +1,6 @@
 class RewardsController < ApplicationController
   expose(:campaign)
-  expose(:rewards) { campaign.rewards }
+  expose(:rewards) { set_rewards }
   expose(:reward, attributes: :reward_params)
   before_action :authenticate_user!, except: :show
 
@@ -52,5 +52,13 @@ class RewardsController < ApplicationController
 
   def reward_params
     params.require(:reward).permit(:name, :cost)
+  end
+
+  def set_rewards
+    if campaign.game_master?(current_user)
+      campaign.rewards
+    else
+      campaign.rewards.select(&:active?)
+    end
   end
 end
