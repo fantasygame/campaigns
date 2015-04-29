@@ -1,6 +1,4 @@
-class GameMailer < ActionMailer::Base
-  default from: "uro@fantasygame.pl"
-
+class GameMailer < ApplicationMailer
   def notify_user(user, game)
     @user = user
     @game = game
