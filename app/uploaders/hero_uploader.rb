@@ -5,7 +5,7 @@ class HeroUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [600, 800]
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}/"
+    "#{Rails.root}/tmp/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}/"
   end
 
   version :thumb do
