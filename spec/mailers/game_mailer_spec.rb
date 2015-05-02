@@ -11,10 +11,6 @@ RSpec.describe GameMailer, type: :mailer do
     expect(mailer).to deliver_to(member.email)
   end
 
-  it "sends email from uro" do
-    expect(mailer).to be_delivered_from('uro@fantasygame.pl')
-  end
-
   it "has right subject" do
     expect(mailer).to have_subject("There is new game in #{campaign.name}")
   end
