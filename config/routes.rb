@@ -31,5 +31,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:index, :show]
+  get '/users/become/:id', to: 'users#become', as: :become_user
   mount Flip::Engine => "/features"
 end

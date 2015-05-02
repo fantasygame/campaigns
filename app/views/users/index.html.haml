@@ -6,7 +6,12 @@
     %th Joined
   - @users.each do |user|
     %tr
-      %td= link_to user.name, user_path(user)
+      %td
+        - if current_user.admin?
+          = link_to become_user_path(user) do
+            %span.btn.btn-default
+              Become
+        = link_to user.name, user_path(user)
       %td
         = user.points
         points
