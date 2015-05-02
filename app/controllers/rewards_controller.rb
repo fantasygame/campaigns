@@ -66,7 +66,7 @@ class RewardsController < ApplicationController
     if campaign.game_master?(current_user)
       campaign.rewards
     else
-      campaign.rewards.select(&:active?)
+      campaign.rewards.where(active: true)
     end
   end
 end
