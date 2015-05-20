@@ -1,29 +1,36 @@
-%h1 Listing items
+%h1= "Items in '#{campaign.name}' campaign"
 
-%table
+%table.table
   %thead
     %tr
+      %th Sold
       %th Name
       %th Price
-      %th Sold
-      %th Campaign
       %th Hero
       %th
       %th
       %th
       
   %tbody
-    - @items.each do |item|
+    - items.each do |item|
       %tr
+        %td
+          .checkbox
+            %label
+              %input{type: "checkbox"}
+                Sell
         %td= item.name
         %td= item.price
-        %td= item.sold
-        %td= item.campaign
-        %td= item.hero
-        %td= link_to 'Show', item
-        %td= link_to 'Edit', edit_item_path(item)
-        %td= link_to 'Destroy', item, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td
+          - campaign.heroes.each do |hero|
+            %label.radio-inline
+              %input{type: 'radio', name: "ItemOwner#{item.id}", value: "#{hero.id}"}
+                = hero.name
+        .btn-group
+          %td= link_to 'Show', campaign_item_path(campaign, item)
+          %td= link_to 'Edit', edit_campaign_item_path(campaign, item)
+          %td= link_to 'Destroy', campaign_item_path(campaign, item), method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Item', new_item_path
+= link_to 'New Item', new_campaign_item_path(campaign), class: 'btn btn-success'
