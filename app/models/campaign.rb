@@ -9,6 +9,7 @@ class Campaign < ActiveRecord::Base
   has_many :purchases
   has_many :rewards
   has_many :heroes
+  has_many :items
 
   validates :name, presence: :true
   validates :game_master, presence: :true

@@ -1,6 +1,6 @@
 class NotifyAboutComment
-  attr_reader :comment
-  attr_initialize [:comment]
+  attr_reader :comment, :current_user
+  attr_initialize [:comment, :current_user]
 
   def call
     user = comment.post.author
@@ -13,7 +13,12 @@ class NotifyAboutComment
 
   private
 
-  def notify(user, comment)
-    CommentMailer.notify_user(user, comment).deliver
+  def notify(comment)
+    users = comment.post.comments.map(&:user)
+    users << comment.post.author
+    users = users.uniq.reject { |user| user == current_user }
+    users.each do |user|
+      CommentMailer.notify_user(user, comment).deliver
+    end
   end
 end

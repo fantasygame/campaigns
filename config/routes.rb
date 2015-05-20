@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :items
+
   root to: 'campaigns#index'
 
   resources :campaigns do
