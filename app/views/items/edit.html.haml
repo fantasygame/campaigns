@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @item
+= link_to 'Show', campaign_item_path(campaign, item)
 \|
-= link_to 'Back', items_path
+= link_to 'Back', campaign_items_path(campaign)

@@ -2,20 +2,20 @@
 
 %p
   %b Name:
-  = @item.name
+  = item.name
 %p
   %b Price:
-  = @item.price
+  = item.price
 %p
   %b Sold:
-  = @item.sold
+  = item.sold
 %p
   %b Campaign:
-  = @item.campaign
+  = item.campaign
 %p
   %b Hero:
-  = @item.hero
+  = item.hero
 
-= link_to 'Edit', edit_item_path(@item)
+= link_to 'Edit', edit_campaign_item_path(campaign, item)
 \|
-= link_to 'Back', items_path
+= link_to 'Back', campaign_items_path(campaign)
