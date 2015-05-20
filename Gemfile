@@ -28,6 +28,7 @@ gem "jquery-ui-rails"
 gem 'flip'
 gem 'carrierwave'
 gem "mini_magick"
+gem "gon"
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_21]

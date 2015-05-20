@@ -118,6 +118,11 @@ GEM
     formatador (0.2.5)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
+    gon (5.2.3)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     guard (2.10.5)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -373,6 +378,7 @@ DEPENDENCIES
   ffaker
   figaro (>= 1.0.0.rc1)
   flip
+  gon
   guard-bundler
   guard-rails
   guard-rspec
