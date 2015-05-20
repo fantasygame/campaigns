@@ -1,3 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $('.sell').click ->
+    sum = 0
+    $('.sell:checked').each ->
+      price = parseFloat $(@).closest('tr').find('.price').html()
+      sum += price
+    $('.sum').html(sum)
