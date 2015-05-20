@@ -10,9 +10,10 @@
       Join campaign
       &nbsp;
       %span.glyphicon.glyphicon-add
-.action-buttons
+%p
   - if policy(campaign).new?
     = link_to 'Add game', new_campaign_game_path(campaign), class: 'btn btn-success'
+%p.btn-group
   = link_to show_posts_campaign_path, class: 'btn btn-default' do
     Show all posts
     &nbsp;
