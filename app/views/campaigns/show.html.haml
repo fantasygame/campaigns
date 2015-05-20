@@ -26,6 +26,10 @@
     Heroes
     &nbsp;
     %span.glyphicon.glyphicon-user
+  = link_to campaign_items_path(campaign), class: 'btn btn-default' do
+    Items
+    &nbsp;
+    %span.glyphicon.glyphicon-usd
 
 #game-tiles
   - campaign.games.to_a.each_slice(3).to_a.each do |games|
