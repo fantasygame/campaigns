@@ -1,6 +1,6 @@
 class RewardsController < ApplicationController
   expose(:campaign)
-  expose(:rewards) { campaign.rewards }
+  expose(:rewards) { set_rewards }
   expose(:reward, attributes: :reward_params)
   before_action :authenticate_user!, except: :show
 
@@ -12,7 +12,15 @@ class RewardsController < ApplicationController
     redirect_to campaign_rewards_path(campaign), response.flash
   end
 
+  def purchase_for_user
+    authorize reward
+    user = User.find(params[:purchase_for_user][:user_id])
+    response = PurchaseReward.new(reward, user).call
+    redirect_to campaign_rewards_path(campaign), response.flash
+  end
+
   def index
+    @users = campaign.users
     @points = campaign.available_points(current_user)
     if campaign.game_master?(current_user)
       @purchases = Purchase.in_campaign(campaign)
@@ -51,6 +59,14 @@ class RewardsController < ApplicationController
   private
 
   def reward_params
-    params.require(:reward).permit(:name, :cost)
+    params.require(:reward).permit(:name, :cost, :active)
+  end
+
+  def set_rewards
+    if campaign.game_master?(current_user)
+      campaign.rewards
+    else
+      campaign.rewards.where(active: true)
+    end
   end
 end

@@ -107,3 +107,4 @@ MIT (in LICENCE file)
 
 * Jakub Kubacki
 * Małgorzata Grobelska
+* Dawid Roszkiewicz

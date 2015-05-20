@@ -26,4 +26,8 @@ class RewardPolicy < ApplicationPolicy
   def purchase?
     index?
   end
+
+  def purchase_for_user?
+    new?
+  end
 end

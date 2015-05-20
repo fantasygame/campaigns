@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :rewards do
       member do
         get :purchase
+        get :purchase_for_user
       end
     end
     member do
@@ -32,5 +33,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:index, :show]
+  get '/users/become/:id', to: 'users#become', as: :become_user
   mount Flip::Engine => "/features"
 end

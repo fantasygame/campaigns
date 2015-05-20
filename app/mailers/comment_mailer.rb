@@ -1,6 +1,4 @@
-class CommentMailer < ActionMailer::Base
-  default from: "uro@fantasygame.pl"
-
+class CommentMailer < ApplicationMailer
   def notify_user(user, comment)
     @user = user
     @comment = comment
