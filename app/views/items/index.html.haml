@@ -8,8 +8,6 @@
       %th Price
       %th Hero
       %th
-      %th
-      %th
       
   %tbody
     - items.each do |item|
@@ -17,20 +15,24 @@
         %td
           .checkbox
             %label
-              %input{type: "checkbox"}
+              %input.sell{type: "checkbox"}
                 Sell
         %td= item.name
-        %td= item.price
+        %td.price= item.price
+        %td= item.hero.name
         %td
-          - campaign.heroes.each do |hero|
-            %label.radio-inline
-              %input{type: 'radio', name: "ItemOwner#{item.id}", value: "#{hero.id}"}
-                = hero.name
-        .btn-group
-          %td= link_to 'Show', campaign_item_path(campaign, item)
-          %td= link_to 'Edit', edit_campaign_item_path(campaign, item)
-          %td= link_to 'Destroy', campaign_item_path(campaign, item), method: :delete, data: { confirm: 'Are you sure?' }
-
+          .btn-group
+            %span= link_to 'Show', campaign_item_path(campaign, item), class: 'btn btn-default'
+            %span= link_to 'Edit', edit_campaign_item_path(campaign, item), class: 'btn btn-primary'
+            %span= link_to 'Destroy', campaign_item_path(campaign, item), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+  %bottom
+    %tr
+      %th 
+      %th 
+      %th.sum Sum
+      %th 
+      %th
+              
 %br
 
 = link_to 'New Item', new_campaign_item_path(campaign), class: 'btn btn-success'
