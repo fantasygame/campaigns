@@ -22,17 +22,17 @@ class ItemsController < ApplicationController
 
   def create
     item.save
-    redirect_to(campaign_items_path(campaign))
+    redirect_to campaign_items_path(campaign)
   end
 
   def update
     item.save
-    respond_with(item)
+    redirect_to campaign_items_path(campaign)
   end
 
   def destroy
     item.destroy
-    redirect_to(campaign_items_path(campaign))
+    redirect_to campaign_items_path(campaign)
   end
 
   private
