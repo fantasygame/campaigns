@@ -5,4 +5,7 @@ class Feature < ActiveRecord::Base
   strategy Flip::DatabaseStrategy
   strategy Flip::DeclarationStrategy
   default false
+  
+  feature :items
+  default: false
 end
