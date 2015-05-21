@@ -7,7 +7,7 @@
   - @users.each do |user|
     %tr
       %td
-        - if current_user.admin?
+        - if current_user.try(:admin?)
           = link_to become_user_path(user) do
             %span.btn.btn-default
               Become
