@@ -3,8 +3,7 @@ class NotifyAboutComment
   attr_initialize [:comment, :current_user]
 
   def call
-    user = comment.post.author
-    if notify(user, comment)
+    if notify(comment)
       Response::Success.new(message: "Sent notification.")
     else
       Response::Error.new(message: "Failed to send confirmation to #{user.email}")
