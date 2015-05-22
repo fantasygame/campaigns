@@ -8,7 +8,7 @@ class Campaign < ActiveRecord::Base
   has_many :votes, through: :posts
   has_many :purchases
   has_many :rewards
-  has_many :heroes
+  has_many :heroes, -> { order(user_character: :desc) }
   has_many :items
 
   validates :name, presence: :true

@@ -6,7 +6,4 @@ class Hero < ActiveRecord::Base
   has_many :players
 
   mount_uploader :image, HeroUploader
-
-  scope :user_hero, -> { where(user_character: true) }
-  scope :npc, -> { where(user_character: false) }
 end
