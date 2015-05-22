@@ -11,7 +11,7 @@
   %tr
     %th Name
     %th Archetype
-    %th User
+    %th Player
     %th
   - heroes.each do |hero|
     %tr
@@ -19,7 +19,7 @@
       %td
         = hero.archetype
       %td
-        = hero.user
+        = hero.user if hero.user_character
       %td
         - if policy(hero).edit?
           = link_to edit_campaign_hero_path(campaign, hero), class: 'btn btn-primary' do
