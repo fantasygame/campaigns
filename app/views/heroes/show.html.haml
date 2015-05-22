@@ -27,8 +27,8 @@
           .col-lg-2
             Archetype:
           .col-lg-10
-            = simple_format hero.archetype  
-      .hero-section 
+            = simple_format hero.archetype
+      .hero-section
         .row
           .col-lg-2
             Race:
@@ -48,9 +48,9 @@
         .row
           .col-lg-2
             Appearance:
-          .col-lg-10 
+          .col-lg-10
             = simple_format hero.appearance
-        .row    
+        .row
           .col-lg-2
             Mechanics:
           .col-lg-10
@@ -64,7 +64,7 @@
     .image
       .col-lg-4
         = image_tag(hero.image)
-    
+
 
 = link_to campaign_heroes_path(campaign), class: 'btn btn-default' do
   %span.glyphicon.glyphicon-chevron-left

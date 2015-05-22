@@ -5,6 +5,10 @@
   %b Campaign:
   = game.campaign
 
+%p
+  - game.heroes.each do |hero|
+    = hero.name
+
 - if policy(game).new?
   %p{ style: 'margin-top: 2em; margin-bottom: 2em;' }
     = link_to new_campaign_game_post_path(campaign, game), class: 'btn btn-success' do
