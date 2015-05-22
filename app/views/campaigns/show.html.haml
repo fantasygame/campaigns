@@ -45,6 +45,10 @@
                 %span.badge
                   .glyphicon.glyphicon-comment
                   = game.posts.length
+              =link_to campaign_game_path(campaign, game) do
+                %span.badge
+                  .glyphicon.glyphicon-user
+                  = game.heroes.length
             .well-bottom-right
               = game.date.strftime('%d.%m.%Y')
 %p
