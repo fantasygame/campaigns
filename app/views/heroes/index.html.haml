@@ -19,7 +19,10 @@
       %td
         = hero.archetype
       %td
-        = hero.user if hero.user_character
+        - if hero.user_character
+          = hero.user
+        - else
+          NPC
       %td
         - if policy(hero).edit?
           = link_to edit_campaign_hero_path(campaign, hero), class: 'btn btn-primary' do
