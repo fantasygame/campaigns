@@ -7,7 +7,14 @@
 
 %p
   - game.heroes.each do |hero|
-    = hero.name
+    %span
+      - if hero.user_character == true
+        .badge
+          .glyphicon.glyphicon-user
+          = hero.name
+      - else
+        .badge
+          = hero.name
 
 - if policy(game).new?
   %p{ style: 'margin-top: 2em; margin-bottom: 2em;' }
