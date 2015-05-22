@@ -4,6 +4,7 @@
   .form-inputs
     = f.input :name, label: false, placeholder: 'Name'
     = f.input :date, as: :uuid, label: false, placeholder: 'Date', input_html: { class: 'datepicker' }
+    = f.association :heroes, as: :check_boxes, collection: campaign.heroes
 
   .form-actions
     = f.button :submit
