@@ -5,6 +5,16 @@ class ItemsController < ApplicationController
 
   respond_to :html
 
+  def sell
+    item.sold_price = (item.price / 2)
+    campaign.money = campaign.money + item.sold_price
+    campaign.save
+    item.sold = true
+    item.hero_id = nil
+    item.save
+    redirect_to campaign_items_path(campaign)
+  end
+
   def index
     respond_with(items)
   end

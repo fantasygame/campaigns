@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :campaigns do
     resources :heroes
-    resources :items
+    resources :items do
+      get :sell
+    end
     resources :games, except: [:index] do
       resources :posts, only: [:new, :edit, :create, :update, :destroy] do
         resources :comments, only: [:new, :edit, :create, :update, :destroy]
