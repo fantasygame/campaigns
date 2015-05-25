@@ -48,7 +48,7 @@
               =link_to campaign_game_path(campaign, game) do
                 %span.badge
                   .glyphicon.glyphicon-user
-                  = game.heroes.length
+                  = game.members_count
             .well-bottom-right
               = game.date.strftime('%d.%m.%Y')
 %p
