@@ -9,6 +9,12 @@ class CampaignsController < ApplicationController
     redirect_to campaign, result.flash
   end
 
+  def change_money
+    campaign.money = campaign.money + params[:campaign][:money_change].to_i
+    campaign.save
+    redirect_to campaign_items_path
+  end
+
   def index
     respond_with(campaigns)
   end

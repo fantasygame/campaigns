@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 
   root to: 'campaigns#index'
 
@@ -24,6 +24,8 @@ Rails.application.routes.draw do
       get :toggle_membership
       get :show_posts
     end
+
+    post :change_money
   end
 
   resources :purchases, only: [] do
