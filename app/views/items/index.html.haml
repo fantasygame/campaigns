@@ -15,20 +15,32 @@
       %th Sold
       %th Name
       %th Price
+      %th Sold for
       %th Hero
+      %th
       %th
 
   %tbody
     - items.each do |item|
       %tr
         %td
-          .checkbox
-            %label
-              %input.sell{type: "checkbox"}
-                Sell
+          / .checkbox
+          /   %label
+          /     %input.sell{type: "checkbox"}
+          /       Sell
+          -if item.sold == true
+            .glyphicon.glyphicon-ok
         %td= item.name
         %td.price= item.price
-        %td= item.hero.name
+        %td.sold= item.sold_price
+        %td
+          - if item.hero_id == nil
+            = " "
+          - else
+            = item.hero.name
+        %td
+          - if item.sold == false
+            = link_to 'Sell', campaign_item_sell_path(campaign, item), class: 'btn btn-warning'
         %td
           .btn-group
             %span= link_to 'Show', campaign_item_path(campaign, item), class: 'btn btn-default'
@@ -38,7 +50,8 @@
     %tr
       %th
       %th
-      %th.sum Sum
+      %th.sum
+        / Sum
       %th
       %th
 
