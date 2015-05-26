@@ -36,6 +36,7 @@ class RewardsController < ApplicationController
   end
 
   def edit
+    authorize reward
   end
 
   def create
