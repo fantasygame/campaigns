@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   respond_to :html
 
   def sell
+    authorize item
     SellItem.new(item, campaign).call
     redirect_to campaign_items_path(campaign)
   end
@@ -19,23 +20,28 @@ class ItemsController < ApplicationController
   end
 
   def new
+    authorize item
     respond_with(item)
   end
 
   def edit
+    authorize item
   end
 
   def create
+    authorize item
     item.save
     redirect_to campaign_items_path(campaign)
   end
 
   def update
+    authorize item
     item.save
     redirect_to campaign_items_path(campaign)
   end
 
   def destroy
+    authorize item
     item.destroy
     redirect_to campaign_items_path(campaign)
   end
