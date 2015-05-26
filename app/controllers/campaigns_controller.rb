@@ -10,6 +10,7 @@ class CampaignsController < ApplicationController
   end
 
   def change_money
+    authorize campaign
     campaign.money = campaign.money + params[:campaign][:money_change].to_i
     campaign.save
     redirect_to campaign_items_path
@@ -28,6 +29,7 @@ class CampaignsController < ApplicationController
   end
 
   def new
+    authorize campaign
     respond_with(campaign)
   end
 
@@ -36,6 +38,7 @@ class CampaignsController < ApplicationController
   end
 
   def create
+    authorize campaign
     CreateCampaign.new(current_user, campaign).call
     respond_with(campaign)
   end
