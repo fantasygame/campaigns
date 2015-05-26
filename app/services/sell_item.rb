@@ -7,13 +7,21 @@ class SellItem
   end
 
   def call
-    item.sold_price = (item.price / 2)
+    modify_item
+    increase_campaign_money
+  end
+
+  private
+
+  def increase_campaign_money
     campaign.money = campaign.money + item.sold_price
     campaign.save
+  end
+
+  def modify_item
+    item.sold_price = (item.price / 2)
     item.sold = true
     item.hero_id = nil
     item.save
   end
-
-
 end
