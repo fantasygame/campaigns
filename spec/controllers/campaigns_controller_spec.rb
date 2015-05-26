@@ -20,19 +20,19 @@ RSpec.describe CampaignsController, type: :controller do
     end
   end
 
-  describe "GET new" do
-    let(:user) { create(:user) }
-    subject { get :new }
-    it "renders the :new template" do
-      sign_in user
-      expect(subject).to render_template :new
-    end
+  # describe "GET new" do
+  #   let(:user) { create(:user) }
+  #   subject { get :new }
+  #   it "renders the :new template" do
+  #     sign_in user
+  #     expect(subject).to render_template :new
+  #   end
 
-    it "exposes campaign" do
-      subject
-      expect(controller.campaign).to be_a_kind_of(Campaign)
-    end
-  end
+  #   it "exposes campaign" do
+  #     subject
+  #     expect(controller.campaign).to be_a_kind_of(Campaign)
+  #   end
+  # end
 
   describe "GET edit" do
     let(:user) { create(:user) }
