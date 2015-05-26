@@ -19,6 +19,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    authorize post
   end
 
   def create
