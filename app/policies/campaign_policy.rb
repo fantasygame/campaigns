@@ -14,8 +14,4 @@ class CampaignPolicy < ApplicationPolicy
   def toggle_membership?
     user.present?
   end
-
-  def new?
-    record.member?(user)
-  end
 end

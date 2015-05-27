@@ -29,7 +29,6 @@ class CampaignsController < ApplicationController
   end
 
   def new
-    authorize campaign
     respond_with(campaign)
   end
 
