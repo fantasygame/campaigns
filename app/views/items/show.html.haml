@@ -1,21 +1,25 @@
-  %p#notice= notice
+%p#notice= notice
 
-%p
-  %b Name:
-  = item.name
-%p
-  %b Price:
-  = item.price
-%p
-  %b Sold:
-  = item.sold
-%p
-  %b Campaign:
-  = item.campaign
-%p
-  %b Hero:
-  = item.hero
+%h2= item.name
+.container
+  .row
+    .col-md-4
+      %table.table
+        %tr
+          %th Name:
+          %td= item.name
+        %tr
+          %th Value:
+          %td= item.price
+        - if item.hero_id != nil
+          %tr
+            %th Owner:
+            %td= item.hero.name
+    .col-md-1
+    .col-md-7
+      %h4 Description:
+      %p= item.description
 
-= link_to 'Edit', edit_campaign_item_path(campaign, item)
-\|
-= link_to 'Back', campaign_items_path(campaign)
+= link_to 'Edit', edit_campaign_item_path(campaign, item), class: 'btn btn-primary'
+
+= link_to 'Back', campaign_items_path(campaign), class: 'btn btn-default'

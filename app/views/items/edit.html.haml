@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', campaign_item_path(campaign, item)
-\|
-= link_to 'Back', campaign_items_path(campaign)
+%p
+  = link_to 'Show', campaign_item_path(campaign, item), class: 'btn btn-default'
+  = link_to 'Back', campaign_items_path(campaign), class: 'btn btn-default'
