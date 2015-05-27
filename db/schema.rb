@@ -27,13 +27,13 @@ ActiveRecord::Schema.define(version: 20150527105705) do
   add_index "campaignplays", ["user_id"], name: "index_campaignplays_on_user_id", using: :btree
 
   create_table "campaigns", force: :cascade do |t|
-    t.string   "name",           limit: 255, default: ""
-    t.text     "description",                default: ""
+    t.string   "name",           default: ""
+    t.text     "description",    default: ""
     t.integer  "game_master_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
-    t.integer  "money",                      default: 0
+    t.integer  "money",          default: 0
   end
 
   add_index "campaigns", ["deleted_at"], name: "index_campaigns_on_deleted_at", using: :btree
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20150527105705) do
   add_index "gameplays", ["user_id"], name: "index_gameplays_on_user_id", using: :btree
 
   create_table "games", force: :cascade do |t|
-    t.string   "name",        limit: 255, default: ""
+    t.string   "name",        default: ""
     t.integer  "campaign_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -163,23 +163,23 @@ ActiveRecord::Schema.define(version: 20150527105705) do
   add_index "rewards", ["campaign_id"], name: "index_rewards_on_campaign_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",                   limit: 255
-    t.string   "confirmation_token",     limit: 255
+    t.string   "name"
+    t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email",      limit: 255
+    t.string   "unconfirmed_email"
     t.integer  "role"
   end
 

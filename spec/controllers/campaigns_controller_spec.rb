@@ -51,8 +51,9 @@ RSpec.describe CampaignsController, type: :controller do
 
   describe "GET toggle_membership" do
     let(:user) { create(:user) }
+    let(:target_user) { create(:user) }
     let(:campaign) { create(:campaign, game_master: user) }
-    subject { get :toggle_membership, id: campaign.id }
+    subject { get :toggle_membership, id: campaign.id, user_id: target_user.id }
 
     context "user is not logged in" do
       it "redirects to sign in page" do
@@ -62,8 +63,9 @@ RSpec.describe CampaignsController, type: :controller do
 
     context "user is logged in" do
       before { sign_in user }
+      let(:campaign) { create(:campaign, users: [user]) }
 
-      context "user is not in campaign" do
+      context "target user is not in campaign" do
         it "adds user to campaign" do
           expect do
             subject
@@ -71,8 +73,8 @@ RSpec.describe CampaignsController, type: :controller do
         end
       end
 
-      context "user is in campaign" do
-        let(:campaign) { create(:campaign, game_master: user, users: [user]) }
+      context "target user is in campaign" do
+        let(:campaign) { create(:campaign, users: [user, target_user]) }
         it "removes user from campaign" do
           expect do
             subject
@@ -80,8 +82,8 @@ RSpec.describe CampaignsController, type: :controller do
         end
       end
 
-      it "redirects to campaign" do
-        expect(subject).to redirect_to campaign
+      it "redirects to manage_member" do
+        expect(subject).to redirect_to campaign_manage_members_path(campaign)
       end
     end
   end
