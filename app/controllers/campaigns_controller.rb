@@ -7,6 +7,7 @@ class CampaignsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def toggle_membership
+    authorize campaign
     new_user = User.find(params[:user_id])
     result = ToggleMembership.new(new_user, campaign).call
     redirect_to campaign_manage_members_path(campaign), result.flash
@@ -20,6 +21,7 @@ class CampaignsController < ApplicationController
   end
 
   def manage_members
+    authorize campaign
   end
 
   def index
