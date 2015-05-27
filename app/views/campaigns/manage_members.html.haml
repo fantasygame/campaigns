@@ -3,6 +3,7 @@
   %tr
     %th Campaign member?
     %th Name
+    %th Email
     %th Joined
     %th
   - users.each do |user|
@@ -12,6 +13,8 @@
           %span.glyphicon.glyphicon-ok
       %td
         = link_to user.name, user_path(user)
+      %td
+        = user.email
       %td
         = user.created_at.strftime('%d.%m.%Y')
       %td
