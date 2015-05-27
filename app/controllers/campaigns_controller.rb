@@ -37,7 +37,6 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    authorize campaign
     CreateCampaign.new(current_user, campaign).call
     respond_with(campaign)
   end

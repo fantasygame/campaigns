@@ -7,10 +7,6 @@ class CampaignPolicy < ApplicationPolicy
     destroy?
   end
 
-  def create?
-    record.member?(user)
-  end
-
   def toggle_membership?
     user.present?
   end
