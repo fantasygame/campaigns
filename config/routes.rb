@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'campaigns#index'
 
   resources :campaigns do
+    get :manage_members
     resources :heroes
     resources :items do
       get :sell

@@ -1,0 +1,21 @@
+%h3 Users
+%table.table
+  %tr
+    %th Campaign member?
+    %th Name
+    %th Joined
+    %th
+  - users.each do |user|
+    %tr
+      %td
+        - if campaign.member?(user)
+          %span.glyphicon.glyphicon-ok
+      %td
+        = link_to user.name, user_path(user)
+      %td
+        = user.created_at.strftime('%d.%m.%Y')
+      %td
+        - unless campaign.member?(user)
+          = link_to 'Add to campaign', toggle_membership_campaign_path(campaign, user_id: user.id), class: 'btn btn-success'
+        - else
+          = link_to 'Remove from campaign', toggle_membership_campaign_path(campaign, user_id: user.id), class: 'btn btn-primary'

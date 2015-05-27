@@ -14,6 +14,11 @@
   - if policy(campaign).new?
     = link_to 'Add game', new_campaign_game_path(campaign), class: 'btn btn-success'
 %p.btn-group
+  - if campaign.game_master?(current_user)
+    = link_to campaign_manage_members_path(campaign), class: 'btn btn-default' do
+      Toggle members
+      &nbsp;
+      %span.glyphicon.glyphicon-leaf
   = link_to show_posts_campaign_path, class: 'btn btn-default' do
     Show all posts
     &nbsp;

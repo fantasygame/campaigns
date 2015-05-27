@@ -1,12 +1,15 @@
 class CampaignsController < ApplicationController
   expose(:campaigns)
   expose(:campaign, attributes: :campaign_params)
+  expose(:user)
+  expose(:users)
   respond_to :html, :json, :xml
   before_action :authenticate_user!, except: [:index, :show]
 
   def toggle_membership
-    result = ToggleMembership.new(current_user, campaign).call
-    redirect_to campaign, result.flash
+    new_user = User.find(params[:user_id])
+    result = ToggleMembership.new(new_user, campaign).call
+    redirect_to campaign_manage_members_path(campaign), result.flash
   end
 
   def change_money
@@ -14,6 +17,9 @@ class CampaignsController < ApplicationController
     campaign.money = campaign.money + params[:campaign][:money_change].to_i
     campaign.save
     redirect_to campaign_items_path
+  end
+
+  def manage_members
   end
 
   def index
