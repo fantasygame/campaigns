@@ -1,4 +1,13 @@
 class CampaignPolicy < ApplicationPolicy
+
+  def create?
+    user.present?
+  end
+
+  def new?
+    create?
+  end
+
   def destroy?
     user == record.game_master
   end

@@ -9,14 +9,14 @@ RSpec.describe CampaignPolicy do
   let(:campaign) { build(:campaign, game_master: game_master, users: [member, game_master]) }
 
   permissions :create? do
-    context "user is a member of campaign" do
+    context "user is signed in" do
       it "grants access" do
-        expect(subject).to permit(member, campaign)
+        expect(subject).to permit(not_member, campaign)
       end
     end
-    context "user isn't a member of campaign" do
+    context "user isn't signed in" do
       it "denies access" do
-        expect(subject).not_to permit(not_member, campaign)
+        expect(subject).not_to permit(nil, campaign)
       end
     end
   end
@@ -33,9 +33,14 @@ RSpec.describe CampaignPolicy do
     end
   end
   permissions :toggle_membership? do
-    context "user is signed in" do
+    context "user is member" do
       it "grants access" do
-        expect(subject).to permit(not_member, campaign)
+        expect(subject).to permit(member, campaign)
+      end
+    end
+    context "user is not member" do
+      it "denies access" do
+        expect(subject).not_to permit(not_member, campaign)
       end
     end
     context "user is not signed in" do
