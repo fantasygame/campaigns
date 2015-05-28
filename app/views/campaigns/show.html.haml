@@ -51,7 +51,7 @@
                   .glyphicon.glyphicon-comment
                   = game.posts.length
               =link_to campaign_game_path(campaign, game) do
-                %span.badge
+                %span.badge{ title: game.heroes_names }
                   .glyphicon.glyphicon-user
                   = game.members_count
             .well-bottom-right

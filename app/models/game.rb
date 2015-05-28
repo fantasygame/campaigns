@@ -14,8 +14,15 @@ class Game < ActiveRecord::Base
   validates :name, presence: true
   validates :date, presence: :true
 
+  def members_heroes
+    heroes.where(user_character: true)
+  end
+
   def members_count
-    members = heroes.where(user_character: true).map(&:user_id)
-    members.uniq.count
+    members_heroes.map(&:user_id).uniq.count
+  end
+
+  def heroes_names
+    heroes.map(&:name).join(', ')
   end
 end
