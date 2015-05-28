@@ -13,48 +13,10 @@ Check out our app [here](http://rpgcampaigns.herokuapp.com/)
 
 The purpose of this app is to manage RPG campaigns.
 
-User can create campaign and games in it. Every user assigned to game will be and asked to contribute. This way we can create nice little campaign weblog.
+Simple app to keep track of pen’n’paper RPG campaigns.
+User can create campaign and games in it. Every user assigned to campaign is notified about new game by email and asked to contribute. He can leave his summary/review of the game or funny quotes. This way we can create nice little campaign weblog. Users can ‘love’ others posts giving them points. For that points they can buy rewards that can help them during game. This is a great motivation to contribute.
 
-## Features
-
-### First release
-* [DONE] Register to Campaigns with confirmation email
-* [DONE] Create campaign with name and description
-* [DONE] Join campaign
-* [DONE] List all campaigns
-* [DONE] Edit campaign
-* [DONE] Delete campaign (delete corresponding games, paranoid)
-* [DONE] Unsubscribe from campaign
-* [DONE] Create games inside campaign (name)
-* [DONE] Show campaign with listed games
-* [DONE] Notify users about new game created (email)
-* [DONE] Create posts in games (text)
-* [DONE] Show game with listed posts
-* [DONE] Edit game
-* [DONE] Edit post
-* [DONE] Delete post (paranoid)
-* [DONE] Delete game (delete corresponding posts, paranoid)
-* [DONE] Show campaign with listed posts
-
-### Future releases
-* [DONE] Thumbs up to posts
-* [DONE] User points
-* [DONE] User points in campaign
-* [DONE] Point for creating post
-* [DONE] Creating and managing rewards
-* [DONE] Spending points on rewards
-* [DONE] User profile
-* Add notifications in fantasygame.pl shoutbox
-* Invite people to register
-* Invite users to campaign (send email)
-* List all invitations
-* Show invitation
-* Accept invitation
-* Cancel invitation
-* Add images to post
-* Add images to campaign
-* Managing inventory, selling
-* User avatar
+Players can also keep track of their characters in games and their equipment.
 
 ## Technologies
 
