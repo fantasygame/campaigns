@@ -21,7 +21,7 @@ class ReclaimItem
   def modify_item
     item.sold_price = 0
     item.sold = false
-    item.hero_id = nil
+    item.hero_id = item.last_owner
     item.save
   end
 end
