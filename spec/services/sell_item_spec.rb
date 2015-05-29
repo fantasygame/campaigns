@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe SellItem, type: :class do
   let(:campaign) { create(:campaign, money: 0) }
   let(:hero) { create(:hero, id: 2) }
-  let(:item) { create(:item, campaign_id: campaign, price: 100, hero_id: hero) }
+  let(:item) { create(:item, campaign_id: campaign, price: 100, hero_id: hero.id) }
 
   before { described_class.new(item, campaign).call }
 
@@ -15,6 +15,9 @@ RSpec.describe SellItem, type: :class do
     expect(campaign.money).to eq 50
   end
 
+  it 'stores owner id' do
+    expect(item.last_owner).to eq 2
+  end
   it 'removes hero from item' do
     expect(item.hero_id).to eq nil
   end
