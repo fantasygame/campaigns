@@ -63,7 +63,7 @@ RSpec.describe CampaignsController, type: :controller do
 
     context "user is logged in" do
       before { sign_in user }
-      let(:campaign) { create(:campaign, users: [user]) }
+      let(:campaign) { create(:campaign, game_master: user, users: [user]) }
 
       context "target user is not in campaign" do
         it "adds user to campaign" do
@@ -74,7 +74,7 @@ RSpec.describe CampaignsController, type: :controller do
       end
 
       context "target user is in campaign" do
-        let(:campaign) { create(:campaign, users: [user, target_user]) }
+        let(:campaign) { create(:campaign, game_master: user, users: [user, target_user]) }
         it "removes user from campaign" do
           expect do
             subject
