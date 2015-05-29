@@ -30,6 +30,7 @@
           /       Sell
           -if item.sold == true
             .glyphicon.glyphicon-ok
+            = link_to 'Reclaim', campaign_item_reclaim_path(campaign, item), class: 'btn btn-default'
         %td= item.name
         %td.price= item.price
         %td.sold= item.sold_price
