@@ -17,14 +17,14 @@ class CampaignPolicy < ApplicationPolicy
   end
 
   def toggle_membership?
-    record.member?(user)
+    destroy?
   end
 
   def manage_members?
-    toggle_membership?
+    destroy?
   end
 
   def change_money?
-    toggle_membership?
+    record.member?(user)
   end
 end
