@@ -16,7 +16,7 @@ RSpec.describe SellItem, type: :class do
   end
 
   it 'stores owner id' do
-    expect(item.last_owner).to eq 2
+    expect(item.last_owner_id).to eq 2
   end
   it 'removes hero from item' do
     expect(item.hero_id).to eq nil
