@@ -11,6 +11,12 @@ class ItemsController < ApplicationController
     redirect_to campaign_items_path(campaign)
   end
 
+  def reclaim
+    authorize item
+    ReclaimItem.new(item, campaign).call
+    redirect_to campaign_items_path(campaign)
+  end
+
   def index
     respond_with(items)
   end

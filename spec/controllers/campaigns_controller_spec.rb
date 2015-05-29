@@ -61,7 +61,7 @@ RSpec.describe CampaignsController, type: :controller do
       end
     end
 
-    context "user is logged in" do
+    context "user game master is logged in" do
       before { sign_in user }
       let(:campaign) { create(:campaign, game_master: user, users: [user]) }
 

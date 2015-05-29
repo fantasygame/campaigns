@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :heroes
     resources :items do
       get :sell
+      get :reclaim
     end
     resources :games, except: [:index] do
       resources :posts, only: [:new, :edit, :create, :update, :destroy] do
