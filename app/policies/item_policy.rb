@@ -22,4 +22,8 @@ class ItemPolicy < ApplicationPolicy
   def sell?
     new?
   end
+
+  def reclaim?
+    new?
+  end
 end

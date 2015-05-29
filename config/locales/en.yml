@@ -47,3 +47,4 @@ en:
       update?: 'You cannot update this item. You have to be member of campaign.'
       create?: 'You cannot add new item. You have to be member of campaign.'
       sell?: 'You cannot sell this item. You have to be member of campaign.'
+      reclaim?: 'You cannot reclaim this item. You have to be member of camapign.'
