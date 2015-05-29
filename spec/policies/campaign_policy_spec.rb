@@ -33,11 +33,13 @@ RSpec.describe CampaignPolicy do
     end
   end
   permissions :toggle_membership? do
-    context "user is member" do
-      it "grants access to game master" do
+    context "user is game master" do
+      it "grants access" do
         expect(subject).to permit(game_master, campaign)
       end
-      it "denies access to member" do
+    end
+    context "user is member" do
+      it "denies access" do
         expect(subject).not_to permit(member, campaign)
       end
     end
