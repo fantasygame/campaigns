@@ -23,4 +23,8 @@ class CampaignPolicy < ApplicationPolicy
   def manage_members?
     toggle_membership?
   end
+
+  def change_money?
+    toggle_membership?
+  end
 end

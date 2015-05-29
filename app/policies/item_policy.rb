@@ -19,7 +19,7 @@ class ItemPolicy < ApplicationPolicy
     edit?
   end
 
-  def sell
+  def sell?
     new?
   end
 end
