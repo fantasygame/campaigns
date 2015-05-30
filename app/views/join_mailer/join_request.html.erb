@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>Hello, <%= @game_master.name %></h2>
+    <p>
+      There is new request from <%= @user.name %> to join <%= @campaign.name %> campaign.
+    </p>
+    <p>
+      More info about user:
+      <h3>
+        <%= link_to @user.name, user_url(@user, only_path: false) %>
+      </h3>
+    </p>
+  </body>
+</html>

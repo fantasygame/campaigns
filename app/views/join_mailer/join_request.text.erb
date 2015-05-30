@@ -1,0 +1,6 @@
+Hello, <%= @game_master.name %>
+===============================================
+
+here is new request from <%= @user.name %> to join <%= @campaign.name %> campaign.
+
+More info about user: <%= link_to @user.name, user_url(@user, only_path: false) %>
