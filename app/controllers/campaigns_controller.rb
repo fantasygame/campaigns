@@ -20,6 +20,11 @@ class CampaignsController < ApplicationController
     redirect_to campaign_items_path
   end
 
+  def join_request
+    JoinMailer.join_request(current_user, campaign).deliver
+    redirect_to campaigns_path
+  end
+
   def manage_members
     authorize campaign
   end
