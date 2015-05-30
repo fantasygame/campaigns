@@ -7,7 +7,7 @@
     %th Description
     %th Game master
 
-  - campaigns.each do |campaign|
+  - campaigns.order(:created_at).each do |campaign|
     %tr
       %td{ style: 'text-align: center' }
         - if campaign.member?(current_user)
