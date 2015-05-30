@@ -22,7 +22,7 @@ class CampaignsController < ApplicationController
 
   def join_request
     JoinMailer.join_request(current_user, campaign).deliver
-    redirect_to campaigns_path
+    redirect_to campaigns_path, notice: "Your request has been sent succesfully."
   end
 
   def manage_members
