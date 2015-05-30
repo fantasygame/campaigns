@@ -11,7 +11,8 @@
 
 .container.hero.well
   .row
-    .col-lg-8
+    .col-lg-5
+      %h3 Hero info:
       .hero-section
         .row
           .col-lg-2
@@ -61,6 +62,13 @@
             Background:
           .col-lg-10
             = simple_format hero.background
+    .col-lg-3
+      %h3 Items:
+      - hero.items.each do |item|
+        %table.table
+          %tr
+            %td= item.name
+            %td= item.price
     .image
       .col-lg-4
         = image_tag(hero.image)
