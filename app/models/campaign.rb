@@ -17,6 +17,16 @@ class Campaign < ActiveRecord::Base
   alias_method :members, :users
   alias_method :members=, :users=
 
+  def played_games(user)
+    played_games = 0
+    games.each do |game|
+      if game.heroes.where(user_id: user.id, user_character: true).count >= 1
+        played_games += 1
+      end
+    end
+    played_games
+  end
+
   def to_s
     name
   end

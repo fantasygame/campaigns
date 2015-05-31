@@ -17,7 +17,9 @@
   %h4 Campaigns:
   %ul
     - user.campaigns.each do |campaign|
-      %li= link_to campaign.name, campaign_path(campaign)
+      %li
+        = link_to campaign.name, campaign_path(campaign)
+        = "played games #{campaign.played_games(user)}."
 .posts
   %h4 Posts:
   - user.campaigns.each do |campaign|
