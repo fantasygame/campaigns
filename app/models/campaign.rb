@@ -11,6 +11,8 @@ class Campaign < ActiveRecord::Base
   has_many :heroes, -> { order(user_character: :desc) }
   has_many :items, -> { order(sold: :asc, updated_at: :desc) }
 
+  scope :sorted_by_create, ->(capaign) { order(created_at: :desc) }
+
   validates :name, presence: :true
   validates :game_master, presence: :true
 
@@ -18,13 +20,15 @@ class Campaign < ActiveRecord::Base
   alias_method :members=, :users=
 
   def played_games(user)
-    played_games = 0
+    played_games = []
     games.each do |game|
       if game.heroes.where(user_id: user.id, user_character: true).count >= 1
-        played_games += 1
+        played_games << game
+      end
+      if game_master?(user)
+        played_games << game
       end
     end
-    played_games
   end
 
   def to_s
