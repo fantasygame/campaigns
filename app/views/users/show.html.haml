@@ -19,7 +19,7 @@
     - user.campaigns.each do |campaign|
       %li
         = link_to campaign.name, campaign_path(campaign)
-        = "played games #{campaign.played_games(user)}."
+        = "played in #{campaign.played_games(user)} games."
 .posts
   %h4 Posts:
   - user.campaigns.each do |campaign|
