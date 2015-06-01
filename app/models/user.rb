@@ -20,6 +20,14 @@ class User < ActiveRecord::Base
     name
   end
 
+  def all_played_games(user)
+    games = []
+    campaigns.each do |campaign|
+      games << campaign.played_games(user)
+    end
+    games.reject(&:empty?).flatten
+  end
+
   def points
     PointsCalculator.new(self).call
   end
