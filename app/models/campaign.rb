@@ -26,6 +26,7 @@ class Campaign < ActiveRecord::Base
         played_games << game
       end
     end
+    played_games
   end
 
   def self.by_created
