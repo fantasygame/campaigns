@@ -22,8 +22,7 @@ class Campaign < ActiveRecord::Base
     games.each do |game|
       if game.heroes.where(user_id: user.id, user_character: true).count >= 1
         played_games << game
-      end
-      if game_master?(user)
+      elsif game_master?(user)
         played_games << game
       end
     end
