@@ -3,6 +3,7 @@
   %tr
     %th Name
     %th Points
+    %th Played games
     %th Joined
   - @users.each do |user|
     %tr
@@ -15,5 +16,7 @@
       %td
         = user.points
         points
+      %td
+        = user.all_played_games(user).count
       %td
         = user.created_at.strftime('%d.%m.%Y')
