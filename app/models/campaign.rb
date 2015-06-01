@@ -14,6 +14,8 @@ class Campaign < ActiveRecord::Base
   validates :name, presence: :true
   validates :game_master, presence: :true
 
+  scope :created, -> { order(created_at: :asc) }
+
   alias_method :members, :users
   alias_method :members=, :users=
 
@@ -27,10 +29,6 @@ class Campaign < ActiveRecord::Base
       end
     end
     played_games
-  end
-
-  def self.by_created
-    all.order(:created_at)
   end
 
   def to_s
