@@ -12,6 +12,9 @@
   .badge
     = user.campaigns.count
     campaings
+  .badge
+    = user.all_played_games(user).count
+    games
 
 .campaigns
   %h4 Campaigns:
