@@ -4,7 +4,7 @@
   .row
     .col-md-2
       %h4 Total money:
-      %h4= campaign.money
+      %h4= link_to campaign.money, campaign_money_history_path(campaign)
     .col-md-2
       = render 'campaigns/form_change_money'
     .col-md-8

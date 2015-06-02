@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :campaigns do
     get :manage_members
     get :join_request
+    get :money_history
     resources :heroes
     resources :items do
       get :sell
