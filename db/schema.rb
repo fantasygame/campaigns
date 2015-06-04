@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604120209) do
+ActiveRecord::Schema.define(version: 20150604214548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,11 +117,12 @@ ActiveRecord::Schema.define(version: 20150604120209) do
   add_index "items", ["hero_id"], name: "index_items_on_hero_id", using: :btree
 
   create_table "money_histories", force: :cascade do |t|
-    t.integer  "money_log"
+    t.integer  "money_before"
     t.integer  "campaign_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "difference"
   end
 
   add_index "money_histories", ["campaign_id"], name: "index_money_histories_on_campaign_id", using: :btree

@@ -1,0 +1,19 @@
+%h1 Campaign money history
+
+.container
+  .row
+    .col-md-6
+      %table.table
+        %tr
+          %th Before
+          %th Change
+          %th After
+          %th Date
+          %th User
+        - money_histories.each do |history|
+          %tr
+            %td= history.money_before
+            %td= history.difference
+            %td= history.money_after
+            %td= history.created_at
+            %td= history.user
