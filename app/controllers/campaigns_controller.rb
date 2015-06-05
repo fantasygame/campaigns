@@ -15,10 +15,8 @@ class CampaignsController < ApplicationController
 
   def change_money
     authorize campaign
-    money_before = campaign.money
-    campaign.money = money_before + params[:campaign][:money_change].to_i
-    campaign.save
-    MoneyHistory.create({money_before: money_before, user: current_user, difference: params[:campaign][:money_change].to_i, campaign: campaign })
+    change = params[:campaign][:money_change].to_i
+    ChangeMoney.new(current_user, campaign, change).call
     redirect_to campaign_items_path
   end
 
