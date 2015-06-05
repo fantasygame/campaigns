@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604214548) do
+ActiveRecord::Schema.define(version: 20150605191730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20150604214548) do
     t.datetime "updated_at",                     null: false
     t.string   "image"
     t.boolean  "user_character", default: false
+    t.integer  "money",          default: 0
   end
 
   add_index "heros", ["campaign_id"], name: "index_heros_on_campaign_id", using: :btree
