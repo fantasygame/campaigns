@@ -15,5 +15,5 @@
             %td= history.money_before
             %td= history.difference
             %td= history.money_after
-            %td= history.created_at
+            %td= history.created_at.strftime("%d-%m-%Y at %H:%M")
             %td= history.user
