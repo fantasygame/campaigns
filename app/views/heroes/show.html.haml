@@ -63,15 +63,15 @@
           .col-lg-10
             = simple_format hero.background
     .col-lg-3
+      %h4= "Money: #{hero.money}"
       %h3 Items:
       - hero.items.each do |item|
         %table.table
           %tr
             %td= item.name
             %td= item.price
-    .image
-      .col-lg-4
-        = image_tag(hero.image)
+    .image.col-lg-4
+      = image_tag(hero.image)
 
 
 = link_to campaign_heroes_path(campaign), class: 'btn btn-default' do
