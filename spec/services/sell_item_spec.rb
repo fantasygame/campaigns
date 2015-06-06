@@ -15,13 +15,6 @@ RSpec.describe SellItem, type: :class do
     expect(campaign.money).to eq 50
   end
 
-  it 'stores owner id' do
-    expect(item.last_owner_id).to eq 2
-  end
-  it 'removes hero from item' do
-    expect(item.hero_id).to eq nil
-  end
-
   it 'marks item as sold' do
     expect(item.sold).to eq true
   end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ReclaimItem, type: :class do
   let(:campaign) { create(:campaign, money: 100) }
   let(:hero) { create(:hero, id: 2) }
-  let(:item) { create(:item, sold: true, sold_price: 100, hero: hero, last_owner_id: 2) }
+  let(:item) { create(:item, sold: true, sold_price: 100, hero: hero) }
 
   before { described_class.new(item, campaign).call }
 
@@ -17,9 +17,5 @@ RSpec.describe ReclaimItem, type: :class do
 
   it 'sets sold to false' do
     expect(item.sold).to eq false
-  end
-
-  it 'sets last owner as owner' do
-    expect(item.hero_id).to eq 2
   end
 end
