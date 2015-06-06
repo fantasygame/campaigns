@@ -7,11 +7,21 @@ class ReclaimItem
   end
 
   def call
-    decrease_campaign_money
+    if item.hero.present?
+      decrease_hero_money
+    else
+      decrease_campaign_money
+    end
     modify_item
   end
 
   private
+
+  def decrease_hero_money
+    hero = item.hero
+    hero.money = hero.money - item.sold_price
+    hero.save
+  end
 
   def decrease_campaign_money
     campaign.money = campaign.money - item.sold_price
