@@ -64,7 +64,9 @@
             = simple_format hero.background
     .image.col-lg-4
       = image_tag(hero.image)
-
+.well
+  %p= "Money: #{hero.money}"
+  = render 'form_change_money'
 .well
   = render partial: 'items/table', locals: { items: hero.items }
 

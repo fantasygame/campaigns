@@ -1,0 +1,8 @@
+= simple_form_for :hero, url: campaign_hero_change_money_url(campaign, hero) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :money_change
+
+  .form-actions
+    = f.button :submit, 'Change'

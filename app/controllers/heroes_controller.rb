@@ -4,6 +4,13 @@ class HeroesController < ApplicationController
   expose(:hero, attributes: :hero_params)
   before_action :authenticate_user!, except: [:show, :index]
 
+  def change_money
+    authorize hero
+    change = params[:hero][:money_change].to_i
+    ChangeMoney.new(current_user, hero, change).call
+    redirect_to campaign_hero_path(campaign, hero), notice: 'Money has been changed'
+  end
+
   def index
   end
 

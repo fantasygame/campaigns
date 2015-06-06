@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     get :manage_members
     get :join_request
     resources :money_history
-    resources :heroes
+    resources :heroes do
+      post :change_money
+    end
     resources :items do
       get :sell
       get :reclaim

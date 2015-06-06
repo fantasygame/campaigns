@@ -18,4 +18,8 @@ class HeroPolicy < ApplicationPolicy
   def destroy?
     edit?
   end
+
+  def change_money?
+    edit?
+  end
 end
