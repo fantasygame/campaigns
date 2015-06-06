@@ -8,10 +8,20 @@ class SellItem
 
   def call
     modify_item
-    increase_campaign_money
+    if item.hero.present?
+      increate_hero_money
+    else
+      increase_campaign_money
+    end
   end
 
   private
+
+  def increate_hero_money
+    hero = item.hero
+    hero.money = hero.money + item.sold_price
+    hero.save
+  end
 
   def increase_campaign_money
     campaign.money = campaign.money + item.sold_price
