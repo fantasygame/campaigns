@@ -20,10 +20,22 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def sell?
-    new?
+    return false if record.sold?
+    hero_item?
   end
 
   def reclaim?
-    new?
+    return false unless record.sold?
+    hero_item?
+  end
+
+  private
+
+  def hero_item?
+    if record.hero.present?
+      record.hero.user == user
+    else
+      new?
+    end
   end
 end
