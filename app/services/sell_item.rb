@@ -21,8 +21,6 @@ class SellItem
   def modify_item
     item.sold_price = (item.price / 2)
     item.sold = true
-    item.last_owner_id = item.hero_id
-    item.hero_id = nil
     item.save
   end
 end

@@ -34,11 +34,7 @@
         %td= item.name
         %td.price= item.price
         %td.sold= item.sold_price
-        %td
-          - if item.hero_id == nil
-            = " "
-          - else
-            = item.hero.name
+        %td= item.hero.try(:name)
         %td
           - if item.sold == false
             = link_to 'Sell', campaign_item_sell_path(campaign, item), class: 'btn btn-warning'
