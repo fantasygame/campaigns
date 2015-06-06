@@ -8,7 +8,7 @@ class ChangeMoney
   end
 
   def call
-    create_money_history if subject.is_a? Campaign
+    create_money_history if subject.is_a?(Campaign) && Flip.on?(:money_history)
     money_change
   end
 

@@ -6,6 +6,6 @@ class Feature < ActiveRecord::Base
   strategy Flip::DeclarationStrategy
   default false
 
-  feature :items,
+  feature :money_history,
     default: false
 end

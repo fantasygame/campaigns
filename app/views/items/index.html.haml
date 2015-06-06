@@ -4,7 +4,11 @@
   .row
     .col-md-2
       %h4 Total money:
-      %h4= link_to campaign.money, campaign_money_history_index_path(campaign)
+      %h4
+        - if feature? :money_history
+          = link_to campaign.money, campaign_money_history_index_path(campaign)
+        - else
+          = campaign.money
     .col-md-2
       = render 'campaigns/form_change_money'
     .col-md-8
