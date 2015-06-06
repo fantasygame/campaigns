@@ -20,6 +20,7 @@
       %h4 Description:
       %p= item.description
 
-= link_to 'Edit', edit_campaign_item_path(campaign, item), class: 'btn btn-primary'
+- if policy(item).edit?
+  = link_to 'Edit', edit_campaign_item_path(campaign, item), class: 'btn btn-primary'
 
 = link_to 'Back', campaign_items_path(campaign), class: 'btn btn-default'

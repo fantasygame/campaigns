@@ -8,15 +8,15 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def edit?
-    new?
+    hero_item?
   end
 
   def update?
-    edit?
+    hero_item?
   end
 
   def destroy?
-    edit?
+    hero_item?
   end
 
   def sell?
