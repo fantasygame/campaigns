@@ -28,9 +28,10 @@
           /   %label
           /     %input.sell{type: "checkbox"}
           /       Sell
-          -if item.sold == true
+          -if item.sold?
             .glyphicon.glyphicon-ok
-            = link_to 'Reclaim', campaign_item_reclaim_path(campaign, item), class: 'btn btn-default'
+            - if policy(item).reclaim?
+              = link_to 'Reclaim', campaign_item_reclaim_path(campaign, item), class: 'btn btn-default'
         %td= item.name
         %td.price= item.price
         %td.sold= item.sold_price
@@ -38,7 +39,7 @@
           - if item.hero.present?
             = link_to item.hero.name, campaign_hero_path(campaign, item.hero)
         %td
-          - if item.sold == false
+          - if !item.sold? && policy(item).sell?
             = link_to 'Sell', campaign_item_sell_path(campaign, item), class: 'btn btn-warning'
         %td
           .btn-group
