@@ -1,0 +1,35 @@
+%table.table
+  %thead
+    %tr
+      %th Sold
+      %th Name
+      %th Price
+      %th Sold for
+      %th Hero
+      %th
+      %th
+
+  %tbody
+    - items.each do |item|
+      %tr
+        %td
+          -if item.sold?
+            .glyphicon.glyphicon-ok
+            - if policy(item).reclaim?
+              = link_to 'Reclaim', campaign_item_reclaim_path(campaign, item), class: 'btn btn-default'
+        %td= item.name
+        %td.price= item.price
+        %td.sold= item.sold_price
+        %td
+          - if item.hero.present?
+            = link_to item.hero.name, campaign_hero_path(campaign, item.hero)
+        %td
+          - if !item.sold? && policy(item).sell?
+            = link_to 'Sell', campaign_item_sell_path(campaign, item), class: 'btn btn-warning'
+        %td
+          .btn-group
+            %span= link_to 'Show', campaign_item_path(campaign, item), class: 'btn btn-default'
+            - if policy(item).edit?
+              %span= link_to 'Edit', edit_campaign_item_path(campaign, item), class: 'btn btn-primary'
+            - if policy(item).destroy?
+              %span= link_to 'Destroy', campaign_item_path(campaign, item), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

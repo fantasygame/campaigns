@@ -11,7 +11,7 @@
 
 .container.hero.well
   .row
-    .col-lg-5
+    .col-lg-8
       %h3 Hero info:
       .hero-section
         .row
@@ -62,17 +62,11 @@
             Background:
           .col-lg-10
             = simple_format hero.background
-    .col-lg-3
-      %h4= "Money: #{hero.money}"
-      %h3 Items:
-      - hero.items.each do |item|
-        %table.table
-          %tr
-            %td= item.name
-            %td= item.price
     .image.col-lg-4
       = image_tag(hero.image)
 
+.well
+  = render partial: 'items/table', locals: { items: hero.items }
 
 = link_to campaign_heroes_path(campaign), class: 'btn btn-default' do
   %span.glyphicon.glyphicon-chevron-left
