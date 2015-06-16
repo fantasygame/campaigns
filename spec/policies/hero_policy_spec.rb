@@ -7,6 +7,7 @@ RSpec.describe HeroPolicy do
   let(:other_member) { create(:user) }
   let(:campaign) { build(:campaign, users: [user, other_member]) }
   let(:hero) { build(:hero, user: user, campaign: campaign) }
+  let(:user_not_member) { build(:user) }
 
   permissions :edit? do
     describe 'user is a member of campaign' do
@@ -29,6 +30,11 @@ RSpec.describe HeroPolicy do
         end
       end
     end
+    describe 'user is not member of campaign' do
+      it 'denies access' do
+        expect(subject).to_not permit(user_not_member, hero)
+      end
+    end
   end
   permissions :new? do
     context 'user is a member of campaign' do
@@ -37,7 +43,6 @@ RSpec.describe HeroPolicy do
       end
     end
     context 'user is not a member of campaign' do
-      let(:user_not_member) { build(:user) }
       it 'denies access' do
         expect(subject).to_not permit(user_not_member, hero)
       end
