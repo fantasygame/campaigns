@@ -8,7 +8,11 @@ class HeroPolicy < ApplicationPolicy
   end
 
   def edit?
-    record.user == user
+    if record.user_character?
+      record.user == user
+    else
+      new?
+    end
   end
 
   def update?
