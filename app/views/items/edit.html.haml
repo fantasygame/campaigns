@@ -2,6 +2,9 @@
 
 = render 'form'
 
-%p
+%p.button-margin
   = link_to 'Show', campaign_item_path(campaign, item), class: 'btn btn-default'
-  = link_to 'Back', campaign_items_path(campaign), class: 'btn btn-default'
+  = link_to campaign_items_path(campaign), class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-chevron-left
+    &nbsp;
+    Back
