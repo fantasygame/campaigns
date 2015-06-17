@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   expose(:item, attributes: :item_params)
-  expose(:items) { campaign.items }
+  expose(:items) { campaign.items.paginate(page: params[:page], per_page: 15) }
   expose(:campaign)
 
   respond_to :html

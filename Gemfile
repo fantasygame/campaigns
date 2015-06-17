@@ -30,6 +30,7 @@ gem 'carrierwave'
 gem "mini_magick"
 gem "gon"
 gem 'paper_trail'
+gem 'will_paginate'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_21]
