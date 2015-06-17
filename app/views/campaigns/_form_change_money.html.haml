@@ -1,8 +1,11 @@
 = simple_form_for :campaign, url: campaign_change_money_url(campaign.id) do |f|
   = f.error_notification
 
-  .form-inputs
-    = f.input :money_change
-
-  .form-actions
-    = f.button :submit, 'Change'
+  .container
+    .row
+      .col-xs-2
+        .form-inputs
+          = f.input :money_change, placeholder: 'Change money', label: false
+      .col-xs-10
+        .form-actions
+          = f.button :submit, 'Change'
