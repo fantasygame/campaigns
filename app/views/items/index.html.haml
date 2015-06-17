@@ -20,5 +20,10 @@
     Back
   = link_to 'New Item', new_campaign_item_path(campaign), class: 'btn btn-success'
 
+.apple_pagination
+  = will_paginate items
+
 = render 'table'
-%br
+
+.apple_pagination
+  = will_paginate items
