@@ -40,6 +40,7 @@ en:
       destroy?: 'This hero is not yours to destroy.'
       edit?: 'This hero is not yours to edit.'
       update?: 'This hero is not yours to update.'
+      change_money?: 'This hero is not yours to update.'
     item_policy:
       new?: 'You cannot add new item. You have to be member of campaign.'
       edit?: 'You cannot edit this item. You have to be member of campaign.'
