@@ -2,144 +2,45 @@ require 'rails_helper'
 require 'pundit/rspec'
 
 RSpec.describe HeroPolicy do
-  subject { described_class }
+  subject { described_class.new(user, hero) }
   let(:user) { create(:user) }
   let(:other_member) { create(:user) }
   let(:campaign) { build(:campaign, users: [user, other_member]) }
   let(:hero) { build(:hero, user: user, campaign: campaign) }
-  let(:user_not_member) { build(:user) }
 
-  permissions :edit? do
-    describe 'user is a member of campaign' do
-      context 'user owns hero' do
-        before { hero.user_character = true }
-        it 'allows user to edit hero' do
-          expect(subject).to permit(user, hero)
-        end
-        it 'denies another member to edit hero' do
-          expect(subject).to_not permit(other_member, hero)
-        end
-      end
-      context 'hero is NPC and all members can edit' do
-        before { hero.user_character = false }
-        it 'allows user to edit hero' do
-          expect(subject).to permit(user, hero)
-        end
-        it 'allows other member of campaign to edit hero' do
-          expect(subject).to permit(other_member, hero)
-        end
-      end
+  context 'for a campaign member' do
+    describe "is hero's owner" do
+      before { hero.user_character = true }
+
+      it { should permits(:new) }
+      it { should permits(:create) }
+      it { should permits(:edit) }
+      it { should permits(:update) }
+      it { should permits(:destroy) }
+      it { should permits(:change_money) }
     end
-    describe 'user is not member of campaign' do
-      it 'denies access' do
-        expect(subject).to_not permit(user_not_member, hero)
-      end
+
+    describe "is not hero's owner" do
+      before { hero.user_character = true }
+      before { hero.user = other_member }
+
+      it { should permits(:new) }
+      it { should permits(:create) }
+      it { should_not permits(:edit) }
+      it { should_not permits(:update) }
+      it { should_not permits(:destroy) }
+      it { should_not permits(:change_money) }
     end
   end
-  permissions :update? do
-    describe 'user is a member of campaign' do
-      context 'user owns hero' do
-        before { hero.user_character = true }
-        it 'allows user to update hero' do
-          expect(subject).to permit(user, hero)
-        end
-        it 'denies another member to update hero' do
-          expect(subject).to_not permit(other_member, hero)
-        end
-      end
-      context 'hero is NPC and all members can update' do
-        before { hero.user_character = false }
-        it 'allows user to update hero' do
-          expect(subject).to permit(user, hero)
-        end
-        it 'allows other member of campaign to update hero' do
-          expect(subject).to permit(other_member, hero)
-        end
-      end
-    end
-    describe 'user is not member of campaign' do
-      it 'denies access' do
-        expect(subject).to_not permit(user_not_member, hero)
-      end
-    end
-  end
-  permissions :destroy? do
-    describe 'user is a member of campaign' do
-      context 'user owns hero' do
-        before { hero.user_character = true }
-        it 'allows user to destroy hero' do
-          expect(subject).to permit(user, hero)
-        end
-        it 'denies another member to destroy hero' do
-          expect(subject).to_not permit(other_member, hero)
-        end
-      end
-      context 'hero is NPC and all members can destroy' do
-        before { hero.user_character = false }
-        it 'allows user to destroy hero' do
-          expect(subject).to permit(user, hero)
-        end
-        it 'allows other member of campaign to destroy hero' do
-          expect(subject).to permit(other_member, hero)
-        end
-      end
-    end
-    describe 'user is not member of campaign' do
-      it 'denies access' do
-        expect(subject).to_not permit(user_not_member, hero)
-      end
-    end
-  end
-  permissions :change_money? do
-    describe 'user is a member of campaign' do
-      context 'user owns hero' do
-        before { hero.user_character = true }
-        it 'allows user to edit hero money' do
-          expect(subject).to permit(user, hero)
-        end
-        it 'denies another member to edit hero money' do
-          expect(subject).to_not permit(other_member, hero)
-        end
-      end
-      context 'hero is NPC and all members can edit' do
-        before { hero.user_character = false }
-        it 'allows user to edit hero money' do
-          expect(subject).to permit(user, hero)
-        end
-        it 'allows other member of campaign to edit hero money' do
-          expect(subject).to permit(other_member, hero)
-        end
-      end
-    end
-    describe 'user is not member of campaign' do
-      it 'denies access' do
-        expect(subject).to_not permit(user_not_member, hero)
-      end
-    end
-  end
-  permissions :new? do
-    context 'user is a member of campaign' do
-      it 'grants access' do
-        expect(subject).to permit(user, hero)
-      end
-    end
-    context 'user is not a member of campaign' do
-      it 'denies access' do
-        expect(subject).to_not permit(user_not_member, hero)
-      end
-    end
-  end
-  permissions :create? do
-    context 'user is a member of campaign' do
-      it 'grants access' do
-        expect(subject).to permit(user, hero)
-      end
-    end
-    context 'user is not a member of campaign' do
-      let(:user_not_member) { build(:user) }
-      it 'denies access' do
-        expect(subject).to_not permit(user_not_member, hero)
-      end
-    end
+  context 'for not campaign member' do
+    before { campaign.users = [other_member] }
+    before { hero.user = other_member }
+
+    it { should_not permits(:new) }
+    it { should_not permits(:create) }
+    it { should_not permits(:edit) }
+    it { should_not permits(:update) }
+    it { should_not permits(:destroy) }
+    it { should_not permits(:change_money) }
   end
 end
