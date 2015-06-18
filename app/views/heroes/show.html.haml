@@ -9,70 +9,74 @@
   %b Player:
   = hero.user.name
 
-.container.hero.well
-  .row
-    .col-lg-8
-      %h3 Hero info:
-      .hero-section
-        .row
-          .col-lg-2
-            Name:
-          .col-lg-10
-            = hero.name
-        .row
-          .col-lg-2
-            Titles:
-          .col-lg-10
-            = simple_format hero.titles
-        .row
-          .col-lg-2
-            Archetype:
-          .col-lg-10
-            = simple_format hero.archetype
-      .hero-section
-        .row
-          .col-lg-2
-            Race:
-          .col-lg-10
-            = hero.race
-        .row
-          .col-lg-2
-            Alignment:
-          .col-lg-10
-            = hero.alignment
-        .row
-          .col-lg-2
-            Deity:
-          .col-lg-10
-            = hero.deity
-      .hero-section
-        .row
-          .col-lg-2
-            Appearance:
-          .col-lg-10
-            = simple_format hero.appearance
-        .row
-          .col-lg-2
-            Mechanics:
-          .col-lg-10
-            = simple_format hero.mechanics
-      .hero-section
-        .row
-          .col-lg-2
-            Background:
-          .col-lg-10
-            = simple_format hero.background
-    .image.col-lg-4
-      = image_tag(hero.image)
+- if items.size > 0
+  .well
+    .apple_pagination
+      = will_paginate items
+    = render partial: 'items/table', locals: { items: items }
+    .apple_pagination
+      = will_paginate items
+
 .well
   %p= "Money: #{hero.money}"
   = render 'form_change_money'
+
 .well
-  .apple_pagination
-    = will_paginate items
-  = render partial: 'items/table', locals: { items: items }
-  .apple_pagination
-    = will_paginate items
+  .container.hero
+    .row
+      .col-lg-8
+        %h3 Hero info:
+        .hero-section
+          .row
+            .col-lg-2
+              Name:
+            .col-lg-10
+              = hero.name
+          .row
+            .col-lg-2
+              Titles:
+            .col-lg-10
+              = simple_format hero.titles
+          .row
+            .col-lg-2
+              Archetype:
+            .col-lg-10
+              = simple_format hero.archetype
+        .hero-section
+          .row
+            .col-lg-2
+              Race:
+            .col-lg-10
+              = hero.race
+          .row
+            .col-lg-2
+              Alignment:
+            .col-lg-10
+              = hero.alignment
+          .row
+            .col-lg-2
+              Deity:
+            .col-lg-10
+              = hero.deity
+        .hero-section
+          .row
+            .col-lg-2
+              Appearance:
+            .col-lg-10
+              = simple_format hero.appearance
+          .row
+            .col-lg-2
+              Mechanics:
+            .col-lg-10
+              = simple_format hero.mechanics
+        .hero-section
+          .row
+            .col-lg-2
+              Background:
+            .col-lg-10
+              = simple_format hero.background
+      .image.col-lg-4
+        = image_tag(hero.image)
 
 = link_to campaign_heroes_path(campaign), class: 'btn btn-default' do
   %span.glyphicon.glyphicon-chevron-left
