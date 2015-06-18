@@ -2,6 +2,7 @@ class HeroesController < ApplicationController
   expose(:campaign)
   expose(:heroes) { campaign.heroes }
   expose(:hero, attributes: :hero_params)
+  expose(:items) { hero.items.paginate(page: params[:page], per_page: 10) }
   before_action :authenticate_user!, except: [:show, :index]
 
   def change_money

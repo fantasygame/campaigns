@@ -68,7 +68,11 @@
   %p= "Money: #{hero.money}"
   = render 'form_change_money'
 .well
-  = render partial: 'items/table', locals: { items: hero.items }
+  .apple_pagination
+    = will_paginate items
+  = render partial: 'items/table', locals: { items: items }
+  .apple_pagination
+    = will_paginate items
 
 = link_to campaign_heroes_path(campaign), class: 'btn btn-default' do
   %span.glyphicon.glyphicon-chevron-left
