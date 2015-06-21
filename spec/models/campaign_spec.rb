@@ -29,4 +29,77 @@ RSpec.describe Campaign, type: :model do
       end
     end
   end
+
+  describe "#played_games" do
+    let(:user) { create(:user) }
+    let(:npc) { create(:hero, user: user, user_character: false) }
+    let(:user_character) { create(:hero, user: user, user_character: true) }
+    let(:second_user_character) { create(:hero, user: user, user_character: true) }
+    let(:other_user_character) { create(:hero, user: create(:user), user_character: true) }
+    let!(:first_game) { create(:game, name: 'Game 1', campaign: campaign, date: 1.week.ago) }
+    let!(:second_game) { create(:game, name: 'Game 2', campaign: campaign, date: 1.day.ago) }
+
+    context "user is not a game master" do
+      context "user character played in first game" do
+        it "returns first game" do
+          first_game.heroes << user_character
+          expect(campaign.played_games(user)).to eq [first_game]
+        end
+      end
+
+      context "user character played in both games" do
+        it "returns both games sorted by date descending" do
+          first_game.heroes << user_character
+          second_game.heroes << user_character
+          expect(campaign.played_games(user)).to eq [second_game, first_game]
+        end
+      end
+
+      context "user character played in one game, npc character played in second" do
+        it "returns first game" do
+          first_game.heroes << user_character
+          second_game.heroes << npc
+          expect(campaign.played_games(user)).to eq [first_game]
+        end
+      end
+
+      context "other user character played in game" do
+        it "returns empty array" do
+          first_game.heroes << other_user_character
+          expect(campaign.played_games(user)).to eq []
+        end
+      end
+
+      context "npc player played games" do
+        it "returns empty array" do
+          first_game.heroes << npc
+          second_game.heroes << npc
+          expect(campaign.played_games(user)).to eq []
+        end
+      end
+
+      context "two user characters played in game" do
+        it "returns only one first game" do
+          first_game.heroes << user_character
+          first_game.heroes << second_user_character
+          expect(campaign.played_games(user)).to eq [first_game]
+        end
+      end
+    end
+
+    context "user is game master" do
+      subject(:campaign) { build(:campaign, game_master: user) }
+
+      it "returns all campaign games" do
+        expect(campaign.played_games(user)).to eq [second_game, first_game]
+      end
+
+      context "game masters user hero played in game" do
+        it "returns only one first game" do
+          first_game.heroes << user_character
+          expect(campaign.played_games(user)).to eq [second_game, first_game]
+        end
+      end
+    end
+  end
 end
