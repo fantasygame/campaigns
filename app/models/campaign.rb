@@ -21,15 +21,8 @@ class Campaign < ActiveRecord::Base
   alias_method :members=, :users=
 
   def played_games(user)
-    played_games = []
-    games.each do |game|
-      if game.heroes.where(user_id: user.id, user_character: true).count >= 1
-        played_games << game
-      elsif game_master?(user)
-        played_games << game
-      end
-    end
-    played_games
+    return games if game_master?(user)
+    games.select { |game| game.played?(user) }
   end
 
   def to_s

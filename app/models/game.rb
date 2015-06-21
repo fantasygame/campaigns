@@ -25,4 +25,8 @@ class Game < ActiveRecord::Base
   def heroes_names
     heroes.map(&:name).join(', ')
   end
+
+  def played?(user)
+    heroes.exists?(user: user, user_character: true)
+  end
 end
