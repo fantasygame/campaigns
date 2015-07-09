@@ -23,6 +23,7 @@ class IdeasController < ApplicationController
   end
 
   def create
+    idea.user = current_user
     idea.save
     redirect_to campaign_ideas_path(campaign), notice: 'Idea has been succesfully created!'
   end
