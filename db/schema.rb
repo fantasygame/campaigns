@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618093847) do
+ActiveRecord::Schema.define(version: 20150709112838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,18 @@ ActiveRecord::Schema.define(version: 20150618093847) do
 
   add_index "heros", ["campaign_id"], name: "index_heros_on_campaign_id", using: :btree
   add_index "heros", ["user_id"], name: "index_heros_on_user_id", using: :btree
+
+  create_table "ideas", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.integer  "campaign_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "ideas", ["campaign_id"], name: "index_ideas_on_campaign_id", using: :btree
+  add_index "ideas", ["user_id"], name: "index_ideas_on_user_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -226,6 +238,8 @@ ActiveRecord::Schema.define(version: 20150618093847) do
   add_foreign_key "comments", "users"
   add_foreign_key "heros", "campaigns"
   add_foreign_key "heros", "users"
+  add_foreign_key "ideas", "campaigns"
+  add_foreign_key "ideas", "users"
   add_foreign_key "items", "campaigns"
   add_foreign_key "items", "heros"
   add_foreign_key "money_histories", "campaigns"
