@@ -17,6 +17,11 @@ class IdeasController < ApplicationController
     redirect_to campaign_ideas_path(campaign)
   end
 
+  def destroy
+    idea.destroy
+    redirect_to campaign_ideas_path(campaign), notice: 'Idea has been destroyed'
+  end
+
   private
 
   def idea_params
