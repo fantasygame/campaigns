@@ -19,7 +19,7 @@ class IdeasController < ApplicationController
 
   def destroy
     idea.destroy
-    redirect_to campaign_ideas_path(campaign), notice: 'Idea has been destroyed'
+    redirect_to campaign_ideas_path(campaign), alert: 'Idea has been destroyed'
   end
 
   def create
