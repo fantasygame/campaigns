@@ -27,5 +27,12 @@
     .col-md-1
       =link_to 'New Idea', new_campaign_idea_path(campaign), class: 'btn btn-success'
     .col-md-11
+  .row
+    .col-md-1.table-margin
+      =link_to campaign_path(campaign), class: 'btn btn-default' do
+        %span.glyphicon.glyphicon-chevron-left
+        &nbsp;
+        Back
+    .col-md-11
 
 
