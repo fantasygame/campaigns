@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get :sell
       get :reclaim
     end
+    resources :ideas
     resources :games, except: [:index] do
       resources :posts, only: [:new, :edit, :create, :update, :destroy] do
         resources :comments, only: [:new, :edit, :create, :update, :destroy]
