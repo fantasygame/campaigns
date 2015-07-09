@@ -22,6 +22,11 @@ class IdeasController < ApplicationController
     redirect_to campaign_ideas_path(campaign), notice: 'Idea has been destroyed'
   end
 
+  def create
+    idea.save
+    redirect_to campaign_ideas_path(campaign), notice: 'Idea has been succesfully created!'
+  end
+
   private
 
   def idea_params
