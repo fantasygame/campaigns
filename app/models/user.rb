@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :campaignplays
   has_many :votes, through: :posts
   has_many :money_histories
+  has_many :ideas
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, if: :new_record?
 
