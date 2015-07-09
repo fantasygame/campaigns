@@ -12,6 +12,11 @@ class IdeasController < ApplicationController
   def show
   end
 
+  def update
+    idea.update(idea_params)
+    redirect_to campaign_ideas_path(campaign)
+  end
+
   private
 
   def idea_params
