@@ -1,0 +1,27 @@
+.well
+
+  .container
+    .row
+      .col-md-1
+      .col-md-10
+        %h4= "Campaign #{idea.campaign}"
+      .col-md-1
+    .row
+      .col-md-1
+      .col-md-10
+        %h2= idea.title
+      .col-md-1
+    .row
+      .col-md-1
+      .col-md-10
+        .jumbotron
+          = idea.description
+      .col-md-1
+    .row
+      .col-md-1
+      .col-md-10
+        =link_to campaign_ideas_path(campaign), class: 'btn btn-default' do
+          %span.glyphicon.glyphicon-chevron-left
+          &nbsp;
+          Back
+      .col-md-1
