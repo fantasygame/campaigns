@@ -1,0 +1,19 @@
+= simple_form_for([campaign, idea]) do |f|
+  = f.error_notification
+
+  .container.table-margin
+    .form-inputs
+      .row
+        .col-md-1
+        .col-md-10
+          = f.input :title
+        .col-md-1
+      .row
+        .col-md-1
+        .col-md-10
+          = f.input :description
+        .col-md-1
+      .row
+        .col-md-1
+        .col-md-11
+          =f.submit
