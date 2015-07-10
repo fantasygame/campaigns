@@ -1,21 +1,28 @@
 class IdeaPolicy < ApplicationPolicy
   def new?
+    record.campaign.member?(user)
   end
 
   def create?
+    new?
   end
 
   def update?
+    record.user == user || record.campaign.game_master?(user)
   end
 
   def edit?
+    update?
   end
 
   def destroy?
+    update?
+  end
+
+  def show?
+    update?
   end
 
   def index?
-    user.present?
   end
-
 end

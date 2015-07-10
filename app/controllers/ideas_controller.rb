@@ -33,5 +33,4 @@ class IdeasController < ApplicationController
   def idea_params
     params.require(:idea).permit(:title, :description, :id, :campaign, :user)
   end
-
 end
