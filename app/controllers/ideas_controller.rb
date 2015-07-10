@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   expose(:idea, attributes: :idea_params)
-  expose(:ideas) { campaign.ideas }
+  expose(:ideas) { campaign.user_accessible_ideas(current_user) }
   expose(:campaign)
   expose(:campaigns)
   expose(:user)
@@ -33,4 +33,5 @@ class IdeasController < ApplicationController
   def idea_params
     params.require(:idea).permit(:title, :description, :id, :campaign, :user)
   end
+
 end

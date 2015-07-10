@@ -49,4 +49,14 @@ class Campaign < ActiveRecord::Base
   def game_master?(user)
     game_master == user
   end
+
+  def user_accessible_ideas(user)
+    if game_master?(user)
+      ideas
+    elsif member?(user)
+      ideas.where(user: user)
+    else
+      []
+    end
+  end
 end
