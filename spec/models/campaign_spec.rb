@@ -102,4 +102,24 @@ RSpec.describe Campaign, type: :model do
       end
     end
   end
+
+  describe "#user_accessible_ideas" do
+    let(:master) { create(:user) }
+    let(:user) { create(:user) }
+    let(:campaign) { create(:campaign, game_master: master) }
+    let(:idea) { create(:idea, campaign: campaign, user: master) }
+    let(:users_idea) { create(:idea, campaign: campaign, user: user) }
+
+    context "user is a game master" do
+      it "returns all ideas for campaign" do
+        expect(campaign.ideas).to eq [idea, users_idea]
+      end
+    end
+
+    context "user is not a game master" do
+      it "returns only user's idea" do
+        expect(campaign.ideas).to eq [users_idea]
+      end
+    end
+  end
 end
