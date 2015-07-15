@@ -17,6 +17,7 @@ RSpec.describe IdeaPolicy do
       it { should permits(:edit) }
       it { should permits(:destroy) }
       it { should permits(:show) }
+      it { should_not permits(:toggle_interesting) }
     end
     describe 'idea does not belong to user and user is not game master' do
       subject { described_class.new(user2, idea) }
@@ -27,6 +28,7 @@ RSpec.describe IdeaPolicy do
       it { should_not permits(:edit) }
       it { should_not permits(:destroy) }
       it { should_not permits(:show) }
+      it { should_not permits(:toggle_interesting) }
     end
     describe 'user is a game master' do
       before { idea.user = user2 }
@@ -38,6 +40,7 @@ RSpec.describe IdeaPolicy do
       it { should permits(:edit) }
       it { should permits(:destroy) }
       it { should permits(:show) }
+      it { should permits(:toggle_interesting) }
     end
   end
 
@@ -50,5 +53,6 @@ RSpec.describe IdeaPolicy do
     it { should_not permits(:edit) }
     it { should_not permits(:destroy) }
     it { should_not permits(:show) }
+    it { should_not permits(:toggle_interesting) }
   end
 end
