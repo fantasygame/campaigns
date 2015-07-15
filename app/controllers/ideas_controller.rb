@@ -16,6 +16,16 @@ class IdeasController < ApplicationController
     end
   end
 
+  def toggle_used
+    authorize idea
+    idea.used = !idea.used
+    if idea.save
+      redirect_to :back
+    else
+      redirect_to :back
+    end
+  end
+
   def index
   end
 
