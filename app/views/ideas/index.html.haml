@@ -14,11 +14,12 @@
       %tr
         .row
           %td.col-md-1
-            = link_to campaign_idea_toggle_interesting_path(campaign, idea), class: 'checkbox' do
-              - if idea.interesting == true
-                .glyphicon.glyphicon-check.checkbox
-              - else
-                .glyphicon.glyphicon-unchecked.checkbox
+            - if policy(idea).toggle_interesting?
+              = link_to campaign_idea_toggle_interesting_path(campaign, idea), class: 'checkbox' do
+                - if idea.interesting == true
+                  .glyphicon.glyphicon-check.checkbox
+                - else
+                  .glyphicon.glyphicon-unchecked.checkbox
           %td.col-md-7
             = idea.title
           %td.col-md-1
