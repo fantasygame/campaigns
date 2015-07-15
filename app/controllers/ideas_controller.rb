@@ -1,6 +1,8 @@
 class IdeasController < ApplicationController
   expose(:idea, attributes: :idea_params)
-  expose(:ideas) { campaign.user_accessible_ideas(current_user).order(interesting: :desc) }
+  expose(:ideas) do
+    campaign.user_accessible_ideas(current_user).order(used: :asc, interesting: :desc)
+  end
   expose(:campaign)
   expose(:campaigns)
   expose(:user)
