@@ -7,7 +7,7 @@ class PointsCalculator
   end
 
   def call
-    posts_points + vote_points
+    posts_points + vote_points + interesting_idea_points + used_idea_points
   end
 
   private
@@ -25,6 +25,30 @@ class PointsCalculator
       user.votes.count
     else
       (user.votes.select { |vote| vote.campaign == campaign }).count
+    end
+  end
+
+  def interesting_idea_points
+    if campaign.game_master?(user)
+      0
+    else
+      if campaign.blank?
+        user.ideas.where(interesting: true).count
+      else
+        campaign.ideas.where(user: user, interesting: true).count
+      end
+    end
+  end
+
+  def used_idea_points
+    if campaign.game_master?(user)
+      0
+    else
+      if campaign.blank?
+        user.ideas.where(used: true).count
+      else
+        campaign.ideas.where(user: user, used: true).count
+      end
     end
   end
 end
