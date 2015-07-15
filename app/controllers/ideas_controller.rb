@@ -20,19 +20,31 @@ class IdeasController < ApplicationController
   end
 
   def show
+    authorize idea
+  end
+
+  def edit
+    authorize idea
+  end
+
+  def new
+    authorize idea
   end
 
   def update
+    authorize idea
     idea.update(idea_params)
     redirect_to campaign_ideas_path(campaign)
   end
 
   def destroy
+    authorize idea
     idea.destroy
     redirect_to campaign_ideas_path(campaign), notice: 'Idea has been destroyed'
   end
 
   def create
+    authorize idea
     idea.user = current_user
     idea.save
     redirect_to campaign_ideas_path(campaign), notice: 'Idea has been succesfully created!'
