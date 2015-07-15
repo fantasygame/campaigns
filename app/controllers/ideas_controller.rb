@@ -6,6 +6,16 @@ class IdeasController < ApplicationController
   expose(:user)
   before_action :authenticate_user!
 
+  def toggle_interesting
+    authorize idea
+    idea.interesting = !idea.interesting
+    if idea.save
+      redirect_to :back
+    else
+      redirect_to :back
+    end
+  end
+
   def index
   end
 

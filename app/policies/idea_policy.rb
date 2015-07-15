@@ -25,4 +25,8 @@ class IdeaPolicy < ApplicationPolicy
 
   def index?
   end
+
+  def toggle_interesting?
+    record.campaign.game_master?(user)
+  end
 end
