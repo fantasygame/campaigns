@@ -3,6 +3,8 @@
   %h4= "for campaign #{campaign.name}"
 
 .container
+  .apple_pagination
+    = will_paginate ideas
   %table.table.table-margin
     %tr
       .row
@@ -39,6 +41,9 @@
     .col-md-1
       =link_to 'New Idea', new_campaign_idea_path(campaign), class: 'btn btn-success'
     .col-md-11
+  .row
+    .apple_pagination
+      = will_paginate ideas
   .row
     .col-md-1.table-margin
       =link_to campaign_path(campaign), class: 'btn btn-default' do
