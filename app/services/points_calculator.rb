@@ -29,26 +29,18 @@ class PointsCalculator
   end
 
   def interesting_idea_points
-    if campaign.game_master?(user)
-      0
+    if campaign.blank?
+      user.ideas.where(interesting: true).count
     else
-      if campaign.blank?
-        user.ideas.where(interesting: true).count
-      else
-        campaign.ideas.where(user: user, interesting: true).count
-      end
+      campaign.ideas.where(user: user, interesting: true).count
     end
   end
 
   def used_idea_points
-    if campaign.game_master?(user)
-      0
+    if campaign.blank?
+      user.ideas.where(used: true).count
     else
-      if campaign.blank?
-        user.ideas.where(used: true).count
-      else
-        campaign.ideas.where(user: user, used: true).count
-      end
+      campaign.ideas.where(user: user, used: true).count
     end
   end
 end
