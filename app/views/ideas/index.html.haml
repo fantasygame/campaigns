@@ -1,10 +1,14 @@
 %h1 Ideas
 %span
   %h4= "for campaign #{campaign.name}"
+%p
+  = render 'search_form'
 
 .container
-  .apple_pagination
-    = will_paginate ideas
+  .row
+    .col-md-12
+      .apple_pagination
+        = will_paginate ideas
   %table.table.table-margin
     %tr
       .row
