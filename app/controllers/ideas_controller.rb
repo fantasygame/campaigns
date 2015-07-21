@@ -1,8 +1,8 @@
 class IdeasController < ApplicationController
   expose(:idea, attributes: :idea_params)
   expose(:ideas) do
-    campaign.user_accessible_ideas(current_user).order(used: :asc, interesting: :desc)
-      .paginate(page: params[:page], per_page: 5)
+    campaign.user_accessible_ideas(current_user).search(params[:search])
+      .order(used: :asc, interesting: :desc).paginate(page: params[:page], per_page: 5)
   end
   expose(:campaign)
   expose(:campaigns)
