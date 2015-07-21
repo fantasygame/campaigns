@@ -9,7 +9,7 @@ class Idea < ActiveRecord::Base
   def self.search(search)
     if search
       search = "%#{search}%"
-      Idea.all.where('title LIKE ? OR description LIKE ?', search, search).all
+      Idea.all.where('title LIKE ? OR description LIKE ?', search, search)
     else
       Idea.all
     end
