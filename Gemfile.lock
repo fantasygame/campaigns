@@ -52,6 +52,10 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
+    bootsy (2.1.0)
+      carrierwave (~> 0.10)
+      mini_magick (~> 4.0)
+      remotipart (~> 1.2)
     builder (3.2.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -260,6 +264,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.2.0)
     ref (1.0.5)
+    remotipart (1.2.1)
     request_store (1.1.0)
     responders (2.0.2)
       railties (>= 4.2.0.alpha, < 5)
@@ -365,6 +370,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bootsy
   capybara
   carrierwave
   codeclimate-test-reporter
