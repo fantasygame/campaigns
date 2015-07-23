@@ -66,6 +66,6 @@ class IdeasController < ApplicationController
   private
 
   def idea_params
-    params.require(:idea).permit(:title, :description, :id, :campaign, :user)
+    params.require(:idea).permit(:title, :description, :id, :campaign, :user, :bootsy_image_gallery_id)
   end
 end
