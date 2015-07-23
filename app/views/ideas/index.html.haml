@@ -27,6 +27,11 @@
                   .glyphicon.glyphicon-check.checkbox
                 - else
                   .glyphicon.glyphicon-unchecked.checkbox
+            - else
+              - if idea.interesting == true
+                .glyphicon.glyphicon-check.checkbox
+              - else
+                .glyphicon.glyphicon-unchecked.checkbox
           %td.col-md-7.title-link
             = link_to idea.title, campaign_idea_path(campaign, idea)
           %td.col-md-1
