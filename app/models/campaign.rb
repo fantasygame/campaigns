@@ -13,8 +13,7 @@ class Campaign < ActiveRecord::Base
   has_many :money_histories
   has_many :ideas
 
-  validates :name, presence: :true
-  validates :game_master, presence: :true
+  validates :name, :game_master, presence: :true
 
   scope :created, -> { order(created_at: :asc) }
 

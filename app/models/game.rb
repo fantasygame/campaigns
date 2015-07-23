@@ -10,9 +10,7 @@ class Game < ActiveRecord::Base
   has_many :heroes, -> { order(user_character: :desc) }, through: :players
   has_many :players
 
-  validates :campaign, presence: true
-  validates :name, presence: true
-  validates :date, presence: :true
+  validates :campaign, :name, :date, presence: true
 
   def members_heroes
     heroes.where(user_character: true)
