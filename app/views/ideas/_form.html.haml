@@ -1,5 +1,6 @@
 = simple_form_for([campaign, idea]) do |f|
   = f.error_notification
+  / = f.bootsy_area(:body, class: 'bg-code').html_safe
 
   .container.table-margin
     .row
@@ -11,12 +12,12 @@
       .row
         .col-md-1
         .col-md-10
-          = f.input :title
+          = f.input :title, label: false, placeholder: "Title"
         .col-md-1
       .row
         .col-md-1
         .col-md-10
-          = f.input :description
+          = f.input :description, as: :bootsy, label: false, placeholder: "Description", input_html: { style: 'min-height: 20em;' }
         .col-md-1
       .row
         .col-md-1
