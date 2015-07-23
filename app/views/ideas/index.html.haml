@@ -1,9 +1,7 @@
 %h1 Ideas
 %span
   %h4= "for campaign #{campaign.name}"
-%p
-  - if ideas.present?
-    = render 'search_form'
+  %p= render 'search_form'
 
 .container
   .row
