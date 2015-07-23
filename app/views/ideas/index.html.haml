@@ -29,7 +29,11 @@
                   .glyphicon.glyphicon-unchecked.checkbox
             - else
               - if idea.interesting == true
-                .glyphicon.glyphicon-check.checkbox
+                - if idea.used == true
+                  .glyphicon.glyphicon-check.checkbox
+                  .glyphicon.glyphicon-star.checkbox
+                -else
+                  .glyphicon.glyphicon-check.checkbox
               - else
                 .glyphicon.glyphicon-unchecked.checkbox
           %td.col-md-7.title-link
