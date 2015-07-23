@@ -1,3 +1,7 @@
 = form_tag campaign_ideas_path(campaign), method: 'get' do |f|
-  = text_field_tag :search, params[:search]
-  = submit_tag "Search", name: nil, class: 'btn btn-default'
+  .container
+    .row
+      .col-md-3
+        = text_field_tag :search, params[:search], class: 'form-control'
+      .col-md-9
+        = submit_tag "Search", name: nil, class: 'btn btn-default'
