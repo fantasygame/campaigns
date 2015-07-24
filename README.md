@@ -15,6 +15,7 @@ Simple app to keep track of pen’n’paper RPG campaigns.
 User can create campaign and games in it. Every user assigned to campaign is notified about new game by email and asked to contribute. He can leave his summary/review of the game or funny quotes. This way we can create nice little campaign weblog. Users can ‘love’ others posts giving them points. For that points they can buy rewards that can help them during game. This is a great motivation to contribute.
 
 Players can also keep track of their characters in games and their equipment.
+They can also propose their ideas to game master and earn points that way.
 
 ## Technologies
 
