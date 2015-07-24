@@ -1,0 +1,4 @@
+Hello, <%= @game_master.name %>
+===============================================
+
+here is new idea <%= link_to @idea.title, campaign_idea_path(@campaign, @idea, only_path: false) %> in <%= @campaign.name %> campaign.
