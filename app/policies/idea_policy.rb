@@ -33,4 +33,8 @@ class IdeaPolicy < ApplicationPolicy
   def toggle_used?
     toggle_interesting?
   end
+
+  def toggle_visible?
+    toggle_interesting?
+  end
 end
