@@ -1,13 +1,11 @@
 # Campaigns
-![alt tag](http://oi58.tinypic.com/2nv8n61.jpg)
+![alt tag](http://i62.tinypic.com/eqe5bq.png)
 
 [![](http://img.shields.io/travis/fantasygame/campaigns.svg?style=flat-square)](https://travis-ci.org/fantasygame/campaigns)
 [![](http://img.shields.io/codeclimate/github/fantasygame/campaigns.svg?style=flat-square)](https://codeclimate.com/github/fantasygame/campaigns)
 [![](http://img.shields.io/codeclimate/coverage/github/fantasygame/campaigns.svg?style=flat-square)](https://codeclimate.com/github/fantasygame/campaigns)
 
-### Heroku
-
-Check out our app [here](http://rpgcampaigns.herokuapp.com/)
+## [Check out our app](http://rpgcampaigns.herokuapp.com/)
 
 ## General info
 
@@ -31,22 +29,42 @@ Players can also keep track of their characters in games and their equipment.
 * Code Climate quality check
 
 ## Setup
+### Clone repository
+`git clone git@github.com:fantasygame/campaigns.git`
 
-> Create postgresql superuser campaigns
+### Download gems
+`bundle install`
 
-> cp config/database.example.yml config/database.yml
+### Install database (postgresql)
 
-> cp config/application.example.yml config/application.yml
+Ubuntu: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04
 
-> rake db:setup
+OSX: http://postgresapp.com/
+
+### Create postgresql superuser campaigns.
+
+To do that you can use interactive psql command
+`createuser --interactive`
+
+### Copy config
+`cp config/database.example.yml config/database.yml`
+
+`cp config/application.example.yml config/application.yml`
+
+### Setup database
+`rake db:setup`
 
 ## Tests
-
 We use RSpec 3 for backend testing.
 
-## Notes
-
-Please follow Ruby style guide available [here](https://github.com/bbatsov/ruby-style-guide).
+## Development (fantasygame team)
+* Make sure that you have your email and name set in git on your machine. It won't recognize your commits if you don't do this. https://help.github.com/articles/setting-your-email-in-git/
+* Make sure to connect your machine to github by ssh https://help.github.com/articles/generating-ssh-keys/
+* Don't fork the project. We use one-repo single-branch approach for rapid development.
+* Every commit is reviewed by the other team member. Make sure to fix any issue that is found.
+* We use rubocop to mantain high code quality. Make sure to follow its advices. Install rubocop plugin to your editor.
+* Make your best to write tests for your code. You can check code coverage in codeclimate.
+* We don't like merge commits. Use rebase. `bash git config --global branch.autosetuprebase always `
 
 ## Contributing
 
@@ -56,6 +74,7 @@ If you make improvements to this application, please share with others.
 * Make your feature addition or bug fix.
 * Commit with Git.
 * Send the author a pull request.
+* Please follow Ruby style guide available [here](https://github.com/bbatsov/ruby-style-guide) and rubocop.yml
 
 If you add functionality to this application, create an alternative
 implementation, or build an application that is similar, please contact
@@ -67,6 +86,5 @@ MIT (in LICENCE file)
 
 ## Authors
 
-* Jakub Kubacki
 * Małgorzata Grobelska
-* Dawid Roszkiewicz
+* Jakub Kubacki
