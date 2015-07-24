@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :ideas do
       get :toggle_used
       get :toggle_interesting
+      get :toggle_visible
     end
     resources :games, except: [:index] do
       resources :posts, only: [:new, :edit, :create, :update, :destroy] do

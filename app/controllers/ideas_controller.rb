@@ -19,6 +19,16 @@ class IdeasController < ApplicationController
     end
   end
 
+  def toggle_visible
+    authorize idea
+    idea.visible = !idea.visible
+    if idea.save
+      redirect_to :back
+    else
+      redirect_to :back
+    end
+  end
+
   def toggle_used
     authorize idea
     idea.used = !idea.used
