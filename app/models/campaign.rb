@@ -53,7 +53,7 @@ class Campaign < ActiveRecord::Base
     if game_master?(user)
       ideas
     elsif member?(user)
-      ideas.where(user: user)
+      ideas.where("user_id = ? OR visible = ?", user, true)
     else
       []
     end
