@@ -46,7 +46,7 @@
               - if idea.visible == true
                 .glyphicon.glyphicon-eye-open.checkbox
           %td.col-md-5
-            = link_to idea.title, campaign_idea_path(campaign, idea)
+            = link_to idea.title, campaign_idea_path(campaign, idea), title: idea.description
           %td.col-md-1
             = idea.user
           .col-md-3
