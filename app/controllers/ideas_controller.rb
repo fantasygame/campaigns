@@ -71,6 +71,9 @@ class IdeasController < ApplicationController
     idea.user = current_user
     idea.save
     redirect_to campaign_ideas_path(campaign), notice: 'Idea has been succesfully created!'
+    unless campaign.game_master?(current_user)
+      IdeaMailer.notify_gamemaster(campaign, idea).deliver
+    end
   end
 
   private
