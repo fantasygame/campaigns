@@ -3,6 +3,48 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 *, *:before, *:after {box-sizing:  border-box !important;}
 
+.campaign-row {
+  .panel {
+    background-color: whitesmoke;
+    border: 1px solid #e3e3e3;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  a {
+    color: #333333;
+  }
+
+  .panel-title {
+    color: #337ab7;
+  }
+
+  .panel-footer {
+    border-top: none;
+  }
+
+  .description {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  .badge {
+    min-width: 45px;
+    margin-right: 5px;
+    padding: 3px 10px;
+  }
+
+  .glyphicon {
+    margin-right: 3px;
+  }
+
+  .member-badge {
+    background-color: #5cb85c;
+  }
+}
+
 #game-tiles {
   width: 100%;
   text-align: center;

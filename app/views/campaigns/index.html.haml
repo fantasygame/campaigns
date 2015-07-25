@@ -1,26 +1,49 @@
-%h1 RPG Campaigns
-
-%table.table
-  %tr
-    %th
-    %th Name
-    %th Description
-    %th Game master
-
-  - campaigns.created.each do |campaign|
-    %tr
-      %td{ style: 'text-align: center' }
-        - if campaign.member?(current_user)
-          .btn.btn-success.disabled
-            %span.glyphicon.glyphicon-user
-            &nbsp;Member
-        - else
-          = link_to 'Join campaign', campaign_join_request_path(campaign), class: 'btn btn-primary'
-
-      %td= link_to campaign.name, campaign
-      %td= campaign.description
-      %td= link_to campaign.game_master, user_path(campaign.game_master)
-
-%br
+- campaigns.created.each do |campaign|
+  .campaign-row
+    = link_to campaign do
+      .panel.paned-default
+        .panel-heading
+          %h4.panel-title= campaign.name
+        .panel-body
+          .description
+            = campaign.description
+        .panel-footer
+          - if campaign.member?(current_user)
+            %span.badge.member-badge{title: 'Member'}
+              %span.glyphicon.glyphicon-user
+              Member
+          - else
+            = link_to campaign_join_request_path(campaign) do
+              %span.badge
+                %span.glyphicon.glyphicon-plus-sign
+                Join campaign
+          = link_to campaign do
+            %span.badge{title: 'Members'}
+              .glyphicon.glyphicon-user
+              = campaign.members.count
+          = link_to campaign do
+            %span.badge{title: 'Games'}
+              .glyphicon.glyphicon-th-large
+              = campaign.games.count
+          = link_to show_posts_campaign_path(campaign) do
+            %span.badge{title: 'Posts'}
+              .glyphicon.glyphicon-comment
+              = campaign.posts.count
+          = link_to campaign_ideas_path(campaign) do
+            %span.badge{title: 'Ideas'}
+              .glyphicon.glyphicon-info-sign
+              = campaign.ideas.count
+          = link_to campaign_heroes_path(campaign) do
+            %span.badge{title: 'Heroes'}
+              .glyphicon.glyphicon-flag
+              = campaign.heroes.count
+          = link_to campaign_rewards_path(campaign) do
+            %span.badge{title: 'Rewards bought'}
+              .glyphicon.glyphicon-gift
+              = campaign.purchases.count
+          = link_to campaign_items_path(campaign) do
+            %span.badge{title: 'Items'}
+              .glyphicon.glyphicon-usd
+              = campaign.items.count
 
 = link_to 'New Campaign', new_campaign_path, class: 'btn btn-success'
