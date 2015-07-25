@@ -9,6 +9,6 @@ feature 'Home page' do
   #   Then I see "RPG Campaigns"
   scenario 'visit the home page' do
     visit root_path
-    expect(page).to have_content 'RPG Campaigns'
+    expect(page).to have_content 'Campaigns'
   end
 end
