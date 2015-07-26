@@ -11,7 +11,7 @@ gem 'spring',        group: :development
 gem "draper"
 gem "decent_exposure"
 gem "decent_decoration"
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '3.3.1.0'
 gem 'devise'
 gem 'devise-i18n'
 gem 'figaro', '>= 1.0.0.rc1'
