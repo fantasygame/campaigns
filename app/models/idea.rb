@@ -1,6 +1,7 @@
 class Idea < ActiveRecord::Base
   belongs_to :user
   belongs_to :campaign
+  has_many :comments, as: :subject
 
   validates :title, :campaign, :user, presence: true
 
