@@ -8,10 +8,10 @@ RSpec.describe CommentPolicy do
   let(:campaign) { build(:campaign, users: [user]) }
   let(:game) { build(:game, campaign: campaign) }
   let(:post) { build(:post, game: game, user: user) }
-  let(:comment) { build(:comment, post: post, user: user) }
+  let(:comment) { build(:comment, subject: post, user: user) }
   let(:other_game) { build(:game, campaign: Campaign.new) }
   let(:other_post) { build(:post, game: other_game) }
-  let(:other_comment) { build(:comment, post: other_post) }
+  let(:other_comment) { build(:comment, subject: other_post) }
 
   permissions :create? do
     context "user is a member of comments campaign" do
