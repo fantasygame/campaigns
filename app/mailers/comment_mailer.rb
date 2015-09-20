@@ -10,6 +10,6 @@ class CommentMailer < ApplicationMailer
       @campaign = idea.campaign
     end
 
-    mail(to: @user.email, subject: "You have new comment in #{@campaign.name} : #{@game.name}")
+    mail(to: @user.email, subject: "You have new comment in #{@campaign.name}")
   end
 end
