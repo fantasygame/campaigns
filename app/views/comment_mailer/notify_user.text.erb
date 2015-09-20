@@ -12,7 +12,7 @@ Check it out:
 <%- if @comment.subject.is_a? Post %>
   <%= campaign_game_url(@campaign, @game, only_path: false) %>
 <%- else %>
-  #TODO Link to idea here
+  <%= campaign_idea_url(@campaign, @subject, only_path: false) %>
 <%- end %>
 
 Thanks for playing with us and have a great day!

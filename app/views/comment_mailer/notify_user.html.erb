@@ -23,7 +23,7 @@
         <%- if @comment.subject.is_a? Post %>
           <%= link_to @game.name, campaign_game_url(@campaign, @game, only_path: false) %>
         <%- else %>
-          #TODO Link to idea here
+          <%= link_to @subject.title, campaign_idea_url(@campaign, @subject, only_path: false) %>
         <%- end %>
       </h3>
     </p>
