@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
   expose(:campaign)
   expose(:game)
-  expose(:post)
-  expose(:comments) { post.comments }
+  expose(:subject) { subject_from_params }
   expose(:comment, attributes: :comment_params)
   before_action :authenticate_user!
+  before_action :add_subject, only: [:new, :edit, :create, :update]
 
   respond_to :html
 
@@ -40,5 +40,17 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content)
+  end
+
+  def subject_from_params
+    if params.key?(:post_id)
+      Post.find(params[:post_id])
+    elsif params.key?(:idea_id)
+      Idea.find(params[:idea_id])
+    end
+  end
+
+  def add_subject
+    comment.subject = subject
   end
 end
