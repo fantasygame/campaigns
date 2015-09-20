@@ -1,4 +1,6 @@
-= simple_form_for([campaign, game, subject, comment]) do |f|
+- form_vars = [campaign, game, subject, comment] if subject.is_a? Post
+- form_vars = [campaign, subject, comment] if subject.is_a? Idea
+= simple_form_for(form_vars) do |f|
   = f.error_notification
 
   .form-inputs
