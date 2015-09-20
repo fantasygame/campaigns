@@ -13,8 +13,8 @@ class NotifyAboutComment
   private
 
   def notify(comment)
-    users = comment.post.comments.map(&:user)
-    users << comment.post.author
+    users = comment.subject.comments.map(&:user)
+    users << comment.subject.author
     users = users.uniq.reject { |user| user == current_user }
     users.each do |user|
       CommentMailer.notify_user(user, comment).deliver
