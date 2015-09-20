@@ -7,7 +7,7 @@ class CommentMailer < ApplicationMailer
       @game = @subject.game
       @campaign = @game.campaign
     elsif @subject.is_a?(Idea)
-      @campaign = idea.campaign
+      @campaign = @subject.campaign
     end
 
     mail(to: @user.email, subject: "You have new comment in #{@campaign.name}")
