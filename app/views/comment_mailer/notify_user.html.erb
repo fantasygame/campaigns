@@ -6,7 +6,7 @@
   <body>
     <h2>Hello, <%= @user.name %></h2>
     <p>
-      There is new comment to your post in <%= @campaign.name %> : <%= @game.name %>.
+      There is new comment in <%= @campaign.name %>.
     </p>
     <p>
       Comment:
@@ -18,15 +18,13 @@
       </p>
     </p>
     <p>
-      Post:
-      <quote>
-        <%= @post.content %>
-      </quote>
-    </p>
-    <p>
       Check it out:
       <h3>
-        <%= link_to @game.name, campaign_game_url(@campaign, @game, only_path: false) %>
+        <%- if @comment.subject.is_a? Post %>
+          <%= link_to @game.name, campaign_game_url(@campaign, @game, only_path: false) %>
+        <%- else %>
+          #TODO Link to idea here
+        <%- end %>
       </h3>
     </p>
     <p>Thanks for playing with us and have a great day!</p>

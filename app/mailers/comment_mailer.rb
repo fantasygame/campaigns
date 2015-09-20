@@ -2,9 +2,14 @@ class CommentMailer < ApplicationMailer
   def notify_user(user, comment)
     @user = user
     @comment = comment
-    @post = comment.post
-    @game = @post.game
-    @campaign = @game.campaign
+    @subject = comment.subject
+    if @subject.is_a?(Post)
+      @game = @subject.game
+      @campaign = @game.campaign
+    elsif @subject.is_a?(Idea)
+      @campaign = idea.campaign
+    end
+
     mail(to: @user.email, subject: "You have new comment in #{@campaign.name} : #{@game.name}")
   end
 end

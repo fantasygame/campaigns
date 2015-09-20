@@ -1,17 +1,18 @@
 Hello, <%= @user.name %>
 ===============================================
 
-There is new comment to your post in <%= @campaign.name %> : <%= @game.name %>.
+There is new comment to your post in <%= @campaign.name %>.
 
 Comment:
 <%= @comment.content %>
 --
 by <%= @comment.author.name %>
 
-
-Post:
-<%= @post.content %>
-
-Check it out: <%= campaign_game_url(@campaign, @game, only_path: false) %>
+Check it out:
+<%- if @comment.subject.is_a? Post %>
+  <%= campaign_game_url(@campaign, @game, only_path: false) %>
+<%- else %>
+  #TODO Link to idea here
+<%- end %>
 
 Thanks for playing with us and have a great day!
