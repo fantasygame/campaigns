@@ -1,6 +1,6 @@
 class CommentPolicy < ApplicationPolicy
   def new?
-    record.post.member?(user)
+    record.subject.member?(user)
   end
 
   def create?
