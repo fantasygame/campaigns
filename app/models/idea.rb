@@ -3,6 +3,10 @@ class Idea < ActiveRecord::Base
   belongs_to :campaign
   has_many :comments, as: :subject
 
+  delegate :member?, to: :campaign
+
+  alias_method :author, :user
+
   validates :title, :campaign, :user, presence: true
 
   def self.search(search)
