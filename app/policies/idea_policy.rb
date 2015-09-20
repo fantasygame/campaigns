@@ -37,4 +37,8 @@ class IdeaPolicy < ApplicationPolicy
   def toggle_visible?
     toggle_interesting?
   end
+
+  def comment?
+    new?
+  end
 end
