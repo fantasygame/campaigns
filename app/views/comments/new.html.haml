@@ -2,7 +2,13 @@
 
 = render 'form'
 
-= link_to campaign_game_path(campaign, game), class: 'btn btn-default' do
-  %span.glyphicon.glyphicon-chevron-left
-  &nbsp;
-  Back
+- if subject.is_a? Post
+  = link_to campaign_game_path(campaign, game), class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-chevron-left
+    &nbsp;
+    Back
+- elsif subject.is_a? Idea
+  = link_to campaign_idea_path(campaign, subject), class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-chevron-left
+    &nbsp;
+    Back
