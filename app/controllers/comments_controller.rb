@@ -21,7 +21,11 @@ class CommentsController < ApplicationController
     comment.user = current_user
     comment.save
     NotifyAboutComment.new(comment: comment, current_user: current_user).call
-    respond_with(campaign, game)
+    if subject.is_a? Post
+      respond_with(campaign, game)
+    elsif subject.is_a? Idea
+      respond_with(campaign, subject)
+    end
   end
 
   def update
