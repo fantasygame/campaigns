@@ -1,27 +1,26 @@
-.well
+.panel.panel-default{ id: "idea-#{idea.id}" }
+  .panel-heading
+    %span
+      = idea.created_at.strftime('%d.%m.%Y')
+    = link_to idea.user.name, user_path(idea.user)
 
-  .container
-    .row
-      .col-md-1
-      .col-md-10.table-margin
-        %h4= "Campaign #{idea.campaign}"
-      .col-md-1
-    .row
-      .col-md-1
-      .col-md-10
-        %h2= idea.title
-      .col-md-1
-    .row
-      .col-md-1
-      .col-md-10
-        .jumbotron
-          = idea.description.html_safe
-      .col-md-1
-    .row
-      .col-md-1
-      .col-md-10
-        =link_to campaign_ideas_path(campaign), class: 'btn btn-default' do
-          %span.glyphicon.glyphicon-chevron-left
-          &nbsp;
-          Back
-      .col-md-1
+    .pull-right
+      - if policy(idea).edit?
+        = link_to 'Edit', edit_campaign_idea_path(campaign, idea), class: 'btn-sm btn-primary'
+      - if policy(idea).destroy?
+        = link_to 'Destroy', campaign_idea_path(campaign, idea), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-sm btn-danger'
+  .panel-body
+    %strong= idea.title
+    .content
+      = simple_format idea.description.html_safe
+    - if idea.comments.any?
+      .comments
+        - idea.comments.each do |comment|
+          .well.well-sm
+            = comment.content
+            .author.pull-right
+              = link_to comment.user.name, user_path(comment.user)
+  .panel-footer
+    - if policy(idea).comment?
+      = link_to new_campaign_idea_comment_path(campaign, idea), class: 'btn-sm btn-info' do
+        %i.glyphicon.glyphicon-comment
