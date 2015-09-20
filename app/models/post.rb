@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   belongs_to :game
   belongs_to :user
   has_many :votes
-  has_many :comments
+  has_many :comments, as: :subject
 
   delegate :member?, :campaign, to: :game
 
