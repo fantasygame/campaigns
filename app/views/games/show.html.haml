@@ -8,13 +8,10 @@
 %p
   - game.heroes.each do |hero|
     %span
-      - if hero.user_character == true
-        .badge
+      .badge.hero-badge
+        - if hero.user_character == true
           .glyphicon.glyphicon-user
-          = hero.name
-      - else
-        .badge
-          = hero.name
+        = link_to hero.name, campaign_hero_path(campaign, hero)
 
 - if policy(game).new?
   %p{ style: 'margin-top: 2em; margin-bottom: 2em;' }
