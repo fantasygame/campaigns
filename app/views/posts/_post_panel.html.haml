@@ -11,7 +11,7 @@
         = link_to 'Destroy', campaign_game_post_path(campaign, game, post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-sm btn-danger'
   .panel-body
     .content
-      = simple_format post.content
+      = post.escaped_content
     - if post.comments.any?
       .comments
         - post.comments.each do |comment|
