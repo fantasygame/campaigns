@@ -3,7 +3,11 @@
     = link_to campaign do
       .panel.paned-default
         .panel-heading
-          %h4.panel-title= campaign.name
+          .pull-left
+            %h4.panel-title
+              = campaign.name
+          .pull-right
+            = campaign.system
         .panel-body
           .description
             = campaign.description
