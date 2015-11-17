@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
   expose(:campaigns)
+  expose(:campaigns_sorted) { Campaign.game_date_sorted }
   expose(:campaign, attributes: :campaign_params)
   expose(:user)
   expose(:users)
@@ -30,7 +31,7 @@ class CampaignsController < ApplicationController
   end
 
   def index
-    respond_with(campaigns)
+    respond_with(campaigns_sorted)
   end
 
   def show

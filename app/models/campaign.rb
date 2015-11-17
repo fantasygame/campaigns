@@ -58,4 +58,12 @@ class Campaign < ActiveRecord::Base
       []
     end
   end
+
+  def last_game_date
+    games.first.try(:date) || '1970-01-01 00:00:00'.to_date
+  end
+
+  def self.game_date_sorted
+    Campaign.all.to_a.sort { |a, b| b.last_game_date <=> a.last_game_date }
+  end
 end
