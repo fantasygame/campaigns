@@ -17,11 +17,11 @@ class Game < ActiveRecord::Base
   end
 
   def members_count
-    members_heroes.map(&:user_id).uniq.count
+    members_heroes.map(&:user_id).uniq.count + 1
   end
 
   def heroes_names
-    heroes.map(&:name).join(', ')
+    (['GM'] + heroes.map(&:name)).join(', ')
   end
 
   def played?(user)
