@@ -1,0 +1,7 @@
+%h1
+  Funny quotes in
+  = campaign.name
+.quotes
+  - quotes.each do |post|
+    = render partial: "posts/post_panel", locals: { campaign: campaign, game: post.game, post: post.decorate }
+
