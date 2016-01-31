@@ -29,18 +29,18 @@ class PointsCalculator
   end
 
   def interesting_idea_points
-    if campaign.blank?
-      user.ideas.where(interesting: true).count
-    else
-      campaign.ideas.where(user: user, interesting: true).count
-    end
+    idea_points(:interesting)
   end
 
   def used_idea_points
+    idea_points(:used)
+  end
+
+  def idea_points(type)
     if campaign.blank?
-      user.ideas.where(used: true).count
+      user.ideas.where(type => true).count
     else
-      campaign.ideas.where(user: user, used: true).count
+      campaign.ideas.where(user: user, type => true).count
     end
   end
 end
