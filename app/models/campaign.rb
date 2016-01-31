@@ -66,4 +66,8 @@ class Campaign < ActiveRecord::Base
   def self.game_date_sorted
     Campaign.all.to_a.sort { |a, b| b.last_game_date <=> a.last_game_date }
   end
+
+  def funny_quotes
+    posts.where(funny_quote: true)
+  end
 end
