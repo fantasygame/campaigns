@@ -2,10 +2,14 @@ class CampaignsController < ApplicationController
   expose(:campaigns)
   expose(:campaigns_sorted) { Campaign.game_date_sorted }
   expose(:campaign, attributes: :campaign_params)
+  expose(:quotes) { PostDecorator.decorate_collection(campaign.funny_quotes) }
   expose(:user)
   expose(:users)
   respond_to :html, :json, :xml
   before_action :authenticate_user!, except: [:index, :show]
+
+  def funny_quotes
+  end
 
   def toggle_membership
     authorize campaign

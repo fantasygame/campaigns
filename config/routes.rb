@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     member do
       get :toggle_membership
       get :show_posts
+      get :funny_quotes
     end
 
     post :change_money
