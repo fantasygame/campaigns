@@ -12,10 +12,9 @@
       Join campaign
       &nbsp;
       %span.glyphicon.glyphicon-add
-%p
+%p.btn-group
   - if policy(campaign).new?
     = link_to 'Add game', new_campaign_game_path(campaign), class: 'btn btn-success'
-%p.btn-group
   - if policy(campaign).manage_members?
     = link_to campaign_manage_members_path(campaign), class: 'btn btn-default' do
       Toggle members
