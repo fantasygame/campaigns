@@ -1,5 +1,5 @@
-require 'rails_helper'
-require 'pundit/rspec'
+require "rails_helper"
+require "pundit/rspec"
 
 RSpec.describe HeroPolicy do
   subject { described_class.new(user, hero) }
@@ -8,7 +8,7 @@ RSpec.describe HeroPolicy do
   let(:campaign) { build(:campaign, users: [user, other_member]) }
   let(:hero) { build(:hero, user: user, campaign: campaign) }
 
-  context 'for a campaign member' do
+  context "for a campaign member" do
     describe "is hero's owner" do
       before { hero.user_character = true }
 
@@ -32,7 +32,7 @@ RSpec.describe HeroPolicy do
       it { should_not permits(:change_money) }
     end
   end
-  context 'for not campaign member' do
+  context "for not campaign member" do
     before { campaign.users = [other_member] }
     before { hero.user = other_member }
 

@@ -1,5 +1,5 @@
-require 'rails_helper'
-require 'pundit/rspec'
+require "rails_helper"
+require "pundit/rspec"
 
 RSpec.describe IdeaPolicy do
   subject { described_class.new(user, idea) }
@@ -9,8 +9,8 @@ RSpec.describe IdeaPolicy do
   let(:campaign) { create(:campaign, users: [user, user2]) }
   let(:idea) { create(:idea, campaign: campaign, user: user) }
 
-  context 'for campaign member' do
-    describe 'idea belongs to user' do
+  context "for campaign member" do
+    describe "idea belongs to user" do
       it { should permits(:new) }
       it { should permits(:create) }
       it { should permits(:update) }
@@ -20,7 +20,7 @@ RSpec.describe IdeaPolicy do
       it { should_not permits(:toggle_interesting) }
       it { should_not permits(:toggle_used) }
     end
-    describe 'idea does not belong to user and user is not game master' do
+    describe "idea does not belong to user and user is not game master" do
       subject { described_class.new(user2, idea) }
 
       it { should permits(:new) }
@@ -32,7 +32,7 @@ RSpec.describe IdeaPolicy do
       it { should_not permits(:toggle_interesting) }
       it { should_not permits(:toggle_used) }
     end
-    describe 'user is a game master' do
+    describe "user is a game master" do
       before { idea.user = user2 }
       before { campaign.game_master = user }
 
@@ -47,7 +47,7 @@ RSpec.describe IdeaPolicy do
     end
   end
 
-  context 'for not campaign member' do
+  context "for not campaign member" do
     subject { described_class.new(non_member, idea) }
 
     it { should_not permits(:new) }

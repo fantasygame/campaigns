@@ -21,7 +21,7 @@ class Game < ActiveRecord::Base
   end
 
   def heroes_names
-    (['GM'] + heroes.map(&:name)).join(', ')
+    (["GM"] + heroes.map(&:name)).join(", ")
   end
 
   def played?(user)

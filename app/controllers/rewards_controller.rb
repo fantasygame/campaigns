@@ -22,11 +22,11 @@ class RewardsController < ApplicationController
   def index
     @users = campaign.users
     @points = campaign.available_points(current_user)
-    if campaign.game_master?(current_user)
-      @purchases = Purchase.in_campaign(campaign)
-    else
-      @purchases = Purchase.in_campaign(campaign).where(user: current_user)
-    end
+    @purchases = if campaign.game_master?(current_user)
+                   Purchase.in_campaign(campaign)
+                 else
+                   Purchase.in_campaign(campaign).where(user: current_user)
+                 end
     respond_with(rewards)
   end
 

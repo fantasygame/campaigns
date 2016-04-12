@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Response::Success, type: :class do
-  subject(:success) { described_class.new(message: 'success') }
+  subject(:success) { described_class.new(message: "success") }
 
   it "is #success" do
     expect(success.success?).to be_truthy
@@ -12,7 +12,7 @@ RSpec.describe Response::Success, type: :class do
   end
 
   it "creates #flash" do
-    flash = { notice: 'success' }
+    flash = { notice: "success" }
     expect(success.flash).to eq flash
   end
 end

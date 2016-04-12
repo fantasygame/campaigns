@@ -1,6 +1,6 @@
 class Campaign < ActiveRecord::Base
   acts_as_paranoid
-  belongs_to :game_master, class_name: 'User'
+  belongs_to :game_master, class_name: "User"
   has_many :users, through: :campaignplays
   has_many :campaignplays
   has_many :games, -> { order(date: :desc) }, dependent: :destroy
@@ -60,7 +60,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def last_game_date
-    games.first.try(:date) || '1970-01-01 00:00:00'.to_date
+    games.first.try(:date) || "1970-01-01 00:00:00".to_date
   end
 
   def self.game_date_sorted

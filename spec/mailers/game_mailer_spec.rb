@@ -1,9 +1,9 @@
 require "rails_helper"
 
 RSpec.describe GameMailer, type: :mailer do
-  let(:member) { create(:user, name: 'John Snow') }
-  let(:campaign) { create(:campaign, users: [member], name: 'Game of Thrones') }
-  let(:game) { create(:game, campaign: campaign, name: 'The Wall') }
+  let(:member) { create(:user, name: "John Snow") }
+  let(:campaign) { create(:campaign, users: [member], name: "Game of Thrones") }
+  let(:game) { create(:game, campaign: campaign, name: "The Wall") }
   let(:not_member) { create(:user) }
   subject(:mailer) { described_class.notify_user(member, game) }
 

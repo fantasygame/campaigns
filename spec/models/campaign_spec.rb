@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Campaign, type: :model do
   subject(:campaign) { build(:campaign) }
@@ -10,8 +10,8 @@ RSpec.describe Campaign, type: :model do
   it { is_expected.to validate_presence_of(:game_master) }
 
   it "#to_s return name" do
-    campaign.name = 'Campaign name'
-    expect(campaign.to_s).to eq 'Campaign name'
+    campaign.name = "Campaign name"
+    expect(campaign.to_s).to eq "Campaign name"
   end
 
   describe "checks if user is game master" do
@@ -36,8 +36,8 @@ RSpec.describe Campaign, type: :model do
     let(:user_character) { create(:hero, user: user, user_character: true) }
     let(:second_user_character) { create(:hero, user: user, user_character: true) }
     let(:other_user_character) { create(:hero, user: create(:user), user_character: true) }
-    let!(:first_game) { create(:game, name: 'Game 1', campaign: campaign, date: 1.week.ago) }
-    let!(:second_game) { create(:game, name: 'Game 2', campaign: campaign, date: 1.day.ago) }
+    let!(:first_game) { create(:game, name: "Game 1", campaign: campaign, date: 1.week.ago) }
+    let!(:second_game) { create(:game, name: "Game 2", campaign: campaign, date: 1.day.ago) }
 
     context "user is not a game master" do
       context "user character played in first game" do

@@ -2,7 +2,7 @@ class IdeasController < ApplicationController
   expose(:idea, attributes: :idea_params)
   expose(:ideas) do
     campaign.user_accessible_ideas(current_user).search(params[:search])
-      .order(used: :asc, interesting: :desc).paginate(page: params[:page], per_page: 10)
+            .order(used: :asc, interesting: :desc).paginate(page: params[:page], per_page: 10)
   end
   expose(:campaign)
   expose(:campaigns)
@@ -63,14 +63,14 @@ class IdeasController < ApplicationController
   def destroy
     authorize idea
     idea.destroy
-    redirect_to campaign_ideas_path(campaign), notice: 'Idea has been destroyed'
+    redirect_to campaign_ideas_path(campaign), notice: "Idea has been destroyed"
   end
 
   def create
     authorize idea
     idea.user = current_user
     idea.save
-    redirect_to campaign_ideas_path(campaign), notice: 'Idea has been succesfully created!'
+    redirect_to campaign_ideas_path(campaign), notice: "Idea has been succesfully created!"
     unless campaign.game_master?(current_user)
       IdeaMailer.notify_gamemaster(campaign, idea).deliver
     end

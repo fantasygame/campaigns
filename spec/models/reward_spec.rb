@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Reward, type: :model do
   it { is_expected.to have_many(:purchases) }

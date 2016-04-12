@@ -8,11 +8,11 @@ class AddUserToCampaign
 
   def call
     if campaign.member?(user)
-      Response::Error.new(message: 'User already in campaign.')
+      Response::Error.new(message: "User already in campaign.")
     else
       campaign.users << user
       if campaign.save
-        Response::Success.new(data: campaign, message: 'Succesfuly signed to campaign')
+        Response::Success.new(data: campaign, message: "Succesfuly signed to campaign")
       else
         Response::ActiveModelError.new(campaign)
       end

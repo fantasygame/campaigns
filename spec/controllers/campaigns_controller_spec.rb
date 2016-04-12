@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 RSpec.describe CampaignsController, type: :controller do
   describe "GET index" do
     subject { get :index }
@@ -8,7 +8,7 @@ RSpec.describe CampaignsController, type: :controller do
   end
 
   describe "GET show" do
-    let(:campaign) { create(:campaign, name: 'Imperagon War') }
+    let(:campaign) { create(:campaign, name: "Imperagon War") }
     subject { get :show, id: campaign.id }
     it "renders the :show template" do
       expect(subject).to render_template :show

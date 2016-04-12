@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Response::Error, type: :class do
-  subject(:error) { described_class.new(message: 'error') }
+  subject(:error) { described_class.new(message: "error") }
 
   it "is not a #success" do
     expect(error.success?).to be_falsey
@@ -12,7 +12,7 @@ RSpec.describe Response::Error, type: :class do
   end
 
   it "creates #flash" do
-    flash = { alert: 'error' }
+    flash = { alert: "error" }
     expect(error.flash).to eq flash
   end
 end

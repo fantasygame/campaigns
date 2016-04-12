@@ -7,5 +7,5 @@ class Feature < ActiveRecord::Base
   default false
 
   feature :money_history,
-    default: false
+          default: false
 end

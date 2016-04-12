@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  mount Bootsy::Engine => "/bootsy", as: "bootsy"
   root to: 'campaigns#index'
 
   resources :campaigns do
@@ -50,6 +50,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:index, :show]
-  get '/users/become/:id', to: 'users#become', as: :become_user
+  get "/users/become/:id", to: 'users#become', as: :become_user
   mount Flip::Engine => "/features"
 end

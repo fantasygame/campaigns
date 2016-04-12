@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 require "pundit/rspec"
 
 RSpec.describe ApplicationPolicy do
@@ -18,7 +18,7 @@ RSpec.describe ApplicationPolicy do
     end
     context "object exists" do
       it "grants access" do
-        expect(subject).to permit(User.new, Post.create(content: 'content'))
+        expect(subject).to permit(User.new, Post.create(content: "content"))
       end
     end
   end

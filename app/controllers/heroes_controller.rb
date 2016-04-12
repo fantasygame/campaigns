@@ -9,7 +9,7 @@ class HeroesController < ApplicationController
     authorize hero
     change = params[:hero][:money_change].to_i
     ChangeMoney.new(current_user, hero, change).call
-    redirect_to campaign_hero_path(campaign, hero), notice: 'Money has been changed'
+    redirect_to campaign_hero_path(campaign, hero), notice: "Money has been changed"
   end
 
   def index

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :games, through: :gameplays, class_name: 'Game'
-  has_many :campaigns, through: :campaignplays, class_name: 'Campaign'
+  has_many :games, through: :gameplays, class_name: "Game"
+  has_many :campaigns, through: :campaignplays, class_name: "Campaign"
   has_many :posts
   has_many :gameplays
   has_many :campaignplays
@@ -37,5 +37,5 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
-    :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable
 end
