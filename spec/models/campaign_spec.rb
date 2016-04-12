@@ -19,13 +19,13 @@ RSpec.describe Campaign, type: :model do
     context "user is game master" do
       subject(:campaign) { build(:campaign, game_master: user) }
       it "returns true" do
-        expect(campaign.game_master? user).to be_truthy
+        expect(campaign.game_master?(user)).to be_truthy
       end
     end
     context "user is not a game master" do
       subject(:campaign) { build(:campaign, game_master: build(:user)) }
       it "returns true" do
-        expect(campaign.game_master? user).to be_falsey
+        expect(campaign.game_master?(user)).to be_falsey
       end
     end
   end

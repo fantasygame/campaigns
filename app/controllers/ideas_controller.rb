@@ -12,31 +12,22 @@ class IdeasController < ApplicationController
   def toggle_interesting
     authorize idea
     idea.interesting = !idea.interesting
-    if idea.save
-      redirect_to :back
-    else
-      redirect_to :back
-    end
+    idea.save
+    redirect_to :back
   end
 
   def toggle_visible
     authorize idea
     idea.visible = !idea.visible
-    if idea.save
-      redirect_to :back
-    else
-      redirect_to :back
-    end
+    idea.save
+    redirect_to :back
   end
 
   def toggle_used
     authorize idea
     idea.used = !idea.used
-    if idea.save
-      redirect_to :back
-    else
-      redirect_to :back
-    end
+    idea.save
+    redirect_to :back
   end
 
   def index
@@ -79,6 +70,8 @@ class IdeasController < ApplicationController
   private
 
   def idea_params
-    params.require(:idea).permit(:title, :description, :id, :campaign, :user, :bootsy_image_gallery_id)
+    params.require(:idea).permit(
+      :title, :description, :id, :campaign, :user, :bootsy_image_gallery_id
+    )
   end
 end

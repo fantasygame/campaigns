@@ -49,7 +49,8 @@ class HeroesController < ApplicationController
 
   def hero_params
     params.require(:hero).permit(
-      :name, :archetype, :race, :alignment, :deity, :titles, :appearance, :background, :mechanics, :image, :user_character
+      :name, :archetype, :race, :alignment, :deity, :titles,
+      :appearance, :background, :mechanics, :image, :user_character
     )
   end
 end
