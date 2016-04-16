@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131123713) do
+ActiveRecord::Schema.define(version: 20160416124242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(version: 20160131123713) do
 
   add_index "comments", ["subject_type", "subject_id"], name: "index_comments_on_subject_type_and_subject_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "events", ["campaign_id"], name: "index_events_on_campaign_id", using: :btree
 
   create_table "features", force: :cascade do |t|
     t.string   "key",                        null: false
@@ -242,6 +250,7 @@ ActiveRecord::Schema.define(version: 20160131123713) do
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
   add_foreign_key "comments", "users"
+  add_foreign_key "events", "campaigns"
   add_foreign_key "heros", "campaigns"
   add_foreign_key "heros", "users"
   add_foreign_key "ideas", "campaigns"

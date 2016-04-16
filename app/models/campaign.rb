@@ -12,6 +12,7 @@ class Campaign < ActiveRecord::Base
   has_many :items, -> { order(sold: :asc, updated_at: :desc) }
   has_many :money_histories
   has_many :ideas
+  has_many :events, -> { order(id: :desc) }
 
   validates :name, :game_master, presence: :true
 
