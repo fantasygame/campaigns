@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416124242) do
+ActiveRecord::Schema.define(version: 20160416140400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,18 @@ ActiveRecord::Schema.define(version: 20160416124242) do
 
   add_index "comments", ["subject_type", "subject_id"], name: "index_comments_on_subject_type_and_subject_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "event_option_selects", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.string   "day"
+    t.integer  "hour"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "event_option_selects", ["event_id"], name: "index_event_option_selects_on_event_id", using: :btree
+  add_index "event_option_selects", ["user_id"], name: "index_event_option_selects_on_user_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.integer  "campaign_id"
@@ -250,6 +262,8 @@ ActiveRecord::Schema.define(version: 20160416124242) do
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
   add_foreign_key "comments", "users"
+  add_foreign_key "event_option_selects", "events"
+  add_foreign_key "event_option_selects", "users"
   add_foreign_key "events", "campaigns"
   add_foreign_key "heros", "campaigns"
   add_foreign_key "heros", "users"
