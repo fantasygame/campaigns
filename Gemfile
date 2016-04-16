@@ -31,6 +31,7 @@ gem "gon"
 gem "paper_trail"
 gem "will_paginate"
 gem "bootsy"
+gem "bower-rails"
 group :development do
   gem "better_errors"
   gem "binding_of_caller", platforms: [:mri_21]

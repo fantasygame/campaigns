@@ -54,6 +54,7 @@ GEM
       carrierwave (~> 0.10)
       mini_magick (~> 4.3)
       remotipart (~> 1.2)
+    bower-rails (0.10.0)
     builder (3.2.2)
     capybara (2.6.2)
       addressable
@@ -377,6 +378,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (= 3.3.1.0)
   bootsy
+  bower-rails
   capybara
   carrierwave
   codeclimate-test-reporter
