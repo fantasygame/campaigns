@@ -1,1 +1,2 @@
 asset "angular", "1.5.3"
+asset "angular-resource", "1.5.3"
