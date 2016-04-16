@@ -32,6 +32,7 @@ gem "paper_trail"
 gem "will_paginate"
 gem "bootsy"
 gem "bower-rails"
+gem "angular-rails-templates"
 group :development do
   gem "better_errors"
   gem "binding_of_caller", platforms: [:mri_21]

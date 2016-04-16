@@ -1,1 +1,1 @@
-app = angular.module("CampaignsApp", ["templates"])
+app = angular.module("CampaignsApp", ['templates'])
