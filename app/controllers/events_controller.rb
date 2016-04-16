@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     else
       EventOptionSelect.create(event_attributes)
     end
-    redirect_to events_path
+    head :ok
   end
 
   private
