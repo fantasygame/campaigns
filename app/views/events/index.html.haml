@@ -1,3 +1,23 @@
-%div{'ng-app' => 'CampaignsApp'}
-  Hello world
-  <test-dir></test-dir>
+.events
+  - events.each do |event|
+    .cevent-row
+      .panel.paned-default
+        .panel-heading
+          %h4.panel-title
+            = event.campaign.name
+            = event.event_number
+        .panel-body
+          .container
+            - event.date_options.each do |option|
+              %span.option-button.btn.btn-sm.btn-default
+                = option[:day]
+                = option[:hour]
+        .panel-footer
+          - if event.date.nil?
+            No date yet
+          - else
+            = event.date
+
+  %div{'ng-app' => 'CampaignsApp'}
+    Hello world
+    <test-dir></test-dir>
