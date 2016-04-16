@@ -9,8 +9,8 @@
         .panel-body
           .container
             - event.date_options.each do |option|
-                %span.option-button.btn.btn-sm.btn-default
               = link_to toggle_option_event_path(event, hour: option.hour, day: option.day) do
+                %span.option-button.btn.btn-sm{ class: ( option.selected?(current_user) ? "btn-success" : "btn-default") }
                   = option.day
                   = option.hour
         .panel-footer
