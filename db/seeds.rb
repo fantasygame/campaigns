@@ -3,10 +3,14 @@ user = CreateAdmin.new.call
 campaign = Campaign.find_or_create_by(name: "War of midgets", game_master: user)
 AddUserToCampaign.new(user, campaign).call
 
-Campaign.find_or_create_by(name: "Dracorage", game_master: user)
-Campaign.find_or_create_by(name: "Imperagon returns", game_master: user)
-Campaign.find_or_create_by(name: "Indescribables", game_master: user)
+campaign1 = Campaign.find_or_create_by(name: "Dracorage", game_master: user)
+campaign2 = Campaign.find_or_create_by(name: "Imperagon returns", game_master: user)
+campaign3 = Campaign.find_or_create_by(name: "Indescribables", game_master: user)
 Campaign.find_or_create_by(name: "Raven Queen", game_master: user)
+
+Event.find_or_create_by(campaign: campaign1)
+Event.find_or_create_by(campaign: campaign2)
+Event.find_or_create_by(campaign: campaign3)
 
 game_params = { name: "There is a recipe that includes midget's brain and some spices", campaign: campaign, date: "2014-12-12".to_date }
 game = Game.find_by(game_params)
