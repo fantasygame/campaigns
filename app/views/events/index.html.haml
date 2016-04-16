@@ -7,7 +7,7 @@
             {{ event.name }}
         .panel-body
           .container
-            %span{ "ng-repeat" => "option in event.event_options", class: "{{ selectClass(option) }}" }
+            %span{ "ng-repeat" => "option in event.event_options", class: "{{ selectClass(option) }}", "ng-click" => "toggle(event, option)" }
               {{ option.day }}
               {{ option.hour }}
         .panel-footer
