@@ -1,23 +1,14 @@
 .events
-  - events.each do |event|
-    .event-row
+  %div{"ng-app" => "EventsApp", "ng-controller" => "EventsIndexController"}
+    .event-row{"ng-repeat" => "event in events"}
       .panel.paned-default
         .panel-heading
           %h4.panel-title
-            = event.campaign.name
-            = event.event_number
+            {{ event.name }}
         .panel-body
           .container
-            - event.date_options.each do |option|
-              = link_to toggle_option_event_path(event, hour: option.hour, day: option.day) do
-                %span.option-button.btn.btn-sm{ class: ( option.selected?(current_user) ? "btn-success" : "btn-default") }
-                  = option.day
-                  = option.hour
+            %span.option-button.btn.btn-sm.btn-default{ "ng-repeat" => "option in event.event_options" }
+              {{ option.day }}
+              {{ option.hour }}
         .panel-footer
-          - if event.date.nil?
-            No date yet
-          - else
-            = event.date
-
-  %div{'ng-app' => 'EventsApp', 'ng-controller' => 'EventsIndexController'}
-    Hello world
+          {{ event.date }}
