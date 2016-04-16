@@ -33,6 +33,7 @@ gem "will_paginate"
 gem "bootsy"
 gem "bower-rails"
 gem "angular-rails-templates"
+gem "active_model_serializers"
 group :development do
   gem "better_errors"
   gem "binding_of_caller", platforms: [:mri_21]
