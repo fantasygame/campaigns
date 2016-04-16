@@ -1,3 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :campaign_id, :date
+  attributes :id, :date, :name
+  has_many :event_options
+
 end
