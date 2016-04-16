@@ -37,6 +37,10 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    angular-rails-templates (1.0.0)
+      railties (>= 4.2, < 6)
+      sprockets (~> 3.0)
+      tilt
     arel (6.0.3)
     ast (2.2.0)
     attr_extras (4.4.0)
@@ -54,6 +58,7 @@ GEM
       carrierwave (~> 0.10)
       mini_magick (~> 4.3)
       remotipart (~> 1.2)
+    bower-rails (0.10.0)
     builder (3.2.2)
     capybara (2.6.2)
       addressable
@@ -371,12 +376,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular-rails-templates
   attr_extras
   awesome_print
   better_errors
   binding_of_caller
   bootstrap-sass (= 3.3.1.0)
   bootsy
+  bower-rails
   capybara
   carrierwave
   codeclimate-test-reporter
