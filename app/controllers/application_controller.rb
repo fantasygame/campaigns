@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :name
   end
 
+  def default_serializer_options
+    { root: false }
+  end
+
   private
 
   def user_not_authorized(exception)
