@@ -4,6 +4,10 @@ class EventsController < ApplicationController
   expose(:events) { Event.where(campaign: current_user.campaigns) }
 
   def index
+    respond_to do |format|
+      format.html
+      format.json { render json: events.to_json }
+    end
   end
 
   def toggle_option
