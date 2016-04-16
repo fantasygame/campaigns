@@ -6,7 +6,11 @@ class EventsController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json { render json: events }
+      format.json do
+        render json: ActiveModel::ArraySerializer.new(
+          events, each_serializer: EventSerializer, context: { current_user: current_user }
+        )
+      end
     end
   end
 
