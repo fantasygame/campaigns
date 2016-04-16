@@ -11,14 +11,8 @@ class Event < ActiveRecord::Base
 
   def date_options
     %w(mon tue wed thu fri sat sun).each_with_object([]) do |day, options|
-      options << option_hash(day, 10) if %w(sat sun).include?(day)
-      options << option_hash(day, 18)
+      options << EventOption.new(day, 10, self) if %w(sat sun).include?(day)
+      options << EventOption.new(day, 10, self)
     end
-  end
-
-  private
-
-  def option_hash(day, hour)
-    { day: day, hour: hour }
   end
 end
