@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   mount Bootsy::Engine => "/bootsy", as: "bootsy"
   root to: 'campaigns#index'
 
-  resources :events, only: [:index]
+  resources :events, only: [:index] do
+    member do
+      get :toggle_option
+    end
+  end
 
   resources :campaigns do
     get :manage_members
