@@ -6,6 +6,7 @@ before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database campaigns_test;' -U postgres
   - bundle exec rake db:migrate --trace
+  - bundle exec rake bower:install
 addons:
   code_climate:
     repo_token: 481129ba6a90c2196ec04b071f662f9af0014d78135d92626ea8f3a387d11e9a
