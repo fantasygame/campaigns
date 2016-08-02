@@ -44,6 +44,6 @@ feature "Sign in", :devise do
   scenario "user cannot sign in with wrong password" do
     user = FactoryGirl.create(:user)
     signin(user.email, "invalidpass")
-    expect(page).to have_content "Invalid Email or password", authentication_keys: "email"
+    expect(page).to have_content "Invalid Email or password"
   end
 end
