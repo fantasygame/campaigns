@@ -22,8 +22,8 @@
       %h4
         = game.name
     - game.posts.each do |post|
-      = render partial: "posts/post_panel", locals: { campaign: campaign, game: game, post: post }
-%p   
+      = render partial: "posts/post_panel", locals: { campaign: campaign, game: game, post: post.decorate }
+%p
   = link_to campaigns_path, class: 'btn btn-default' do
     %span.glyphicon.glyphicon-chevron-left
     &nbsp;
