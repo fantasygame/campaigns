@@ -4,7 +4,7 @@ class CampaignsController < ApplicationController
   expose(:campaign, attributes: :campaign_params)
   expose(:quotes) { PostDecorator.decorate_collection(campaign.funny_quotes) }
   expose(:user)
-  expose(:users)
+  expose(:users) { User.all }
   respond_to :html, :json, :xml
   before_action :authenticate_user!, except: [:index, :show]
 
