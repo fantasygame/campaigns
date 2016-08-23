@@ -8,7 +8,7 @@ gem "jquery-rails"
 gem "jbuilder"
 gem "sdoc", group: :doc
 gem "spring", group: :development
-gem "draper"
+gem "draper", "3.0.0.pre1" # rails 5 compability
 gem "decent_exposure"
 gem "decent_decoration"
 gem "bootstrap-sass", "3.3.1.0"
