@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   expose(:campaign)
   expose(:game)
   expose(:posts) { game.posts }
-  expose(:post, attributes: :post_params)
+  expose(:post)
   before_action :authenticate_user!
 
   respond_to :html
@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    post.game = game
     authorize post
     respond_with(post)
   end
@@ -23,6 +24,8 @@ class PostsController < ApplicationController
   end
 
   def create
+    post = Post.new(post_params)
+    post.game = game
     authorize post
     post.user = current_user
     post.save
