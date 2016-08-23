@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   expose(:campaign)
   expose(:games) { campaign.games }
-  expose(:game, attributes: :game_params)
+  expose(:game)
   before_action :authenticate_user!, except: :show
   expose(:heroes) { game.heroes }
 
@@ -13,6 +13,7 @@ class GamesController < ApplicationController
   end
 
   def new
+    game.campaign = campaign
     authorize game
     respond_with(game)
   end
@@ -21,6 +22,8 @@ class GamesController < ApplicationController
   end
 
   def create
+    game = Game.new(game_params)
+    game.campaign = campaign
     authorize game
     game.save
     NotifyMembers.new(game, current_user).call
