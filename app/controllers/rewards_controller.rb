@@ -1,7 +1,7 @@
 class RewardsController < ApplicationController
   expose(:campaign)
   expose(:rewards) { set_rewards }
-  expose(:reward, attributes: :reward_params)
+  expose(:reward)
   before_action :authenticate_user!, except: :show
 
   respond_to :html, :json, :xml
@@ -31,6 +31,7 @@ class RewardsController < ApplicationController
   end
 
   def new
+    reward.campaign = campaign
     authorize reward
     respond_with(reward)
   end
@@ -40,6 +41,7 @@ class RewardsController < ApplicationController
   end
 
   def create
+    reward.campaign = campaign
     authorize reward
     reward.save
     redirect_to campaign_rewards_path(campaign)
