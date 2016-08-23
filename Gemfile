@@ -61,7 +61,7 @@ group :production do
   gem "unicorn"
 end
 group :test do
-  gem "email_spec"
+  # gem "email_spec"
   gem "simplecov", require: false
   gem "codeclimate-test-reporter", require: nil
   gem "capybara"
@@ -69,4 +69,5 @@ group :test do
   gem "launchy"
   gem "selenium-webdriver"
   gem "shoulda-matchers"
+  gem "rails-controller-testing"
 end
