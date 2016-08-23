@@ -1,4 +1,4 @@
-class MoneyHistory < ActiveRecord::Base
+class MoneyHistory < ApplicationRecord
   belongs_to :campaign
   belongs_to :user
   has_many :users

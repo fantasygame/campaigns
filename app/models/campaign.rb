@@ -1,4 +1,4 @@
-class Campaign < ActiveRecord::Base
+class Campaign < ApplicationRecord
   acts_as_paranoid
   belongs_to :game_master, class_name: "User"
   has_many :users, through: :campaignplays

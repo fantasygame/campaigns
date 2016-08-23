@@ -1,9 +1,9 @@
-require "email_spec"
+# require "email_spec"
 
-RSpec.configure do |config|
-  config.include(EmailSpec::Helpers)
-  config.include(EmailSpec::Matchers)
-end
+# RSpec.configure do |config|
+#   config.include(EmailSpec::Helpers)
+#   config.include(EmailSpec::Matchers)
+# end
 
 require "simplecov"
 SimpleCov.start do

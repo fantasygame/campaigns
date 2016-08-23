@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 ruby "2.3.1"
-gem "rails", "4.2.7.1"
+gem "rails", "5.0.0.1"
 gem "sass-rails"
 gem "uglifier"
 gem "coffee-rails"
@@ -8,7 +8,7 @@ gem "jquery-rails"
 gem "jbuilder"
 gem "sdoc", group: :doc
 gem "spring", group: :development
-gem "draper"
+gem "draper", "3.0.0.pre1" # rails 5 compability
 gem "decent_exposure"
 gem "decent_decoration"
 gem "bootstrap-sass", "3.3.1.0"
@@ -20,7 +20,7 @@ gem "pundit"
 gem "simple_form"
 gem "therubyracer"
 gem "pg"
-gem "paranoia"
+gem "paranoia", "~> 2.2.0.pre" # rails 5 compability
 gem "awesome_print"
 gem "attr_extras"
 gem "jquery-ui-rails"
@@ -40,7 +40,6 @@ group :development do
   gem "guard-rails"
   gem "guard-rspec"
   gem "html2haml"
-  gem "quiet_assets"
   gem "rails_layout"
   gem "rb-fchange", require: false
   gem "rb-fsevent", require: false
@@ -62,7 +61,7 @@ group :production do
   gem "unicorn"
 end
 group :test do
-  gem "email_spec"
+  # gem "email_spec"
   gem "simplecov", require: false
   gem "codeclimate-test-reporter", require: nil
   gem "capybara"
@@ -70,4 +69,5 @@ group :test do
   gem "launchy"
   gem "selenium-webdriver"
   gem "shoulda-matchers"
+  gem "rails-controller-testing"
 end

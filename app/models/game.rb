@@ -1,4 +1,4 @@
-class Game < ActiveRecord::Base
+class Game < ApplicationRecord
   acts_as_paranoid
 
   delegate :member?, :game_master?, :members, to: :campaign
