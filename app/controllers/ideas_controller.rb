@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-  expose(:idea, attributes: :idea_params)
+  expose(:idea)
   expose(:ideas) do
     campaign.user_accessible_ideas(current_user).search(params[:search])
             .order(used: :asc, interesting: :desc).paginate(page: params[:page], per_page: 10)
@@ -42,6 +42,7 @@ class IdeasController < ApplicationController
   end
 
   def new
+    idea.campaign = campaign
     authorize idea
   end
 
@@ -58,8 +59,9 @@ class IdeasController < ApplicationController
   end
 
   def create
-    authorize idea
+    idea.campaign = campaign
     idea.user = current_user
+    authorize idea
     idea.save
     redirect_to campaign_ideas_path(campaign), notice: "Idea has been succesfully created!"
     unless campaign.game_master?(current_user)
