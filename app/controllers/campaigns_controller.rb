@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
   expose(:campaigns)
   expose(:campaigns_sorted) { Campaign.game_date_sorted }
-  expose(:campaign, attributes: :campaign_params)
+  expose(:campaign)
   expose(:quotes) { PostDecorator.decorate_collection(campaign.funny_quotes) }
   expose(:user)
   expose(:users) { User.all }

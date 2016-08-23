@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   expose(:campaign)
   expose(:game)
   expose(:subject) { subject_from_params }
-  expose(:comment, attributes: :comment_params)
+  expose(:comment)
   before_action :authenticate_user!
   before_action :add_subject, only: [:new, :edit, :create, :update]
 
