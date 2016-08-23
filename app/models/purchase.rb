@@ -1,4 +1,4 @@
-class Purchase < ActiveRecord::Base
+class Purchase < ApplicationRecord
   belongs_to :reward
   belongs_to :campaign
   belongs_to :user

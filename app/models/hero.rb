@@ -1,4 +1,4 @@
-class Hero < ActiveRecord::Base
+class Hero < ApplicationRecord
   belongs_to :user
   belongs_to :campaign
   has_many :items

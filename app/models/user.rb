@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_many :games, through: :gameplays, class_name: "Game"
   has_many :campaigns, through: :campaignplays, class_name: "Campaign"
   has_many :posts
