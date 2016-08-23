@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 ruby "2.3.1"
-gem "rails", "4.2.7.1"
+gem "rails", "5.0.0.1"
 gem "sass-rails"
 gem "uglifier"
 gem "coffee-rails"
@@ -20,7 +20,7 @@ gem "pundit"
 gem "simple_form"
 gem "therubyracer"
 gem "pg"
-gem "paranoia"
+gem "paranoia", "~> 2.2.0.pre" # rails 5 compability
 gem "awesome_print"
 gem "attr_extras"
 gem "jquery-ui-rails"
@@ -40,7 +40,6 @@ group :development do
   gem "guard-rails"
   gem "guard-rspec"
   gem "html2haml"
-  gem "quiet_assets"
   gem "rails_layout"
   gem "rb-fchange", require: false
   gem "rb-fsevent", require: false
