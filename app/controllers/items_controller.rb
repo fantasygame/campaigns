@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  expose(:item, attributes: :item_params)
+  expose(:item)
   expose(:items) { campaign.items.paginate(page: params[:page], per_page: 15) }
   expose(:campaign)
 
@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
   end
 
   def new
+    item.campaign = campaign
     authorize item
     respond_with(item)
   end
@@ -35,6 +36,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    item.campaign = campaign
     authorize item
     item.save
     redirect_to campaign_items_path(campaign)
@@ -42,7 +44,7 @@ class ItemsController < ApplicationController
 
   def update
     authorize item
-    item.save
+    item.update(item_params)
     redirect_to campaign_items_path(campaign)
   end
 
