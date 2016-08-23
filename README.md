@@ -19,7 +19,7 @@ They can also propose their ideas to game master and earn points that way.
 
 ## Technologies
 
-* Ruby on Rails 4.2.7
+* Ruby on Rails 5.0.0.1
 * Ruby 2.3.1
 * Postgresql
 * HAML
